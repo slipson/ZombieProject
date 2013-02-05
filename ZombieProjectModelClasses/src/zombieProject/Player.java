@@ -16,9 +16,21 @@ public class Player{
 		return x;
 	}
 	
+	public void setX(double x){
+		this.x = x;
+	}
+	
 	public double getY(){
 		return y;
 	}
+	
+	public void setY(double y){
+		this.y = y;
+	}
+	
+	//check if collision possible
+	//if not allow movement
+	
 	
 	
 }
