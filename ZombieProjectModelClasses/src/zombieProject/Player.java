@@ -31,7 +31,7 @@ public class Player{
 	//check if collision possible
 	//if not allow movement
 
-	
+	//testing for push
 	
 	
 }
