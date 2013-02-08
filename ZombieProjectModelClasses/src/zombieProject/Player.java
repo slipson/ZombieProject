@@ -18,6 +18,7 @@ public class Player{
 		
 		health = 100;
 	}
+
 	
 	public double getX(){
 		return x;
