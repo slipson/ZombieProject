@@ -9,6 +9,9 @@ public class Player{
 	
 	private double health;
 	
+	String input;
+	Scanner keypress = new Scanner(input);
+	
 	public Player(double x, double y){
 		this.x = x;
 		this.y = y;
@@ -39,6 +42,7 @@ public class Player{
 	public void decreaseHealth(double val){
 		this.health -= val;
 	}
+	
 	
 	//check if collision possible
 	//if not allow movement
