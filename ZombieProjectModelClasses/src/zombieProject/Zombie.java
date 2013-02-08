@@ -1,3 +1,4 @@
+package zombieProject;
 
 public class Zombie {
 
