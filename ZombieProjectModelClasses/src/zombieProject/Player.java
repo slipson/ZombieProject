@@ -7,9 +7,13 @@ public class Player{
 	private double x;
 	private double y;
 	
+	private double health;
+	
 	public Player(double x, double y){
 		this.x = x;
 		this.y = y;
+		
+		health = 100;
 	}
 	
 	public double getX(){
@@ -28,9 +32,17 @@ public class Player{
 		this.y = y;
 	}
 	
+	public void increaseHealth(double val){
+		this.health += val;
+	}
+	
+	public void decreaseHealth(double val){
+		this.health -= val;
+	}
+	
 	//check if collision possible
 	//if not allow movement
-	//This is for all yall
+	//This is for all y'all
 	
 	
 	
