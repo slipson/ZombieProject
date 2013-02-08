@@ -30,7 +30,7 @@ public class Player{
 	
 	//check if collision possible
 	//if not allow movement
-	//This is for all yall
+
 	
 	
 	
