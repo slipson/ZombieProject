@@ -18,7 +18,7 @@ public class Player{
 
 	
 	public double getX(){
-		return x;
+		return this.x;
 	}
 	
 	public void setX(double x){
@@ -26,7 +26,7 @@ public class Player{
 	}
 	
 	public double getY(){
-		return y;
+		return this.y;
 	}
 	
 	public void setY(double y){
@@ -37,13 +37,16 @@ public class Player{
 		this.health += val;
 	}
 	
+	public double getHealth(){
+		return this.health;
+	}
+	
 	public void decreaseHealth(double val){
 		this.health -= val;
 	}
 	
 	//check if collision possible
 	//if not allow movement
-	//This is for all y'all
 	
 	
 	
