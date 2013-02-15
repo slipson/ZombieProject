@@ -29,5 +29,24 @@ public class Map {
 	{
 		return this.btmBndry;
 	}
+	
+	/**
+	 * Is given x/y (location) a valid location for given Player?
+	 * 
+	 * @param player the Player
+	 * @param x      x coord
+	 * @param y      y coord
+	 * @return true if this x/y is a valid location, false if not (overlap with walls)
+	 */
+	public boolean isLegalPosition(Player player, double x, double y) {
+		if( x > this.getLeft() | x < this.getRight()){
+			if( y > this.getTop() | y < this.getBottom()){
+				return true;
+			}
+			else{ return false;}
+		}
+		else{ return false;}
+		
+	}
 }
 

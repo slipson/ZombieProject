@@ -1,6 +1,6 @@
 package zombieProject;
 
-public class Player extends Game{
+public class Player {
 
 	private double x;
 	private double y;
