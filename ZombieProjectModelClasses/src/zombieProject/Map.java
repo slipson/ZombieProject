@@ -7,9 +7,9 @@ public class Map {
 	//hard coded boundaries 
 	
 	double lftBndry = 0;
-	double  ritBndry = 1000;//later find actual width
+	double  ritBndry = 100;//later find actual width
 	double topBndry = 0;
-	double btmBndry = 1000;//later find actual height
+	double btmBndry = 100;//later find actual height
 	
 	
 	public double getLeft()
