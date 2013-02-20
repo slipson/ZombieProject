@@ -29,6 +29,10 @@ public class Zombie {
 		public void setY(double y){
 			this.y = y;
 		}
+		
+		public double getHealth() {
+			return health;
+		}
 		/** 
 		 * A Zombie's health will decrease IF the player's
 		 * bullet's coordinates are the same as the Zombie's.
