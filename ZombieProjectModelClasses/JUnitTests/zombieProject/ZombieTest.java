@@ -4,8 +4,8 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
-public class ZombieTest {
-	public class PlayerTest extends TestCase {
+
+	public class ZombieTest extends TestCase {
 		Zombie z1;
 		Zombie z2;
 		
@@ -45,18 +45,17 @@ public class ZombieTest {
 		
 		@Test
 		public void testGetHealth() throws Exception{
-			assertEquals(100.0, z1.getHealth());
-			assertEquals(100.0, z2.getHealth());
+			assertEquals(50.0, z1.getHealth());
+			assertEquals(50.0, z2.getHealth());
 		}
 		
 		
 		@Test
 		public void testDecreaseHealth() throws Exception{
 			z1.decreaseHealth(50.0);
-			assertEquals(50.0, z1.getHealth());
-			z2.decreaseHealth(50);
-			assertEquals(50.0, z2.getHealth());
+			assertEquals(0.0, z1.getHealth());
+			z2.decreaseHealth(25);
+			assertEquals(25.0, z2.getHealth());
 		}
-	}
-
 }
+
