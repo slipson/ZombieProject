@@ -5,6 +5,7 @@ import java.awt.Frame;
 public class Map {
 
 	//hard coded boundaries 
+	//i hate you sam
 	
 	double lftBndry = 0;
 	double ritBndry = 100;//later find actual width
