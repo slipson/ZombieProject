@@ -2,10 +2,10 @@ package zombieProject;
 
 public class Zombie {
 
-		private double x;
-		private double y;
+		private double x; //zombie x-coordinate
+		private double y; //zombie y-coordinate
 		
-		private double health;
+		private double health; //zombie health
 		
 		public Zombie(double x, double y){
 			this.x = x;
