@@ -9,10 +9,18 @@ public class PlayerTest extends TestCase {
 	Player p1;
 	Player p2;
 	
+	Zombie z1; // 1st zombie test dummy
+	Zombie z2; // 2nd zombie dummy
+	Zombie z3; // 3rd zombie dummy
+	
 	@Override
 	protected void setUp() throws Exception {
 		p1 = new Player(0,0);
 		p2 = new Player(128, 256);
+		
+		z1 = new Zombie(129, 256);
+		z2 = new Zombie(128, 257);
+		z3 = new Zombie(150, 300);
 	}
 	
 	@Test
@@ -63,5 +71,12 @@ public class PlayerTest extends TestCase {
 		assertEquals(50.0, p1.getHealth());
 		p2.decreaseHealth(50);
 		assertEquals(50.0, p2.getHealth());
+	}
+	
+	@Test
+	public void testCanMove() throws Exception{
+		assertFalse(p1.canMove(z1));
+		assertFalse(p1.canMove(z2));
+		assertTrue(p1.canMove(z3));
 	}
 }
