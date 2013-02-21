@@ -47,16 +47,14 @@ public class Player extends Game{
 	/**
 	 * boolean to determine whether player can move to new coordinates
 	 * 
-	 * @param x player's x coordinate
-	 * @param y player's y coordinate
 	 * @param z the zombie
 	 * 
 	 * @return false = player CANNOT move, true = player CAN move
 	 */
-	private boolean canMove(int x, int y, Zombie z){
+	private boolean canMove(Zombie z){
 		
 		//if player's next move is a zombie location, player cannot move there.
-		if(x + 1 == z.getX() || x - 1 == z.getX() || y + 1 == z.getY() || y - 1 == z.getY()){
+		if(this.x + 1 == z.getX() || this.x - 1 == z.getX() || this.y + 1 == z.getY() || this.y - 1 == z.getY()){
 			
 			return false;
 			
