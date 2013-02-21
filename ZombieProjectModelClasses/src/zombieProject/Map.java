@@ -1,7 +1,5 @@
 package zombieProject;
 
-import java.awt.Frame;
-
 public class Map {
 
 	//hard coded boundaries 
@@ -30,4 +28,3 @@ public class Map {
 		return this.btmBndry;
 	}
 }
-
