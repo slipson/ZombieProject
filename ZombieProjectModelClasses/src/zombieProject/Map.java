@@ -1,8 +1,6 @@
 package zombieProject;
 
 public class Map {
-
-	//hard coded boundaries 
 	
 	double lftBndry = 0;
 	double ritBndry = 100;//later find actual width
