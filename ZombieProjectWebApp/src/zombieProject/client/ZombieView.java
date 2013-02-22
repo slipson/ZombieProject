@@ -1,6 +1,8 @@
 package zombieProject.client;
 
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.LabelBase;
 import com.google.gwt.user.client.ui.PushButton;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Button;
@@ -29,6 +31,14 @@ public class ZombieView extends Composite {
 			}
 		});
 		startButton.setText("Start the game already!");
+		startButton.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				if(startButton.isEnabled()){
+					startButton.setText("You clicked me!");
+					titleBox.setText("Initializing Game...");
+				}
+			}
+		});
 		layoutPanel.add(startButton);
 		layoutPanel.setWidgetLeftWidth(startButton, 86.0, Unit.PX, 184.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(startButton, 240.0, Unit.PX, 30.0, Unit.PX);
