@@ -31,9 +31,9 @@ public class PlayerTest extends TestCase {
 	
 	@Test
 	public void testSetX() throws Exception{
-		p1.setX(90.0);
+		p1.setX(90);
 		assertEquals(90.0, p1.getX());
-		p2.setX(346.0);
+		p2.setX(346);
 		assertEquals(346.0, p2.getX());
 	}
 	
@@ -45,9 +45,9 @@ public class PlayerTest extends TestCase {
 	
 	@Test
 	public void testSetY() throws Exception{
-		p1.setY(72.0);
+		p1.setY(72);
 		assertEquals(72.0, p1.getY());
-		p2.setY(925.0);
+		p2.setY(925);
 		assertEquals(925.0, p2.getY());
 	}
 	
@@ -67,16 +67,16 @@ public class PlayerTest extends TestCase {
 	
 	@Test
 	public void testDecreaseHealth() throws Exception{
-		p1.decreaseHealth(50.0);
+		p1.decreaseHealth(50);
 		assertEquals(50.0, p1.getHealth());
-		p2.decreaseHealth(50);
+		p2.decreaseHealth(50.0);
 		assertEquals(50.0, p2.getHealth());
 	}
 	
 	@Test
 	public void testCanMove() throws Exception{
-		assertFalse(p1.canMove(z1));
-		assertFalse(p1.canMove(z2));
-		assertTrue(p1.canMove(z3));
+		assertFalse(p2.canMove(z1));
+		assertFalse(p2.canMove(z2));
+		assertTrue(p2.canMove(z3));
 	}
 }

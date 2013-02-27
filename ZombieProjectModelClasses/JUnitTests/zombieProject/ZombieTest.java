@@ -23,10 +23,10 @@ import org.junit.Test;
 		
 		@Test
 		public void testSetX() throws Exception{
-			z1.setX(90.0);
-			assertEquals(90.0, z1.getX());
-			z2.setX(346.0);
-			assertEquals(346.0, z2.getX());
+			z1.setX(90);
+			assertEquals(90, z1.getX());
+			z2.setX(346);
+			assertEquals(346, z2.getX());
 		}
 		
 		@Test
@@ -37,10 +37,10 @@ import org.junit.Test;
 		
 		@Test
 		public void testSetY() throws Exception{
-			z1.setY(72.0);
-			assertEquals(72.0, z1.getY());
-			z2.setY(925.0);
-			assertEquals(925.0, z2.getY());
+			z1.setY(72);
+			assertEquals(72, z1.getY());
+			z2.setY(925);
+			assertEquals(925, z2.getY());
 		}
 		
 		@Test

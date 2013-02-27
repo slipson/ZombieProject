@@ -6,7 +6,7 @@ public class Game {
 		
 		Map m = new Map();
 		//spawns player in center of map
-		Player p = new Player(m.getRight()/2, m.getBottom()/2);
+		Player p = new Player((int) m.getRight()/2, (int) (m.getBottom()/2));
 		
 		//We are going to need to decide on if we are using a 
 		//loop to generate multiple zombies and generate them

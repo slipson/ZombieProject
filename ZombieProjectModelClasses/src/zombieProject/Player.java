@@ -1,9 +1,11 @@
 package zombieProject;
 
-public class Player extends Game{
+public class Player{
 
 	private int x; //player's x coordinate
 	private int y; //player's y coordinate
+	
+	private Weapon weapon; //player's current weapon
 	
 	private double health; //player's health
 	
@@ -17,8 +19,9 @@ public class Player extends Game{
 		this.x = x;
 		this.y = y;
 		
-		health = 100;
+		this.health = 100;
 	}
+	
 	/**
 	 * returns player's x-coordinate
 	 */
@@ -45,10 +48,10 @@ public class Player extends Game{
 	/**
 	 * set player's y-coordinate
 	 * 
-	 * @param y new y-coordinate 
+	 * @param d new y-coordinate 
 	 */
-	public void setY(int y){
-		this.y = y;
+	public void setY(int d){
+		this.y = d;
 	}
 	
 	/**
@@ -86,45 +89,23 @@ public class Player extends Game{
 	public boolean canMove(Zombie z){
 		
 		//if player's next move is a zombie location, player cannot move there.
-		if(this.x + 1 >= z.getX() || this.x - 1 <= z.getX() || this.y + 1 >= z.getY() || this.y - 1 <= z.getY()){
+		if(this.x + 1 == z.getX() || this.x - 1 == z.getX() || this.y + 1 == z.getY() || this.y - 1 == z.getY()){
 			return false;
 		}else{
 			return true;
 		}
 		
 	}
+	/**
+	 * player attacks an enemy and inflicts damage
+	 * 
+	 * @param weapon currently used weapon
+	 */
+	public int inflictDamage(Weapon weapon){
+		
+		return weapon.getdamage();
+		
+	}
 	
-//	/**
-//	 * move the player according to it's x-, y- coordinates
-//	 * 
-//	 * @param x player's x-coordinate
-//	 * @param y player's y-coordinate
-//	 * 
-//	 */
-//	private void move(boolean canMove, /*button?*/){
-//		
-//		if(canMove == true){
-//			
-//			if(/*push left button*/){
-//				
-//				x++;
-//				
-//			}else if(/*push right button*/){
-//				
-//				x--;
-//				
-//			}else if(/*push up button*/){
-//				
-//				y--;
-//				
-//			}else if(/*push down button*/){
-//				
-//				y++;
-//				
-//			}
-//			
-//		}
-//	
-//	}
 	
 }
