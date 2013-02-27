@@ -24,7 +24,7 @@ public class ZombieProjectWebApp implements EntryPoint {
 		
 		panel.add(zombieView);
 		panel.setWidgetLeftWidth(zombieView, 0.0, Unit.PX, 599.0, Unit.PX);
-		panel.setWidgetTopHeight(zombieView, 0.0, Unit.PX, 434.0, Unit.PX);
+		panel.setWidgetTopHeight(zombieView, 0.0, Unit.PX, 592.0, Unit.PX);
 		
 		Image image = new Image((String) null);
 		panel.add(image);
