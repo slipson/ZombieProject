@@ -53,7 +53,8 @@ public class Player extends Game{
 	 * 
 	 * @return false = player CANNOT move, true = player CAN move
 	 */
-	private boolean canMove(int x, int y, Zombie z){
+	@SuppressWarnings("unused")/////////////////////////////////////////////////////////////////////////////remove this when we actual use it////////////////////////////////
+	private boolean canMove(int x, int y, Zombie z){  //collision 
 		
 		//if player's next move is a zombie location, player cannot move there.
 		if(x + 1 == z.getX() || x - 1 == z.getX() || y + 1 == z.getY() || y - 1 == z.getY()){
