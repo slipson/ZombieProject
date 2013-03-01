@@ -6,6 +6,7 @@ import com.google.gwt.user.client.ui.LabelBase;
 import com.google.gwt.user.client.ui.PushButton;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.RichTextArea;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -22,12 +23,19 @@ public class ZombieView extends Composite {
 		
 		layoutPanel = new LayoutPanel();
 		initWidget(layoutPanel);
-		layoutPanel.setHeight("592px");
+		layoutPanel.setSize("1275px", "601px");
+		
+		Image image = new Image();
+		image.setUrl(GWT.getModuleBaseURL() + "ZombieProjectMainPage2.png");
+		image.setSize("100%", "100%");
+		layoutPanel.add(image);
+		layoutPanel.setWidgetLeftRight(image, 0.0, Unit.PX, 61.0, Unit.PX);
+		layoutPanel.setWidgetTopBottom(image, 0.0, Unit.PX, 0.0, Unit.PX);
 		
 		startButton = new Button("New button");
 		startButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-				//code to start the game
+				handleStartGame();
 			}
 		});
 		startButton.setText("Start the game already!");
@@ -40,21 +48,12 @@ public class ZombieView extends Composite {
 			}
 		});
 		layoutPanel.add(startButton);
-		layoutPanel.setWidgetLeftWidth(startButton, 86.0, Unit.PX, 184.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(startButton, 240.0, Unit.PX, 30.0, Unit.PX);
-		
-		titleBox = new RichTextArea();
-		titleBox.setStyleName("h1");
-		titleBox.setText("PLAY IF YOU DARE");
-		layoutPanel.add(titleBox);
-		layoutPanel.setWidgetLeftWidth(titleBox, 34.0, Unit.PX, 304.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(titleBox, 36.0, Unit.PX, 154.0, Unit.PX);
-		
-		DateBox dateBox = new DateBox();
-		dateBox.setValue(new Date(1361470300976L));
-		layoutPanel.add(dateBox);
-		layoutPanel.setWidgetLeftWidth(dateBox, 17.0, Unit.PX, 157.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(dateBox, 540.0, Unit.PX, 32.0, Unit.PX);
-		
+		layoutPanel.setWidgetLeftWidth(startButton, 34.0, Unit.PX, 180.0, Unit.PX);
+		layoutPanel.setWidgetBottomHeight(startButton, 318.0, Unit.PX, 30.0, Unit.PX);
+			
+	}
+	
+	protected void handleStartGame() {
+		ZombieProjectWebApp.instance.setView(new GameView());
 	}
 }
