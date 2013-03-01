@@ -21,20 +21,29 @@ public class Game {
 			zombiArr[i].setX((i * 10) + 10);
 			zombiArr[i].setY(10);
 		}
-		boolean collision = true;// use this value later to regulate movement of player
-		
+		boolean collision;// use this value later to regulate movement of player
 		
 		for(Zombie z : zombiArr){
 			if((p.getX() + 1 < z.getX() - 1) | (p.getX() - 1 > z.getX() + 1)){
 				if((p.getY() + 1 < z.getY() - 1) | (p.getY() - 1 > z.getY() + 1)){
 					collision = false;
 				}
+				else{
+					collision = true;
+				}
 			}
-			//else{
-				//collision = true;
-			//}
+			else{
+				collision = true;
+			}
 		}
 		
+		
+	}
+	public double getPlayerX(Player p){
+		return p.getX();
+	}
+	public double getPlayerY(Player p){
+		return p.getY();
 		
 	}
 	
