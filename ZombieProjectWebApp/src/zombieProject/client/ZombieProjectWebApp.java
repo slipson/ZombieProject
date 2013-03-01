@@ -1,30 +1,40 @@
 package zombieProject.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.LayoutPanel;
-import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class ZombieProjectWebApp implements EntryPoint {
+	public static ZombieProjectWebApp instance;
+	
+	private IsWidget currentView;
+	
 	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad()  {
-		
+		instance = this;
 		
 		ZombieView zombieView = new ZombieView();
-		LayoutPanel panel = new LayoutPanel();
 		
-		panel.add(zombieView);
-		panel.setWidgetLeftWidth(zombieView, 0.0, Unit.PX, 599.0, Unit.PX);
-		panel.setWidgetTopHeight(zombieView, 0.0, Unit.PX, 434.0, Unit.PX);
+		setView(zombieView);
 		
+
+	}
+
+	public void setView(IsWidget view) {
+		if (currentView != null) {
+			RootLayoutPanel.get().remove(currentView);
+		}
+		
+		currentView = view;
+		RootLayoutPanel.get().add(view);
+		RootLayoutPanel.get().setWidgetLeftRight(view, 10.0, Unit.PX, 10.0, Unit.PX);
+		RootLayoutPanel.get().setWidgetTopBottom(view, 10.0, Unit.PX, 10.0, Unit.PX);
+
 	}
 }
