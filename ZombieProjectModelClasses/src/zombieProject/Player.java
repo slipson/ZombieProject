@@ -53,15 +53,15 @@ public class Player extends Game{
 	 * 
 	 * @return false = player CANNOT move, true = player CAN move
 	 */
-<<<<<<< HEAD
+
 	@SuppressWarnings("unused")/////////////////////////////////////////////////////////////////////////////remove this when we actual use it////////////////////////////////
-	private boolean canMove(int x, int y, Zombie z){  //collision 
-=======
+//collision 
+
 	private boolean canMove(int player_width, int player_height, Zombie z){
->>>>>>> refs/remotes/coady/master
+
 		
 		//if player's next move is a zombie location, player cannot move there.
-		if((x + )+ 1 == z.getX() || x - 1 == z.getX() || y + 1 == z.getY() || y - 1 == z.getY()){
+		if(x + 1 == z.getX() || x - 1 == z.getX() || y + 1 == z.getY() || y - 1 == z.getY()){
 			
 			return false;
 			
