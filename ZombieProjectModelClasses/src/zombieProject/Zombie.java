@@ -1,6 +1,6 @@
 package zombieProject;
 
-public class Zombie {
+public class Zombie extends Game {
 
 		private double x; //zombie x-coordinate
 		private double y; //zombie y-coordinate

@@ -47,17 +47,21 @@ public class Player extends Game{
 	/**
 	 * boolean to determine whether player can move to new coordinates
 	 * 
-	 * @param x player's x coordinate
-	 * @param y player's y coordinate
+	 * @param player_width the width of the player's image
+	 * @param player_height the height of the player's image
 	 * @param z the zombie
 	 * 
 	 * @return false = player CANNOT move, true = player CAN move
 	 */
+<<<<<<< HEAD
 	@SuppressWarnings("unused")/////////////////////////////////////////////////////////////////////////////remove this when we actual use it////////////////////////////////
 	private boolean canMove(int x, int y, Zombie z){  //collision 
+=======
+	private boolean canMove(int player_width, int player_height, Zombie z){
+>>>>>>> refs/remotes/coady/master
 		
 		//if player's next move is a zombie location, player cannot move there.
-		if(x + 1 == z.getX() || x - 1 == z.getX() || y + 1 == z.getY() || y - 1 == z.getY()){
+		if((x + )+ 1 == z.getX() || x - 1 == z.getX() || y + 1 == z.getY() || y - 1 == z.getY()){
 			
 			return false;
 			
