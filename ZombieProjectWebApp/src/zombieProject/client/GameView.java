@@ -10,7 +10,7 @@ public class GameView extends Composite{
 	
 	private Canvas canvas;
 	private Timer timer;
-	//private Game game;
+	private Game game;
 	
 	public GameView() {
 		
