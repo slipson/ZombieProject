@@ -45,10 +45,12 @@ public class GameView extends Composite{
 	private void paint() {
 		// TODO: use Game object to determine what to draw
 		canvas.getContext2d().setFillStyle("#008600");//zombie color
-		canvas.getContext2d().fillRect(10.0, 10.0, 4.0, 4.0);//x and y; width and height
+		canvas.getContext2d().setLineWidth(0.0);
+		canvas.getContext2d().fillRect(10.0, 10.0, 10.0, 10.0);//x and y; width and height
 		
 		canvas.getContext2d().setFillStyle("#FFCC99");//human color
-		canvas.getContext2d().fillRect(100.0, 10.0, 4.0, 4.0);//x and y; width and height
+		canvas.getContext2d().setLineWidth(0.0);
+		canvas.getContext2d().fillRect(100.0, 10.0, 10.0, 10.0);//x and y; width and height
 		
 	}
 }
