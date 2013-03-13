@@ -1,4 +1,4 @@
-package zombieProject;
+package zombieProject.client;
 
 public class Game {
 	
@@ -21,10 +21,7 @@ public class Game {
 			zombiArr[i].setX((i * 10) + 10);
 			zombiArr[i].setY(10);
 		}
-		
-		@SuppressWarnings("unused")///////////////////////////////////////////////////////////////un-used if the not colliding///////////////////////////////////////////////
-		boolean collision = true;// use this value later to regulate movement of player
-		
+		boolean collision;// use this value later to regulate movement of player
 		
 		for(Zombie z : zombiArr){
 			if((p.getX() + 1 < z.getX() - 1) | (p.getX() - 1 > z.getX() + 1)){
@@ -40,6 +37,13 @@ public class Game {
 			}
 		}
 		
+		
+	}
+	public double getPlayerX(Player p){
+		return p.getX();
+	}
+	public double getPlayerY(Player p){
+		return p.getY();
 		
 	}
 	

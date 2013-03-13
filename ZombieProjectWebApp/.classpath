@@ -7,6 +7,7 @@
 =======
 >>>>>>> refs/remotes/coady/master
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER/GWT (1)"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER/GWT"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ZombieProjectModelClasses"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

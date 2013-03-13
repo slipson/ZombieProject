@@ -1,4 +1,4 @@
-package zombieProject;
+package zombieProject.client;
 
 public class Zombie extends Game {
 
@@ -43,21 +43,4 @@ public class Zombie extends Game {
 		public void decreaseHealth(double val){
 			this.health -= val;
 		}
-		
-		public void zombieMove(Player p){
-			if(p.getX()>this.getX()){		// movement in the x direction towards the player
-				this.setX(this.getX()+1);
-			}
-			else if(p.getX()<this.getX()){
-				this.setX(this.getX()-1);
-			}
-			
-			if(p.getY()>this.getY()){		// movement in the y direction towards the player
-				this.setY(this.getY()+1);
-			}
-			else if(p.getY()<this.getY()){
-				this.setY(this.getY()-1);
-			}
-		}
-
 }

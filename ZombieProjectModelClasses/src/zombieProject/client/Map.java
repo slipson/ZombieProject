@@ -1,4 +1,4 @@
-package zombieProject;
+package zombieProject.client;
 
 public class Map {
 	
