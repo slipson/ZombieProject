@@ -16,7 +16,7 @@ public class Weapon {
 	}
 
 	/**
-	 * reuturns the damage the weapon can inflict
+	 * returns the damage the weapon can inflict
 	 * 
 	 * @return amount of damage inflictable
 	 */
