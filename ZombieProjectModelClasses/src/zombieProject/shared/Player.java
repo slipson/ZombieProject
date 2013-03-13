@@ -1,4 +1,4 @@
-package zombieProject.client;
+package zombieProject.shared;
 
 public class Player extends Game{
 

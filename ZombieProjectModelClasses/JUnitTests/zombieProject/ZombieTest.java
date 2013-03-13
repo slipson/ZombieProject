@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
-import zombieProject.client.Zombie;
+import zombieProject.shared.Zombie;
 
 
 	public class ZombieTest extends TestCase {

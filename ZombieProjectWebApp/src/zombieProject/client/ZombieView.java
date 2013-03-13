@@ -16,9 +16,8 @@ public class ZombieView extends Composite {
 	public ZombieView() {
 		
 		layoutPanel = new LayoutPanel();
-		layoutPanel.setStyleName("h1");
 		initWidget(layoutPanel);
-		layoutPanel.setSize("1275px","601px");
+		layoutPanel.setSize("1275px", "601px");
 		
 		Image image = new Image();
 		image.setUrl(GWT.getModuleBaseURL() + "ZombieProjectMainPage2.png");
@@ -43,7 +42,7 @@ public class ZombieView extends Composite {
 			}
 		});
 		layoutPanel.add(startButton);
-		layoutPanel.setWidgetLeftWidth(startButton, 510.0, Unit.PX, 180.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(startButton, 34.0, Unit.PX, 180.0, Unit.PX);
 		layoutPanel.setWidgetBottomHeight(startButton, 318.0, Unit.PX, 30.0, Unit.PX);
 			
 	}
