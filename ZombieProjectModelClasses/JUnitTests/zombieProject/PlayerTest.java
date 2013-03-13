@@ -2,6 +2,8 @@ package zombieProject;
 
 import org.junit.Test;
 
+import zombieProject.shared.Player;
+
 import junit.framework.TestCase;
 
 

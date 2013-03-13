@@ -1,4 +1,4 @@
-package zombieProject;
+package zombieProject.shared;
 
 public class Zombie extends Game {
 
