@@ -20,7 +20,7 @@ public class Weapon {
 	 * 
 	 * @return amount of damage inflictable
 	 */
-	public int getdamage(){
+	public int getDamage(){
 		
 		return damage;
 		
