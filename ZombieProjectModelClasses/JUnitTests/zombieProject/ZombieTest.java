@@ -4,17 +4,20 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
+import zombieProject.shared.Player;
 import zombieProject.shared.Zombie;
 
 
 	public class ZombieTest extends TestCase {
 		Zombie z1;
 		Zombie z2;
+		Player p1;
 		
 		@Override
 		protected void setUp() throws Exception {
 			z1 = new Zombie(0,0);
 			z2 = new Zombie(128, 256);
+			p1 = new Player(10, 10);
 		}
 		
 		@Test
@@ -58,6 +61,34 @@ import zombieProject.shared.Zombie;
 			assertEquals(0.0, z1.getHealth());
 			z2.decreaseHealth(25);
 			assertEquals(25.0, z2.getHealth());
+		}
+		
+		
+		@Test
+		public void testMoveTowardsPlayerUp() throws Exception{
+			p1.setY(10.0);
+			p1.setX(10.0);
+			z1.setX(5.0);
+			z1.setY(5.0);
+			assertEquals(5.0, z1.getX());
+			assertEquals(5.0, z1.getY());
+			z1.moveTowardsPlayer(p1);
+			assertEquals(6.0, z1.getY());
+			assertEquals(6.0, z1.getX());
+		}
+		
+		
+		@Test
+		public void testMoveTowardsPlayerDown() throws Exception{
+			p1.setY(10.0);
+			p1.setX(10.0);
+			z1.setX(15.0);
+			z1.setY(15.0);
+			assertEquals(15.0, z1.getX());
+			assertEquals(15.0, z1.getY());
+			z1.moveTowardsPlayer(p1);
+			assertEquals(14.0, z1.getX());
+			assertEquals(14.0, z1.getY());
 		}
 }
 
