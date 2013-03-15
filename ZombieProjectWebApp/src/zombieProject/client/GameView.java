@@ -1,4 +1,8 @@
 package zombieProject.client;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.EventListener;
+
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
@@ -6,13 +10,21 @@ import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.dom.client.Style.Unit;
 
-public class GameView extends Composite{
+
+public class GameView extends Composite implements KeyListener {
 	
 	private Canvas canvas;
 	private Timer timer;
+	private double playerX;
+	private double playerY;
+	private final double WIDTH = 4.0;
+	private final double HEIGHT = 4.0;
+	
 	//private Game game;
 	
 	public GameView() {
+		playerX = 100.0;
+		playerY = 10.0;
 		
 		LayoutPanel layoutPanel = new LayoutPanel();
 		initWidget(layoutPanel);
@@ -44,11 +56,39 @@ public class GameView extends Composite{
 
 	private void paint() {
 		// TODO: use Game object to determine what to draw
-		canvas.getContext2d().setFillStyle("#008600");//zombie color
-		canvas.getContext2d().fillRect(10.0, 10.0, 4.0, 4.0);//x and y; width and height
-		
 		canvas.getContext2d().setFillStyle("#FFCC99");//human color
-		canvas.getContext2d().fillRect(100.0, 10.0, 4.0, 4.0);//x and y; width and height
+		canvas.getContext2d().fillRect(playerX, playerY, WIDTH, HEIGHT);//x and y; width and height
+		
+		
+		
+		canvas.getContext2d().setFillStyle("#008600");//zombie color
+		canvas.getContext2d().fillRect(10.0, 10.0, WIDTH, HEIGHT);//x and y; width and height
 		
 	}
+
+	
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+		
+		
+	}
+
+	//dont need
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	//dont need
+	
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
 }
