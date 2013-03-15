@@ -90,5 +90,30 @@ import zombieProject.shared.Zombie;
 			assertEquals(14.0, z1.getX());
 			assertEquals(14.0, z1.getY());
 		}
+		
+		/*
+		 * 
+		 * one or the other should change
+		 * 
+		 * 
+		@Test
+		public void testzombieRoamX() throws Exception{
+			z1.setX(15.0);
+			z1.setY(15.0);
+			z1.zombieRoam();
+			System.out.println(z1.getX());
+			assertEquals(15.0, z1.getX());
+		}
+		
+		
+		@Test
+		public void testzombieRoamY() throws Exception{
+			z1.setX(15.0);
+			z1.setY(15.0);
+			z1.zombieRoam();
+			System.out.println(z1.getY());
+			assertEquals(15.0, z1.getY());
+		}
+		*/
 }
 
