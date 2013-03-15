@@ -10,7 +10,6 @@ public class WeaponTest {
 	private Weapon w1; //weapons test things.....
 	private Weapon w2;
 	
-	
 	@Before
 	public void setUp() throws Exception {
 		
