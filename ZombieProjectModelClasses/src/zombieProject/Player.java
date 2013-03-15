@@ -65,48 +65,12 @@ public class Player {
 		
 		//if player's next move is a zombie location, player cannot move there.
 		if((x + player_width) + 1 == z.getX() || x - 1 == z.getX() || (y + player_height) + 1 == z.getY() || y - 1 == z.getY()){
-			
 			return false;
-			
 		}else{
-			
 			return true;
-			
 		}
 		
 	}
 	
-//	/**
-//	 * move the player according to it's x-, y- coordinates
-//	 * 
-//	 * @param x player's x-coordinate
-//	 * @param y player's y-coordinate
-//	 * 
-//	 */
-//	private void move(boolean canMove, /*button?*/){
-//		
-//		if(canMove == true){
-//			
-//			if(/*push left button*/){
-//				
-//				x++;
-//				
-//			}else if(/*push right button*/){
-//				
-//				x--;
-//				
-//			}else if(/*push up button*/){
-//				
-//				y--;
-//				
-//			}else if(/*push down button*/){
-//				
-//				y++;
-//				
-//			}
-//			
-//		}
-//	
-//	}
 	
 }
