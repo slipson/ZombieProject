@@ -1,17 +1,16 @@
 package zombieProject.client;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.EventListener;
 
+import com.google.gwt.canvas.client.Canvas;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
-import com.google.gwt.user.client.ui.InlineLabel;
-import com.google.gwt.canvas.client.Canvas;
-import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.user.client.ui.Widget;
 
 
-public class GameView extends Composite implements KeyListener {
+public class GameView extends Composite {
 	
 	private Canvas canvas;
 	private Timer timer;
@@ -59,35 +58,40 @@ public class GameView extends Composite implements KeyListener {
 		canvas.getContext2d().setFillStyle("#FFCC99");//human color
 		canvas.getContext2d().fillRect(playerX, playerY, WIDTH, HEIGHT);//x and y; width and height
 		
-		
-		
 		canvas.getContext2d().setFillStyle("#008600");//zombie color
 		canvas.getContext2d().fillRect(10.0, 10.0, WIDTH, HEIGHT);//x and y; width and height
-		
 	}
-
-	
-	
-	@Override
-	public void keyPressed(KeyEvent e) {
-		
-		
-	}
-
-	//dont need
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	//dont need
-	
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+//	@Override
+//	public void keyPressed(KeyEvent e) {
+//		int keycode = e.getKeyCode();
+//		if(keycode == KeyEvent.VK_UP){//moves player up
+//			playerY = playerY - 5;
+//		}
+//		else if(keycode == KeyEvent.VK_DOWN){//moves player down
+//			playerY = playerY + 5;
+//		}
+//		else if(keycode == KeyEvent.VK_LEFT){//moves player left
+//			playerX = playerX - 5;
+//		}
+//		else if(keycode == KeyEvent.VK_RIGHT){
+//			playerX = playerX + 5;
+//		}
+//	}
+//
+//	//dont need
+//	@Override
+//	public void keyReleased(KeyEvent e) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	//dont need
+//	
+//	@Override
+//	public void keyTyped(KeyEvent e) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 	
 	
