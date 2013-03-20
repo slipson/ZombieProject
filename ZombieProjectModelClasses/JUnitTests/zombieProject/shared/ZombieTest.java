@@ -1,10 +1,8 @@
-package zombieProject;
+package zombieProject.shared;
 
 import junit.framework.TestCase;
 
 import org.junit.Test;
-
-import zombieProject.shared.Zombie;
 
 
 	public class ZombieTest extends TestCase {
