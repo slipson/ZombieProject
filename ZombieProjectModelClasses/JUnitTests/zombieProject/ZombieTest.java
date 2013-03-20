@@ -91,6 +91,21 @@ import zombieProject.shared.Zombie;
 			assertEquals(14.0, z1.getY());
 		}
 		
+		
+		@Test
+		public void testzombieRoam() throws Exception{
+			z1.setX(15.0);
+			z1.setY(15.0);
+			z1.zombieRoam();
+			if(z1.getX() != 15.0 || z1.getY() != 15.0){
+				assertEquals(true, true);
+			}
+			else{
+				assertEquals(false, true);
+			}
+		}
+		
+		
 		/*
 		 * 
 		 * one or the other should change
