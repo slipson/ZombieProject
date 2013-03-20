@@ -1,4 +1,6 @@
 package zombieProject.client;
+import zombieProject.shared.Game;
+
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
