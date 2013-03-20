@@ -1,4 +1,4 @@
-package zombieProject.shared;
+package zombieProject;
 
 public class Map {
 	
