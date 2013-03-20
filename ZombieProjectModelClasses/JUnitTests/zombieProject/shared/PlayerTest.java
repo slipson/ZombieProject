@@ -1,4 +1,4 @@
-package zombieProject;
+package zombieProject.shared;
 
 import org.junit.Test;
 
