@@ -42,7 +42,7 @@ public class ZombieView extends Composite {
 			}
 		});
 		layoutPanel.add(startButton);
-		layoutPanel.setWidgetLeftWidth(startButton, 34.0, Unit.PX, 180.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(startButton, 515.0, Unit.PX, 180.0, Unit.PX);
 		layoutPanel.setWidgetBottomHeight(startButton, 318.0, Unit.PX, 30.0, Unit.PX);
 			
 	}
