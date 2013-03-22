@@ -106,6 +106,27 @@ import zombieProject.shared.Zombie;
 		}
 		
 		
+		@Test
+		public void testZombieMove() throws Exception{
+			p1.setY(10.0);
+			p1.setX(10.0);
+			z1.setX(15.0);
+			z1.setY(15.0);
+			z2.setX(200.0);
+			z2.setY(200.0);
+			z1.zMove(p1);
+			z2.zMove(p1);
+			assertEquals(14.0, z1.getX());
+			assertEquals(14.0, z1.getY());
+			if(z2.getX() != 15.0 || z2.getY() != 15.0){
+				assertEquals(true, true);
+			}
+			else{
+				assertEquals(false, true);
+			}
+			
+		}
+		
 		/*
 		 * 
 		 * one or the other should change
