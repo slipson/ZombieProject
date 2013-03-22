@@ -1,8 +1,8 @@
 package zombieProject.client;
-<<<<<<< HEAD
+
 import zombieProject.shared.Game;
 
-=======
+
 //import java.awt.event.KeyEvent;
 //import java.awt.event.KeyListener;
 
@@ -22,9 +22,9 @@ public class GameView extends Composite {
 	
 	private Canvas canvas;
 	private Timer timer;
-<<<<<<< HEAD
+
 	private int counter=0;
-=======
+
 
 	private Game game;
 
@@ -33,9 +33,9 @@ public class GameView extends Composite {
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
 	
->>>>>>> refs/remotes/sbonner1/master
+
 	//private Game game;
->>>>>>> refs/remotes/coady/master
+
 	
 	public GameView() {
 		playerX = 100.0;
