@@ -1,4 +1,8 @@
 package zombieProject.client;
+
+import zombieProject.shared.Game;
+
+
 //import java.awt.event.KeyEvent;
 //import java.awt.event.KeyListener;
 
@@ -6,6 +10,7 @@ import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+>>>>>>> refs/remotes/coady/master
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
@@ -17,12 +22,20 @@ public class GameView extends Composite {
 	
 	private Canvas canvas;
 	private Timer timer;
+
+	private int counter=0;
+
+
+	private Game game;
+
 	private double playerX;
 	private double playerY;
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
 	
+
 	//private Game game;
+
 	
 	public GameView() {
 		playerX = 100.0;
@@ -99,6 +112,14 @@ public class GameView extends Composite {
 			}
 		};
 		timer.scheduleRepeating(1000 / 60);
+		counter++;
+		if(counter==15){
+			counter=0;
+//			for(the array of zombies){
+//				z.zombieRoam();
+//			}
+		}
+		
 	}
 
 	protected void handleTimerTick() {
@@ -112,9 +133,28 @@ public class GameView extends Composite {
 	}
 
 	private void paint() {
+
+		double playerX = game.getPlayerX();
+		double playerY = game.getPlayerY();
+		
+
 		// TODO: use Game object to determine what to draw
+
 		canvas.getContext2d().setFillStyle("#FFCC99");//human color
+
+		canvas.getContext2d().fillRect(playerX, playerY, 4.0, 4.0);//x and y; width and height
+		
+		double zombieX = game.getZombieX();
+		double zombieY = game.getZombieY();
+		
+		// TODO: use Game object to determine what to draw
+		canvas.getContext2d().setFillStyle("#008600");//zombie color
+		canvas.getContext2d().fillRect(zombieX, zombieY, 4.0, 4.0);//x and y; width and height
+		
+
+
 		canvas.getContext2d().fillRect(playerX, playerY, WIDTH, HEIGHT);//x and y; width and height
+
 		
 		canvas.getContext2d().setFillStyle("#008600");//zombie color
 		canvas.getContext2d().fillRect(10.0, 10.0, WIDTH, HEIGHT);//x and y; width and height

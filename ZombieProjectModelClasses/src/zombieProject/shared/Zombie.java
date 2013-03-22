@@ -1,5 +1,11 @@
 package zombieProject.shared;
 
+
+import java.util.Random;
+
+
+
+
 /**
  * @author jcoady
  * 
@@ -10,10 +16,13 @@ package zombieProject.shared;
  */
 public class Zombie {
 
+
 		private double x; //zombie x-coordinate
 		private double y; //zombie y-coordinate
 		
 		private double health; //zombie health
+		
+		Random generator = new Random();
 		
 		public Zombie(double x, double y){
 			this.x = x;
@@ -51,4 +60,77 @@ public class Zombie {
 		public void decreaseHealth(double val){
 			this.health -= val;
 		}
+
+		
+		public void zMove(Player p){
+			double temp;
+			// distance formula sqrt((zx-px)^2+(zy-py)^2))
+			temp = Math.sqrt((this.getX()-p.getX())*(this.getX()-p.getX())+(this.getY()-p.getY())*(this.getY()-p.getY()));
+			if(temp<100.0){
+				moveTowardsPlayer(p);
+			}
+			else{
+				zombieRoam();
+			}
+		}
+		
+		public void moveTowardsPlayer(Player p){
+			if(p.getX()>this.getX()){
+				this.setX(this.getX()+1);
+			}
+			else if(p.getX()<this.getX()){
+				this.setX(this.getX()-1);
+			}
+			if(p.getY()>this.getY()){
+				this.setY(this.getY()+1);
+			}
+			else if(p.getY()<this.getY()){
+				this.setY(this.getY()-1);
+			}
+		}
+		
+		
+		public void zombieRoam(){		//TODO: needs to check if collide with walls
+			int a = generator.nextInt(8);
+			if(a==0){
+				//up
+				this.setY(this.getY()-1);
+			}
+			else if(a==1){
+				//up right
+				this.setY(this.getY()-1);
+				this.setX(this.getY()+1);
+			}
+			else if(a==2){
+				//right
+				this.setX(this.getX()+1);
+			}
+			else if(a==3){
+				//right down
+				this.setX(this.getX()+1);
+				this.setY(this.getY()+1);
+			}
+			else if(a==4){
+				//down
+				this.setY(this.getY()+1);
+			}
+			else if(a==5){
+				//down left
+				this.setY(this.getY()+1);
+				this.setX(this.getX()-1);
+			}
+			else if(a==6){
+				//left
+				this.setX(this.getX()-1);
+			}
+			else{
+				//left up
+				this.setX(this.getX()-1);
+				this.setY(this.getY()-1);
+			}
+			
+		}
+		
+		
+
 }

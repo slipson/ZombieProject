@@ -130,6 +130,12 @@ public class Game {
 	public double getPlayerY(){
 		return p.getY();
 	}
+	public double getZombieX(Zombie z){
+		return z.getX();
+	}
+	public double getZombieY(Zombie z){
+		return z.getY();
+	}
 	
 	/**
 	 * sets currently pressed key to update player state
