@@ -2,6 +2,7 @@ package zombieProject.shared;
 
 import java.util.Random;
 
+
 public class Zombie extends Game {
 
 		private double x; //zombie x-coordinate
@@ -51,7 +52,7 @@ public class Zombie extends Game {
 		public void zMove(Player p){
 			double temp;
 			// distance formula sqrt((zx-px)^2+(zy-py)^2))
-			temp = sqrt((this.getX()-p.getX())*(this.getX()-p.getX())+(this.getY()-p.getY())*(this.getY()-p.getY()));
+			temp = Math.sqrt((this.getX()-p.getX())*(this.getX()-p.getX())+(this.getY()-p.getY())*(this.getY()-p.getY()));
 			if(temp<100.0){
 				moveTowardsPlayer(p);
 			}
