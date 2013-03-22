@@ -17,16 +17,12 @@ public class GameView extends Composite{
 	
 	private Canvas canvas;
 	private Timer timer;
-
 	private double playerX;
 	private double playerY;
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
 	
 	//private Game game;
-
-	private Game game;
-
 	
 	
 	public GameView() {
@@ -118,18 +114,10 @@ public class GameView extends Composite{
 
 	private void paint() {
 		// TODO: use Game object to determine what to draw
-		double playerX = game.getPlayerX();
-		double playerY = game.getPlayerY();
-		
 		canvas.getContext2d().setFillStyle("#FFCC99");//human color
-		canvas.getContext2d().fillRect(playerX, playerY, 4.0, 4.0);//x and y; width and height
+		canvas.getContext2d().fillRect(playerX, playerY, WIDTH, HEIGHT);//x and y; width and height
 		
-		double zombieX = game.getZombieX();
-		double zombieY = game.getZombieY();
-		
-		// TODO: use Game object to determine what to draw
 		canvas.getContext2d().setFillStyle("#008600");//zombie color
-		canvas.getContext2d().fillRect(zombieX, zombieY, 4.0, 4.0);//x and y; width and height
-
+		canvas.getContext2d().fillRect(10.0, 10.0, WIDTH, HEIGHT);//x and y; width and height
 	}
 }
