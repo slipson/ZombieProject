@@ -1,16 +1,13 @@
 package zombieProject.client;
-<<<<<<< HEAD
-import zombieProject.shared.Game;
-
-=======
 //import java.awt.event.KeyEvent;
 //import java.awt.event.KeyListener;
+
+import zombieProject.shared.Game;
 
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
->>>>>>> refs/remotes/coady/master
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
@@ -18,16 +15,21 @@ import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Button;
 
 
-public class GameView extends Composite {
+public class GameView extends Composite{
+	
+	private Game model;
 	
 	private Canvas canvas;
 	private Timer timer;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	private int counter=0;
 =======
 
 	private Game game;
 
+=======
+>>>>>>> refs/remotes/slipson/master
 	private double playerX;
 	private double playerY;
 	private final double WIDTH = 4.0;
@@ -35,7 +37,7 @@ public class GameView extends Composite {
 	
 >>>>>>> refs/remotes/sbonner1/master
 	//private Game game;
->>>>>>> refs/remotes/coady/master
+	
 	
 	public GameView() {
 		playerX = 100.0;
@@ -121,6 +123,10 @@ public class GameView extends Composite {
 		}
 		
 	}
+	
+	public void setModel(Game model) {
+		this.model = model;
+	}
 
 	protected void handleTimerTick() {
 		reset();
@@ -133,28 +139,9 @@ public class GameView extends Composite {
 	}
 
 	private void paint() {
-
-		double playerX = game.getPlayerX();
-		double playerY = game.getPlayerY();
-		
-
 		// TODO: use Game object to determine what to draw
-
 		canvas.getContext2d().setFillStyle("#FFCC99");//human color
-
-		canvas.getContext2d().fillRect(playerX, playerY, 4.0, 4.0);//x and y; width and height
-		
-		double zombieX = game.getZombieX();
-		double zombieY = game.getZombieY();
-		
-		// TODO: use Game object to determine what to draw
-		canvas.getContext2d().setFillStyle("#008600");//zombie color
-		canvas.getContext2d().fillRect(zombieX, zombieY, 4.0, 4.0);//x and y; width and height
-		
-
-
 		canvas.getContext2d().fillRect(playerX, playerY, WIDTH, HEIGHT);//x and y; width and height
-
 		
 		canvas.getContext2d().setFillStyle("#008600");//zombie color
 		canvas.getContext2d().fillRect(10.0, 10.0, WIDTH, HEIGHT);//x and y; width and height

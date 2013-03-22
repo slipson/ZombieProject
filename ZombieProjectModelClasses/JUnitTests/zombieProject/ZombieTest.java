@@ -91,6 +91,7 @@ import zombieProject.shared.Zombie;
 			assertEquals(14.0, z1.getY());
 		}
 		
+
 		
 		@Test
 		public void testzombieRoam() throws Exception{
@@ -127,6 +128,7 @@ import zombieProject.shared.Zombie;
 			
 		}
 		
+
 		/*
 		 * 
 		 * one or the other should change

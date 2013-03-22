@@ -1,6 +1,7 @@
 package zombieProject.shared;
 
 
+
 import java.util.Random;
 
 
@@ -14,15 +15,21 @@ import java.util.Random;
  * to affect location and health of the zombie. 
  *
  */
-public class Zombie {
+
+
+import java.util.Random;
+
+public class Zombie extends Game {
+
 
 
 		private double x; //zombie x-coordinate
 		private double y; //zombie y-coordinate
 		
+		Random generator = new Random();
+		
 		private double health; //zombie health
 		
-		Random generator = new Random();
 		
 		public Zombie(double x, double y){
 			this.x = x;
@@ -60,6 +67,7 @@ public class Zombie {
 		public void decreaseHealth(double val){
 			this.health -= val;
 		}
+
 
 		
 		public void zMove(Player p){
