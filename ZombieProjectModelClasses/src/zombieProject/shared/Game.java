@@ -46,5 +46,11 @@ public class Game {
 		return p.getY();
 		
 	}
+	public double getZombieX(Zombie z){
+		return z.getX();
+	}
+	public double getZombieY(Zombie z){
+		return z.getY();
+	}
 	
 }
