@@ -24,11 +24,7 @@ public class ZombieProjectWebApp implements EntryPoint {
 
 		setView(zombieView);
 
-		panel.add(zombieView);
-		panel.setWidgetLeftWidth(zombieView, 0.0, Unit.PX, 599.0, Unit.PX);
-		panel.setWidgetTopHeight(zombieView, 0.0, Unit.PX, 592.0, Unit.PX);
-
-		
+	
 
 	}
 

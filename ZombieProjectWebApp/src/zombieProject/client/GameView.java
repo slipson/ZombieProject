@@ -10,6 +10,7 @@ public class GameView extends Composite{
 	
 	private Canvas canvas;
 	private Timer timer;
+	private int counter=0;
 	//private Game game;
 	
 	public GameView() {
@@ -36,6 +37,14 @@ public class GameView extends Composite{
 			}
 		};
 		timer.scheduleRepeating(1000 / 60);
+		counter++;
+		if(counter==15){
+			counter=0;
+//			for(the array of zombies){
+//				z.zombieRoam();
+//			}
+		}
+		
 	}
 
 	protected void handleTimerTick() {
