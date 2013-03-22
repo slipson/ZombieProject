@@ -2,6 +2,8 @@ package zombieProject.client;
 //import java.awt.event.KeyEvent;
 //import java.awt.event.KeyListener;
 
+import zombieProject.shared.Game;
+
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -14,6 +16,8 @@ import com.google.gwt.user.client.ui.Button;
 
 
 public class GameView extends Composite{
+	
+	private Game model;
 	
 	private Canvas canvas;
 	private Timer timer;
@@ -100,6 +104,10 @@ public class GameView extends Composite{
 			}
 		};
 		timer.scheduleRepeating(1000 / 60);
+	}
+	
+	public void setModel(Game model) {
+		this.model = model;
 	}
 
 	protected void handleTimerTick() {
