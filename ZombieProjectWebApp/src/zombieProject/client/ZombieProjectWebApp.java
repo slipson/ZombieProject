@@ -24,12 +24,7 @@ public class ZombieProjectWebApp implements EntryPoint {
 
 		setView(zombieView);
 
-		panel.add(zombieView);
-		panel.setWidgetLeftWidth(zombieView, 0.0, Unit.PX, 599.0, Unit.PX);
-		panel.setWidgetTopHeight(zombieView, 0.0, Unit.PX, 592.0, Unit.PX);
-
 		
-
 	}
 
 	public void setView(IsWidget view) {
@@ -41,6 +36,5 @@ public class ZombieProjectWebApp implements EntryPoint {
 		RootLayoutPanel.get().add(view);
 		RootLayoutPanel.get().setWidgetLeftRight(view, 10.0, Unit.PX, 10.0, Unit.PX);
 		RootLayoutPanel.get().setWidgetTopBottom(view, 10.0, Unit.PX, 10.0, Unit.PX);
-
 	}
 }

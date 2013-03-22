@@ -1,12 +1,6 @@
 /war/WEB-INF/classes
 /war/WEB-INF/lib
 /war/WEB-INF/deploy
-<<<<<<< HEAD
-/war/zombieprojectwebapp
-/.gwt
-/gwt-unitCache
-=======
 /.gwt
 /gwt-unitCache
 /war/zombieprojectwebapp
->>>>>>> refs/remotes/slipson/master
