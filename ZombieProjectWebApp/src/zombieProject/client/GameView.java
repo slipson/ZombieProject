@@ -21,21 +21,19 @@ public class GameView extends Composite{
 	
 	private Canvas canvas;
 	private Timer timer;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	private int counter=0;
-=======
+
 
 	private Game game;
 
-=======
->>>>>>> refs/remotes/slipson/master
+
 	private double playerX;
 	private double playerY;
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
 	
->>>>>>> refs/remotes/sbonner1/master
+
 	//private Game game;
 	
 	

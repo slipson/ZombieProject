@@ -24,12 +24,12 @@ public class ZombieProjectWebApp implements EntryPoint {
 
 		setView(zombieView);
 
-<<<<<<< HEAD
+
 	
 
-=======
+
 		
->>>>>>> refs/remotes/sbonner1/master
+
 	}
 
 	public void setView(IsWidget view) {
