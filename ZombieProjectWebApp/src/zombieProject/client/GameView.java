@@ -13,7 +13,7 @@ import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Button;
 
 
-public class GameView extends Composite {
+public class GameView extends Composite{
 	
 	private Canvas canvas;
 	private Timer timer;
@@ -23,6 +23,7 @@ public class GameView extends Composite {
 	private final double HEIGHT = 4.0;
 	
 	//private Game game;
+	
 	
 	public GameView() {
 		playerX = 100.0;
