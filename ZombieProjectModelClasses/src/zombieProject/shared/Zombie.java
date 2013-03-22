@@ -1,16 +1,28 @@
 package zombieProject.shared;
 
+
 import java.util.Random;
 
 
-public class Zombie extends Game {
+
+
+/**
+ * @author jcoady
+ * 
+ * The Zombie class creates a zombie object which will act as an enemy to the player object and controlled by the computer.
+ * This class has a constructor that initializes a zombie's location as well as its health. There are also getter and setter methods
+ * to affect location and health of the zombie. 
+ *
+ */
+public class Zombie {
+
 
 		private double x; //zombie x-coordinate
 		private double y; //zombie y-coordinate
 		
-		Random generator = new Random();
-		
 		private double health; //zombie health
+		
+		Random generator = new Random();
 		
 		public Zombie(double x, double y){
 			this.x = x;
@@ -48,6 +60,7 @@ public class Zombie extends Game {
 		public void decreaseHealth(double val){
 			this.health -= val;
 		}
+
 		
 		public void zMove(Player p){
 			double temp;
@@ -119,4 +132,5 @@ public class Zombie extends Game {
 		}
 		
 		
+
 }

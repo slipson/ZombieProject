@@ -24,8 +24,12 @@ public class ZombieProjectWebApp implements EntryPoint {
 
 		setView(zombieView);
 
+<<<<<<< HEAD
 	
 
+=======
+		
+>>>>>>> refs/remotes/sbonner1/master
 	}
 
 	public void setView(IsWidget view) {
@@ -37,6 +41,5 @@ public class ZombieProjectWebApp implements EntryPoint {
 		RootLayoutPanel.get().add(view);
 		RootLayoutPanel.get().setWidgetLeftRight(view, 10.0, Unit.PX, 10.0, Unit.PX);
 		RootLayoutPanel.get().setWidgetTopBottom(view, 10.0, Unit.PX, 10.0, Unit.PX);
-
 	}
 }
