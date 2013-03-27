@@ -32,8 +32,8 @@ public class GameView extends Composite{
 		canvas.setWidth("800px");
 		canvas.setHeight("600px");
 		layoutPanel.add(canvas);
-		layoutPanel.setWidgetLeftWidth(canvas, 20.0, Unit.PX, 800.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(canvas, 100, Unit.PX, 600.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(canvas, 40.0, Unit.PX, 800.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(canvas, 30.0, Unit.PX, 600.0, Unit.PX);
 		
 		canvas.addKeyDownHandler(new KeyDownHandler(){
 
@@ -51,55 +51,7 @@ public class GameView extends Composite{
 			}
 
 		});
-			
-//		final Button btnUp = new Button("UP");
-//		layoutPanel.add(btnUp);
-//		layoutPanel.setWidgetLeftWidth(btnUp, 20.0, Unit.PX, 81.0, Unit.PX);
-//		layoutPanel.setWidgetTopHeight(btnUp, 205.0, Unit.PX, 30.0, Unit.PX);
-//		btnUp.addClickHandler(new ClickHandler() {
-//			public void onClick(ClickEvent event) {
-//				if(btnUp.isEnabled()){
-//					playerY = playerY - 4;
-//				}
-//			}
-//		});
-//		
-//		final Button btnDown = new Button("DWN");
-//		layoutPanel.add(btnDown);
-//		layoutPanel.setWidgetLeftWidth(btnDown, 20.0, Unit.PX, 81.0, Unit.PX);
-//		layoutPanel.setWidgetTopHeight(btnDown, 270.0, Unit.PX, 30.0, Unit.PX);
-//		btnDown.addClickHandler(new ClickHandler() {
-//			public void onClick(ClickEvent event) {
-//				if(btnDown.isEnabled()){
-//					playerY = playerY + 4;
-//				}
-//			}
-//		});
-//		
-//		final Button btnLft = new Button("LFT");
-//		layoutPanel.add(btnLft);
-//		layoutPanel.setWidgetLeftWidth(btnLft, 0.0, Unit.PX, 81.0, Unit.PX);
-//		layoutPanel.setWidgetTopHeight(btnLft, 241.0, Unit.PX, 30.0, Unit.PX);
-//		btnLft.addClickHandler(new ClickHandler() {
-//			public void onClick(ClickEvent event) {
-//				if(btnLft.isEnabled()){
-//					playerX = playerX - 4;
-//				}
-//			}
-//		});
-//		
-//		final Button btnRt = new Button("RT");
-//		layoutPanel.add(btnRt);
-//		layoutPanel.setWidgetLeftWidth(btnRt, 84.0, Unit.PX, 81.0, Unit.PX);
-//		layoutPanel.setWidgetTopHeight(btnRt, 241.0, Unit.PX, 30.0, Unit.PX);
-//		btnRt.addClickHandler(new ClickHandler() {
-//			public void onClick(ClickEvent event) {
-//				if(btnRt.isEnabled()){
-//					playerX = playerX + 4;
-//				}
-//			}
-//		});
-		
+					
 		timer = new Timer() {
 			@Override
 			public void run() {
@@ -136,8 +88,10 @@ public class GameView extends Composite{
 	public void setModel(Game model) {
 		this.model = model;
 		
-		this.model.getPlayer().setX(100.0);
-		this.model.getPlayer().setY(100.0);
+		this.model.getPlayer().setX(100.0);//initiates player's x position
+		this.model.getPlayer().setY(100.0);//initiates player's y position
+		this.model.getZombie().setX(60.0);//zombie's x
+		this.model.getZombie().setY(30.0);//zombie's y
 	}
 	
 	
@@ -147,7 +101,7 @@ public class GameView extends Composite{
 	}
 
 	private void reset() {
-		canvas.getContext2d().clearRect(getAbsoluteLeft(), getAbsoluteTop(), getOffsetWidth(), getOffsetHeight());
+		canvas.getContext2d().clearRect(canvas.getAbsoluteLeft(), canvas.getAbsoluteTop(), canvas.getOffsetWidth(), canvas.getOffsetHeight());
 		
 	}
 
