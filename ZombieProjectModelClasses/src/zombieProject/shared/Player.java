@@ -1,6 +1,6 @@
 package zombieProject.shared;
 
-public class Player extends Game{
+public class Player {
 
 	private double x; //player's x coordinate
 	private double y; //player's y coordinate

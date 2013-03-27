@@ -2,7 +2,7 @@ package zombieProject.shared;
 
 import java.util.Random;
 
-public class Zombie extends Game {
+public class Zombie  {
 
 		private double x; //zombie x-coordinate
 		private double y; //zombie y-coordinate
