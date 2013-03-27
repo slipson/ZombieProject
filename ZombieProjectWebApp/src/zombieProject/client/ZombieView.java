@@ -1,4 +1,4 @@
-package zombieProject.client;
+package src.zombieProject.client;
 
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;

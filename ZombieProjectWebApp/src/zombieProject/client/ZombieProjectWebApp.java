@@ -1,4 +1,4 @@
-package zombieProject.client;
+package src.zombieProject.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Style.Unit;

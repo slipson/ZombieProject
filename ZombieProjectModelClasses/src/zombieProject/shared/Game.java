@@ -3,7 +3,8 @@ package zombieProject.shared;
 public class Game {
 	
 	private Map m; //game map
-	private Player p; //player
+	public Player p; //player
+	public Zombie z; //WILL NEED TO BECOME AN ARRAY EVENTUALLY
 	
 	/**
 	 * game constructor

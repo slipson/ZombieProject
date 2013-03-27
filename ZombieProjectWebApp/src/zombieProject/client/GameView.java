@@ -1,4 +1,4 @@
-package zombieProject.client;
+package src.zombieProject.client;
 
 import zombieProject.shared.Game;
 
@@ -10,7 +10,6 @@ import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
->>>>>>> refs/remotes/coady/master
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
@@ -134,8 +133,8 @@ public class GameView extends Composite {
 
 	private void paint() {
 
-		double playerX = game.getPlayerX();
-		double playerY = game.getPlayerY();
+		double playerX = game.getPlayerX(game.p);
+		double playerY = game.getPlayerY(game.p); 
 		
 
 		// TODO: use Game object to determine what to draw
@@ -144,8 +143,8 @@ public class GameView extends Composite {
 
 		canvas.getContext2d().fillRect(playerX, playerY, 4.0, 4.0);//x and y; width and height
 		
-		double zombieX = game.getZombieX();
-		double zombieY = game.getZombieY();
+		double zombieX = game.getZombieX(game.z);    //*********************CHANGE WHEN ZOMBIES ARE MADE INTO AN ARRAY**********************//
+		double zombieY = game.getZombieY(game.z);
 		
 		// TODO: use Game object to determine what to draw
 		canvas.getContext2d().setFillStyle("#008600");//zombie color
