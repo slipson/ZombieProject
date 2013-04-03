@@ -1,5 +1,7 @@
 package src.zombieProject.client;
 
+import zombieProject.shared.Game;
+
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Button;
@@ -48,6 +50,9 @@ public class ZombieView extends Composite {
 	}
 	
 	protected void handleStartGame() {
-		ZombieProjectWebApp.instance.setView(new GameView());
+		Game model = new Game();
+		GameView view = new GameView();
+		view.setModel(model);
+		ZombieProjectWebApp.instance.setView(view);
 	}
 }

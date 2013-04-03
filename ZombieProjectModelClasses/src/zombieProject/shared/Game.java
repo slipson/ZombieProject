@@ -1,6 +1,7 @@
 package zombieProject.shared;
 
 public class Game {
+
 	
 	private Map m; //game map
 	public Player p; //player
@@ -13,7 +14,7 @@ public class Game {
 		
 		m = new Map();
 		p = new Player(0, 0);
-		
+		z = new Zombie(0, 0);
 	}
 	
 	/**
@@ -50,9 +51,13 @@ public class Game {
 		
 		
 	}
-	
+}
 	
 	/*public static void main(String[] args){
+
+	/*
+	public static void main(String[] args){
+
 		
 		Map m = new Map();
 		//spawns player in center of map
@@ -88,26 +93,17 @@ public class Game {
 		}
 		
 		
-	}*/
+	}
 	
-	/**
-	 * returns player's x-coordinate
-	 * 
-	 * @param p the player
-	 * @return player's x-coordinate
-	 */
+	
+	
+	
 	public double getPlayerX(Player p){
 		return p.getX();
 	}
-	
-	/**
-	 * returns player's y-coordinate
-	 * 
-	 * @param p the player
-	 * @return player's y-coordinate
-	 */
 	public double getPlayerY(Player p){
 		return p.getY();
+		
 	}
 	public double getZombieX(Zombie z){
 		return z.getX();
@@ -115,5 +111,7 @@ public class Game {
 	public double getZombieY(Zombie z){
 		return z.getY();
 	}
+	*/
 	
-}
+	
+
