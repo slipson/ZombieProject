@@ -101,7 +101,7 @@ public class GameView extends Composite{
 	}
 
 	private void reset() {
-		canvas.getContext2d().clearRect(canvas.getAbsoluteLeft(), canvas.getAbsoluteTop(), canvas.getOffsetWidth(), canvas.getOffsetHeight());
+		canvas.getContext2d().clearRect(40.0, 30.0, 800.0, 600.0);
 		
 	}
 
