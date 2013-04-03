@@ -12,7 +12,7 @@ public class Game {
 	private Map m; //game map
 	private Player p; //player
 	
-	private int key = 0; //key to determine user action
+	private int key; //key to determine player's action
 	
 	/**
 	 * game constructor
@@ -31,6 +31,7 @@ public class Game {
 	 */
 	public void updateGame(Game game){
 		
+		//updates player's state depending on pressed key
 		if(key == 0){
 			
 			//do something
@@ -43,6 +44,8 @@ public class Game {
 			
 		}
 		
+		//determine whether player can move in requested direction
+		//p.canMove(z);
 		
 		//We are going to need to decide on if we are using a 
 		//loop to generate multiple zombies and generate them
@@ -130,9 +133,11 @@ public class Game {
 	public double getPlayerY(){
 		return p.getY();
 	}
+	
 	public double getZombieX(Zombie z){
 		return z.getX();
 	}
+	
 	public double getZombieY(Zombie z){
 		return z.getY();
 	}
