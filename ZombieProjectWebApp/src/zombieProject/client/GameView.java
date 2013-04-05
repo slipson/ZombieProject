@@ -33,7 +33,7 @@ public class GameView extends Composite{
 	private Timer timer;
 
 
-<<<<<<< HEAD
+
 	private int counter=0;
 
 
@@ -42,8 +42,7 @@ public class GameView extends Composite{
 	private double playerX;
 	private double playerY;
 
-=======
->>>>>>> refs/remotes/slipson/master
+
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
 	
@@ -87,6 +86,7 @@ public class GameView extends Composite{
 			}
 		};
 		timer.scheduleRepeating(1000 / 60);
+
 		counter++;
 		if(counter==15){
 			counter=0;
@@ -94,6 +94,7 @@ public class GameView extends Composite{
 //				z.zombieRoam();
 //			}
 		}
+
 		
 	}
 	
@@ -132,12 +133,24 @@ public class GameView extends Composite{
 	
 	
 	protected void handleTimerTick() {
+		counter++;
+		if(counter == 15){
+			counter = 0;
+//			for(the array of zombies){
+				this.model.getZombie().zMove(this.model.getPlayer());
+//			}
+		}
 		reset();
 		paint();
+		
 	}
 
 	private void reset() {
+
 		canvas.getContext2d().clearRect(canvas.getAbsoluteLeft(), canvas.getAbsoluteTop(), canvas.getOffsetWidth(), canvas.getOffsetHeight());
+
+		canvas.getContext2d().clearRect(0.0, 0.0, 1000.0, 1000.0);
+
 		
 	}
 
