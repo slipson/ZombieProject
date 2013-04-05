@@ -83,7 +83,7 @@ public class Player {
 		//NOTE: Change 1's to 2's
 		
 		//check to see if player is within playable boundaries
-		if(this.x != left_wall || this.x + player_width != right_Wall || this.y != top_wall || this.y + player_height != bottom_wall){
+		//if(this.x != left_wall || this.x + player_width != right_Wall || this.y != top_wall || this.y + player_height != bottom_wall){
 		
 			//if player's next move is a zombie location, player cannot move there.
 			if((x + this.player_width) + 1 == z.getX() || x - 1 == z.getX() || (y + this.player_height) + 1 == z.getY() || y - 1 == z.getY()){
@@ -92,9 +92,9 @@ public class Player {
 				return true;
 			}
 		
-		}else{
-			return false;
-		}
+		//}else{
+			//return false;
+		//}
 		
 	}
 	
