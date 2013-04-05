@@ -23,8 +23,7 @@ public class GameView extends Composite{
 	private int counter = 0;
 
 
-	private double playerX;
-	private double playerY;
+
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
 
@@ -67,7 +66,7 @@ public class GameView extends Composite{
 		};
 		timer.scheduleRepeating(1000 / 60);
 		counter++;
-		if(counter == 15){
+		if(counter >= 15){
 			counter = 0;
 //			for(the array of zombies){
 				this.model.getZombie().zMove(this.model.getPlayer());
