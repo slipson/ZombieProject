@@ -1,110 +1,89 @@
 package zombieProject.client;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/slipson/master
 import zombieProject.shared.Game;
+<<<<<<< HEAD
 
 
 //import java.awt.event.KeyEvent;
 //import java.awt.event.KeyListener;
 
+=======
+>>>>>>> refs/remotes/slipson/master
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
->>>>>>> refs/remotes/coady/master
+import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.event.dom.client.KeyDownHandler;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
-//import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.client.ui.Button;
 
 
-public class GameView extends Composite {
+public class GameView extends Composite{
+	
+	private Game model;
 	
 	private Canvas canvas;
 	private Timer timer;
+<<<<<<< HEAD
 
 	private int counter=0;
 
+=======
+>>>>>>> refs/remotes/slipson/master
 
-	private Game game;
+	private int counter = 0;
+
 
 	private double playerX;
 	private double playerY;
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
+<<<<<<< HEAD
 	
+=======
+>>>>>>> refs/remotes/slipson/master
 
 	//private Game game;
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> refs/remotes/slipson/master
 	
 	public GameView() {
-		playerX = 100.0;
-		playerY = 10.0;
-		
-		
 		LayoutPanel layoutPanel = new LayoutPanel();
 		initWidget(layoutPanel);
-		
-//		InlineLabel nlnlblThisIsThe = new InlineLabel("This is the game!");
-//		layoutPanel.add(nlnlblThisIsThe);
-//		layoutPanel.setWidgetLeftWidth(nlnlblThisIsThe, 109.0, Unit.PX, 202.0, Unit.PX);
-//		layoutPanel.setWidgetTopHeight(nlnlblThisIsThe, 25.0, Unit.PX, 18.0, Unit.PX);
 		
 		this.canvas = Canvas.createIfSupported();
 		canvas.setWidth("800px");
 		canvas.setHeight("600px");
 		layoutPanel.add(canvas);
-		layoutPanel.setWidgetLeftWidth(canvas, 20.0, Unit.PX, 800.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(canvas, 100, Unit.PX, 600.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(canvas, 40.0, Unit.PX, 800.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(canvas, 30.0, Unit.PX, 600.0, Unit.PX);
 		
-		final Button btnUp = new Button("UP");
-		layoutPanel.add(btnUp);
-		layoutPanel.setWidgetLeftWidth(btnUp, 20.0, Unit.PX, 81.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(btnUp, 205.0, Unit.PX, 30.0, Unit.PX);
-		btnUp.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				if(btnUp.isEnabled()){
-					playerY = playerY - 4;
-				}
-			}
+		canvas.addKeyDownHandler(new KeyDownHandler(){
+
+			@Override
+			public void onKeyDown(KeyDownEvent event){
+				handleKeyDown(event);
+			}		
 		});
 		
-		final Button btnDown = new Button("DWN");
-		layoutPanel.add(btnDown);
-		layoutPanel.setWidgetLeftWidth(btnDown, 20.0, Unit.PX, 81.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(btnDown, 270.0, Unit.PX, 30.0, Unit.PX);
-		btnDown.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				if(btnDown.isEnabled()){
-					playerY = playerY + 4;
-				}
+		canvas.addKeyUpHandler(new KeyUpHandler(){
+			@Override
+			public void onKeyUp(KeyUpEvent event) {
+				handleKeyUp(event);
+				
 			}
+
 		});
-		
-		final Button btnLft = new Button("LFT");
-		layoutPanel.add(btnLft);
-		layoutPanel.setWidgetLeftWidth(btnLft, 0.0, Unit.PX, 81.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(btnLft, 241.0, Unit.PX, 30.0, Unit.PX);
-		btnLft.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				if(btnLft.isEnabled()){
-					playerX = playerX - 4;
-				}
-			}
-		});
-		
-		final Button btnRt = new Button("RT");
-		layoutPanel.add(btnRt);
-		layoutPanel.setWidgetLeftWidth(btnRt, 84.0, Unit.PX, 81.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(btnRt, 241.0, Unit.PX, 30.0, Unit.PX);
-		btnRt.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				if(btnRt.isEnabled()){
-					playerX = playerX + 4;
-				}
-			}
-		});
-		
+					
 		timer = new Timer() {
 			@Override
 			public void run() {
@@ -113,50 +92,65 @@ public class GameView extends Composite {
 		};
 		timer.scheduleRepeating(1000 / 60);
 		counter++;
-		if(counter==15){
-			counter=0;
+		if(counter == 15){
+			counter = 0;
 //			for(the array of zombies){
-//				z.zombieRoam();
+				this.model.getZombie().zMove(this.model.getPlayer());
 //			}
 		}
 		
 	}
-
+	
+	protected void handleKeyDown(KeyDownEvent event){//reacts when keys are pressed
+		if(event.isUpArrow()){
+			model.getPlayer().setY(model.getPlayer().getY() - 4);
+		}
+		if(event.isDownArrow()){
+			model.getPlayer().setY(model.getPlayer().getY() + 4);
+		}
+		if(event.isLeftArrow()){
+			model.getPlayer().setX(model.getPlayer().getX() - 4);
+		}
+		if(event.isRightArrow()){
+			model.getPlayer().setX(model.getPlayer().getX() + 4);
+		}
+	}
+	
+	protected void handleKeyUp(KeyUpEvent event){//reacts when keys are released
+		if(event.isUpArrow() || event.isDownArrow()){
+			model.getPlayer().setY(model.getPlayer().getY());
+		}
+		if(event.isLeftArrow() || event.isRightArrow()){
+			model.getPlayer().setX(model.getPlayer().getX());
+		}
+	}
+	
+	public void setModel(Game model) {
+		this.model = model;
+		
+		this.model.getPlayer().setX(100.0);//initiates player's x position
+		this.model.getPlayer().setY(100.0);//initiates player's y position
+		this.model.getZombie().setX(60.0);//zombie's x
+		this.model.getZombie().setY(30.0);//zombie's y
+	}
+	
+	
 	protected void handleTimerTick() {
 		reset();
 		paint();
 	}
 
 	private void reset() {
-		canvas.getContext2d().clearRect(getAbsoluteLeft(), getAbsoluteTop(), getOffsetWidth(), getOffsetHeight());
+		canvas.getContext2d().clearRect(40.0, 30.0, 800.0, 600.0);
 		
 	}
 
 	private void paint() {
-
-		double playerX = game.getPlayerX();
-		double playerY = game.getPlayerY();
-		
-
 		// TODO: use Game object to determine what to draw
-
 		canvas.getContext2d().setFillStyle("#FFCC99");//human color
-
-		canvas.getContext2d().fillRect(playerX, playerY, 4.0, 4.0);//x and y; width and height
-		
-		double zombieX = game.getZombieX();
-		double zombieY = game.getZombieY();
-		
-		// TODO: use Game object to determine what to draw
-		canvas.getContext2d().setFillStyle("#008600");//zombie color
-		canvas.getContext2d().fillRect(zombieX, zombieY, 4.0, 4.0);//x and y; width and height
-		
-
-
-		canvas.getContext2d().fillRect(playerX, playerY, WIDTH, HEIGHT);//x and y; width and height
-
+		canvas.getContext2d().fillRect(this.model.getPlayer().getX(), this.model.getPlayer().getY(), WIDTH, HEIGHT);//x and y; width and height
 		
 		canvas.getContext2d().setFillStyle("#008600");//zombie color
-		canvas.getContext2d().fillRect(10.0, 10.0, WIDTH, HEIGHT);//x and y; width and height
+		canvas.getContext2d().fillRect(this.model.getZombie().getX(), this.model.getZombie().getY(), WIDTH, HEIGHT);//x and y; width and height
 	}
 }

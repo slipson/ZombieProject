@@ -1,13 +1,5 @@
 package zombieProject.shared;
 
-/**
- * @author jcoady
- * 
- * The Player class implements all of the methods affecting the player object. The constructor initializes the 
- * location of the player as well as the player's health. This class also contains many getters and setters regarding 
- * the players location and health. 
- *
- */
 public class Player {
 
 	private double x; //player's x coordinate
@@ -100,6 +92,5 @@ public class Player {
 		}
 		
 	}
-	
 	
 }

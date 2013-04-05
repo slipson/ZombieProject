@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-<<<<<<< HEAD
 	<classpathentry kind="src" output="test-classes" path="test"/>
-=======
-<<<<<<< HEAD
-	<classpathentry combineaccessrules="false" kind="src" path="/ZombieProjectModelClasses"/>
-=======
-	<classpathentry kind="src" output="test-classes" path="test"/>
->>>>>>> refs/remotes/coady/master
->>>>>>> refs/remotes/sbonner1/master
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-<<<<<<< HEAD
-	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER/GWT (1)"/>
-	<classpathentry kind="output" path="bin"/>
-=======
-	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER/GWT (2)"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER/GWT"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ZombieProjectModelClasses"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
->>>>>>> refs/remotes/coady/master
 </classpath>

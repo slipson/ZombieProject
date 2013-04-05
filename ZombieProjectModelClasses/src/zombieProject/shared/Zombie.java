@@ -1,9 +1,6 @@
 package zombieProject.shared;
 
-
 import java.util.Random;
-
-
 
 
 /**
@@ -14,15 +11,19 @@ import java.util.Random;
  * to affect location and health of the zombie. 
  *
  */
-public class Zombie {
 
+public class Zombie extends Game {
 
 		private double x; //zombie x-coordinate
 		private double y; //zombie y-coordinate
 		
-		private double health; //zombie health
+		private int zombie_width = 0; // width of image representing zombie
+		private int zombie_height = 0; // height of image representing zombie
 		
 		Random generator = new Random();
+		
+		private double health; //zombie health
+		
 		
 		public Zombie(double x, double y){
 			this.x = x;
@@ -60,6 +61,7 @@ public class Zombie {
 		public void decreaseHealth(double val){
 			this.health -= val;
 		}
+
 
 		
 		public void zMove(Player p){
@@ -127,6 +129,26 @@ public class Zombie {
 				//left up
 				this.setX(this.getX()-1);
 				this.setY(this.getY()-1);
+			}
+			
+		}
+		
+		/**
+		 * 
+		 * @param z
+		 * @return true if zombie CAN move, false if zombie CANNOT move
+		 */
+		public boolean canMove(Player p){
+			
+			//NOTE: Change 1's to 2's
+			
+			//check if zombie is in boundaries first, then check if zombie collides with player
+			
+			//if player's next move is a zombie location, player cannot move there.
+			if((x + this.zombie_width) + 1 == p.getX() || x - 1 == p.getX() || (y + this.zombie_height) + 1 == p.getY() || y - 1 == p.getY()){
+				return false;
+			}else{
+				return true;
 			}
 			
 		}

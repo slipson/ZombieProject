@@ -1,13 +1,5 @@
 package zombieProject.shared;
 
-/**
- * @author jcoady
- * 
- * This class is used to make a weapon object that takes integer parameters for the inflictable damage
- * and the range of the damage can be inflicted. There are also getter methods for both of these parameters 
- * that can be used in the Player class or Game class. 
- *
- */
 public class Weapon {
 
 	private int damage; //the amount of damage the weapon can inflict
@@ -22,13 +14,13 @@ public class Weapon {
 		this.range = range;
 		
 	}
-	
+
 	/**
-	 * reuturns the damage the weapon can inflict
+	 * returns the damage the weapon can inflict
 	 * 
 	 * @return amount of damage inflictable
 	 */
-	public int getDamage(){
+	public int getdamage(){
 		
 		return damage;
 		

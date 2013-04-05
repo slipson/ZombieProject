@@ -1,5 +1,7 @@
 package zombieProject.client;
 
+import zombieProject.shared.Game;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -27,6 +29,10 @@ public class ZombieProjectWebApp implements EntryPoint {
 
 	
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/slipson/master
 		
 
 	}
