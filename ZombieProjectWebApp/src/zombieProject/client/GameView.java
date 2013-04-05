@@ -33,6 +33,7 @@ public class GameView extends Composite{
 	private Timer timer;
 
 
+<<<<<<< HEAD
 	private int counter=0;
 
 
@@ -41,6 +42,8 @@ public class GameView extends Composite{
 	private double playerX;
 	private double playerY;
 
+=======
+>>>>>>> refs/remotes/slipson/master
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
 	
