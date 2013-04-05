@@ -80,15 +80,20 @@ public class Player {
 	 * @return false = player CANNOT move, true = player CAN move
 	 */
 	public boolean canMove(Zombie z){
-		
 		//NOTE: Change 1's to 2's
 		
+		//check to see if player is within playable boundaries
+		if(this.x != left_wall || this.x + player_width != right_Wall || this.y != top_wall || this.y + player_height != bottom_wall){
 		
-		//if player's next move is a zombie location, player cannot move there.
-		if((x + this.player_width) + 1 == z.getX() || x - 1 == z.getX() || (y + this.player_height) + 1 == z.getY() || y - 1 == z.getY()){
-			return false;
+			//if player's next move is a zombie location, player cannot move there.
+			if((x + this.player_width) + 1 == z.getX() || x - 1 == z.getX() || (y + this.player_height) + 1 == z.getY() || y - 1 == z.getY()){
+				return false;
+			}else{
+				return true;
+			}
+		
 		}else{
-			return true;
+			return false;
 		}
 		
 	}
