@@ -22,9 +22,6 @@ public class GameView extends Composite{
 
 	private int counter = 0;
 
-
-	private double playerX;
-	private double playerY;
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
 
