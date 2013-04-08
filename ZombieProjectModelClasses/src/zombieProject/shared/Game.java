@@ -79,6 +79,32 @@ public class Game {
 		return p.getY();	
 	}
 	
+	/**
+	 * sets the direction the bullet will move
+	 * @param x bullet's x direction
+	 * @param y bullet's y direction
+	 */
+	public void setBulletDirection(int x, int y){
+		this.x_bullet = x;
+		this.y_bullet = y;
+	}
+	
+	/**
+	 * get the x direction of the bullet
+	 * @return bullet's x direction
+	 */
+	public int getBullet_X(){
+		return this.x_bullet;
+	}
+	
+	/**
+	 * get the y direction of the bullet
+	 * @return bullet's y direction
+	 */
+	public int getBullet_Y(){
+		return this.y_bullet;
+	}
+	
 	public double getZombieX(Zombie z){
 		return z.getX();
 	}
