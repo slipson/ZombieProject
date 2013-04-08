@@ -31,6 +31,12 @@ public class GameView extends Composite{
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
 	
+	
+	private int up=0;
+	private int down=0;
+	private int left=0;
+	private int right=0;
+	
 	//private Game game;
 	
 	
@@ -83,25 +89,31 @@ public class GameView extends Composite{
 	
 	protected void handleKeyDown(KeyDownEvent event){//reacts when keys are pressed
 		if(event.isUpArrow()){
-			model.getPlayer().setY(model.getPlayer().getY() - 4);
+			this.up=1;
 		}
 		if(event.isDownArrow()){
-			model.getPlayer().setY(model.getPlayer().getY() + 4);
+			this.down=1;
 		}
 		if(event.isLeftArrow()){
-			model.getPlayer().setX(model.getPlayer().getX() - 4);
+			this.left=1;
 		}
 		if(event.isRightArrow()){
-			model.getPlayer().setX(model.getPlayer().getX() + 4);
+			this.right=1;
 		}
 	}
 	
 	protected void handleKeyUp(KeyUpEvent event){//reacts when keys are released
-		if(event.isUpArrow() || event.isDownArrow()){
-			model.getPlayer().setY(model.getPlayer().getY());
+		if(event.isUpArrow()){
+			this.up=0;
 		}
-		if(event.isLeftArrow() || event.isRightArrow()){
-			model.getPlayer().setX(model.getPlayer().getX());
+		if(event.isDownArrow()){
+			this.down=0;
+		}
+		if(event.isLeftArrow()){
+			this.left=0;
+		}
+		if(event.isRightArrow()){
+			this.right=0;
 		}
 	}
 	
@@ -123,6 +135,18 @@ public class GameView extends Composite{
 //			for(the array of zombies){
 				this.model.getZombie().zMove(this.model.getPlayer());
 //			}
+			if(this.up==1){
+				model.getPlayer().setY(model.getPlayer().getY()-3);
+			}
+			if(this.down==1){
+				model.getPlayer().setY(model.getPlayer().getY()+3);
+			}
+			if(this.left==1){
+				model.getPlayer().setX(model.getPlayer().getX()-3);
+			}
+			if(this.right==1){
+				model.getPlayer().setX(model.getPlayer().getX()+3);
+			}
 		}
 		reset();
 		paint();
