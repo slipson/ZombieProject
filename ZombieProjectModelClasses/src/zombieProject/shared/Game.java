@@ -11,6 +11,9 @@ public class Game {
 	private Map m; //game map
 	private Player p; //player
 	
+	private int x_bullet = 0; // x direction of the bullet
+	private int y_bullet = 0; // y direction of the bullet
+	
 	/**
 	 * game constructor
 	 */
