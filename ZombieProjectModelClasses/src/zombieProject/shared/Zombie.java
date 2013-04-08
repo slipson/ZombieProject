@@ -23,12 +23,14 @@ import java.util.Random;
 
 
 
-public class Zombie  {
+
+public class Zombie{
 
 
 
 		private double x; //zombie x-coordinate
 		private double y; //zombie y-coordinate
+		private int direction = -1;
 		
 		
 		private double health; //zombie health
@@ -72,6 +74,14 @@ public class Zombie  {
 			this.health -= val;
 		}
 
+
+		
+//		public void setDirection(int d){
+//			this.direction = d;
+//		}
+
+
+
 		
 		public void zMove(Player p){
 			double temp;
@@ -86,6 +96,7 @@ public class Zombie  {
 		}
 		
 		public void moveTowardsPlayer(Player p){
+			this.direction=(-1);
 			if(p.getX()>this.getX()){
 				this.setX(this.getX()+1);
 			}
@@ -101,36 +112,66 @@ public class Zombie  {
 		}
 		
 		
-		public void zombieRoam(){		//TODO: needs to check if collide with walls
-			int a = generator.nextInt(8);
+		public void initDir(){
+			this.direction = generator.nextInt(8);
+		}
+		
+		public void chnDir(){
+			int a = generator.nextInt(3);
 			if(a==0){
+				this.direction=this.direction-1;
+			}
+			if(a==1){
+				
+			}
+			if(a==2){
+				this.direction=this.direction+1;
+			}
+			if(this.direction==-1){
+				this.direction=7;
+			}
+			if(this.direction==8){
+				this.direction=0;
+			}
+		}
+		
+		public void zombieRoam(){
+			if(this.direction==-1){
+				this.initDir();
+			}
+			this.chnDir();
+			this.move();
+		}
+		
+		public void move(){		//TODO: needs to check if collide with walls
+			if(this.direction==0){
 				//up
 				this.setY(this.getY()-1);
 			}
-			else if(a==1){
+			else if(this.direction==1){
 				//up right
 				this.setY(this.getY()-1);
 				this.setX(this.getY()+1);
 			}
-			else if(a==2){
+			else if(this.direction==2){
 				//right
 				this.setX(this.getX()+1);
 			}
-			else if(a==3){
+			else if(this.direction==3){
 				//right down
 				this.setX(this.getX()+1);
 				this.setY(this.getY()+1);
 			}
-			else if(a==4){
+			else if(this.direction==4){
 				//down
 				this.setY(this.getY()+1);
 			}
-			else if(a==5){
+			else if(this.direction==5){
 				//down left
 				this.setY(this.getY()+1);
 				this.setX(this.getX()-1);
 			}
-			else if(a==6){
+			else if(this.direction==6){
 				//left
 				this.setX(this.getX()-1);
 			}

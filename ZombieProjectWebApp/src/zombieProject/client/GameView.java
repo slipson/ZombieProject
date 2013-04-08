@@ -11,6 +11,10 @@ import zombieProject.shared.Game;
 
 
 import com.google.gwt.canvas.client.Canvas;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.CanvasElement;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.ImageElement;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -21,6 +25,7 @@ import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
+import com.google.gwt.user.client.ui.Image;
 
 
 public class GameView extends Composite{
@@ -41,9 +46,13 @@ public class GameView extends Composite{
 	private double playerY;
 
 
+
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
+
 	
+	//private Game game;
+
 	//private Game game;
 
 
@@ -53,12 +62,20 @@ public class GameView extends Composite{
 		LayoutPanel layoutPanel = new LayoutPanel();
 		initWidget(layoutPanel);
 		
+		//TODO: draw this image to the background---------------------------<<<
+//		Image bground = new Image();
+//		bground.setUrl(GWT.getModuleBaseURL() + "Floorpic.jpg");
+//		layoutPanel.add(bground);
+		
+		
 		this.canvas = Canvas.createIfSupported();
 		canvas.setWidth("800px");
 		canvas.setHeight("600px");
 		layoutPanel.add(canvas);
 		layoutPanel.setWidgetLeftWidth(canvas, 40.0, Unit.PX, 800.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(canvas, 30.0, Unit.PX, 600.0, Unit.PX);
+		
+		
 		
 		canvas.addKeyDownHandler(new KeyDownHandler(){
 
@@ -85,6 +102,7 @@ public class GameView extends Composite{
 		};
 		timer.scheduleRepeating(1000 / 60);
 
+
 		counter++;
 		if(counter==15){
 			counter=0;
@@ -92,6 +110,7 @@ public class GameView extends Composite{
 //				z.zombieRoam();
 //			}
 		}
+
 
 		
 	}
@@ -125,6 +144,7 @@ public class GameView extends Composite{
 		
 		this.model.getPlayer().setX(100.0);//initiates player's x position
 		this.model.getPlayer().setY(100.0);//initiates player's y position
+		
 		this.model.getZombie().setX(60.0);//zombie's x
 		this.model.getZombie().setY(30.0);//zombie's y
 	}
@@ -132,7 +152,7 @@ public class GameView extends Composite{
 	
 	protected void handleTimerTick() {
 		counter++;
-		if(counter == 15){
+		if(counter == 5){
 			counter = 0;
 //			for(the array of zombies){
 				this.model.getZombie().zMove(this.model.getPlayer());
@@ -149,7 +169,11 @@ public class GameView extends Composite{
 
 		canvas.getContext2d().clearRect(0.0, 0.0, 1000.0, 1000.0);
 
+
 		
+
+		//canvas.getContext(GWT.getModuleBaseURL() + "Floorpic.jpg");
+
 	}
 
 	private void paint() {
@@ -160,14 +184,28 @@ public class GameView extends Composite{
 		
 
 
+
+		
+		Image bground = new Image();
+		bground.setUrl(GWT.getModuleBaseURL() + "Floorpic.jpg");
+		ImageElement imgElmt = ImageElement.as(bground.getElement());
+		
+		canvas.getContext(bground.getUrl());
+		canvas.getContext2d().drawImage(imgElmt, 0.0, 0.0, 100.0, 75.0);// UL
+		canvas.getContext2d().drawImage(imgElmt, 100.0, 0.0, 100.0, 75.0);// UM
+		canvas.getContext2d().drawImage(imgElmt, 0.0, 75.0, 100.0, 75.0);// LL
+		canvas.getContext2d().drawImage(imgElmt, 100.0, 75.0, 100.0, 75.0);// LM
+		canvas.getContext2d().drawImage(imgElmt, 200.0, 0.0, 100.0, 75.0);// UR
+		canvas.getContext2d().drawImage(imgElmt, 200.0, 75.0, 100.0, 75.0);// LR
+
 		// TODO: use Game object to determine what to draw
 		canvas.getContext2d().setFillStyle("#FFCC99");//human color
 
 
 		canvas.getContext2d().fillRect(playerX, playerY, 4.0, 4.0);//x and y; width and height
 		
-		double zombieX = game.getZombieX(game.z);    //*********************CHANGE WHEN ZOMBIES ARE MADE INTO AN ARRAY**********************//
-		double zombieY = game.getZombieY(game.z);
+	//	double zombieX = game.getZombieX(game.zombie);    //*********************CHANGE WHEN ZOMBIES ARE MADE INTO AN ARRAY**********************//
+		//double zombieY = game.getZombieY(game.z);
 		
 		// TODO: use Game object to determine what to draw
 		canvas.getContext2d().setFillStyle("#008600");//zombie color
@@ -183,5 +221,6 @@ public class GameView extends Composite{
 		
 		canvas.getContext2d().setFillStyle("#008600");//zombie color
 		canvas.getContext2d().fillRect(this.model.getZombie().getX(), this.model.getZombie().getY(), WIDTH, HEIGHT);//x and y; width and height
+		
 	}
 }
