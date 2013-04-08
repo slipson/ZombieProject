@@ -1,9 +1,9 @@
 package zombieProject.shared;
 
 public class Game {
-	/*
+	/*	
 	public static void main(String[] args){
-		
+
 		Map m = new Map();
 		//spawns player in center of map
 		Player p = new Player(m.getRight()/2, m.getBottom()/2);
@@ -60,6 +60,7 @@ public class Game {
 	
 	private Player player;
 	private Zombie zombie;
+
 	
 	public Game() {
 		this.player = new Player(50, 50);
@@ -73,4 +74,6 @@ public class Game {
 	public Zombie getZombie() {
 		return zombie;
 	}
+	
+	
 }
