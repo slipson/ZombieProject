@@ -1,4 +1,4 @@
-package src.zombieProject.client;
+package zombieProject.client;
 
 import zombieProject.shared.Game;
 

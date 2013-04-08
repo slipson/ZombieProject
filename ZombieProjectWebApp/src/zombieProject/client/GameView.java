@@ -1,6 +1,4 @@
 
-package src.zombieProject.client;
-
 package zombieProject.client;
 
 
