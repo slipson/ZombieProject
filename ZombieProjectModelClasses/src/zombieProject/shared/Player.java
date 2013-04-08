@@ -4,25 +4,20 @@ public class Player {
 
 	private double x; //player's x coordinate
 	private double y; //player's y coordinate
-	
 	private int player_width = 0; //the width of player image
 	private int player_height = 0; //the height of player image
-	
 	private double health; //player's health
 	
 	/**
 	 * Player constructor
-	 * 
 	 * @param x initial x coordinate
 	 * @param y initial y coordinate
 	 */
 	public Player(double x, double y){
 		
 		//NOTE: may need to add parameters for width and height of image representing player.
-		
 		this.x = x;
 		this.y = y;
-		
 		health = 100;
 	}
 
@@ -56,7 +51,6 @@ public class Player {
 	
 	/**
 	 * set image_width variable to width of the image representing player
-	 * 
 	 * @param width the width of the player image
 	 */
 	public void setPlayerImageWidth(int width){
@@ -65,7 +59,6 @@ public class Player {
 	
 	/**
 	 * set image_height variable to height of the image representing player
-	 * 
 	 * @param height the height of the player image
 	 */
 	public void setPlayerImageHeight(int height){
@@ -74,16 +67,15 @@ public class Player {
 	
 	/**
 	 * boolean to determine whether player can move to new coordinates
-	 * 
 	 * @param z the zombie
-	 * 
 	 * @return false = player CANNOT move, true = player CAN move
 	 */
-	public boolean canMove(Zombie z){
+	public boolean canMove(Zombie z, Map m){
 		//NOTE: Change 1's to 2's
 		
-		//check to see if player is within playable boundaries
-		//if(this.x != left_wall || this.x + player_width != right_Wall || this.y != top_wall || this.y + player_height != bottom_wall){
+		//check to see if player is within playable boundaries, if player is trying to move outside boundaries, return false
+		//if player is within boundaries, check for collisions with all zombies in the game
+		if(this.x != m.getLeft() || this.x + player_width != m.getRight() || this.y != m.getTop() || this.y + player_height != m.getBottom()){
 		
 			//if player's next move is a zombie location, player cannot move there.
 			if((x + this.player_width) + 1 == z.getX() || x - 1 == z.getX() || (y + this.player_height) + 1 == z.getY() || y - 1 == z.getY()){
@@ -92,9 +84,9 @@ public class Player {
 				return true;
 			}
 		
-		//}else{
-			//return false;
-		//}
+		}else{
+			return false;
+		}
 		
 	}
 	

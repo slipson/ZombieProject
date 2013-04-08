@@ -23,7 +23,6 @@ public class Game {
 	
 	/**
 	 * updates the game state
-	 * 
 	 * @param game the game object
 	 */
 	public void updateGame(Game game){
@@ -61,7 +60,6 @@ public class Game {
 	
 	/**
 	 * returns player's x-coordinate
-	 * 
 	 * @param p the player
 	 * @return player's x-coordinate
 	 */
@@ -71,7 +69,6 @@ public class Game {
 	
 	/**
 	 * returns player's y-coordinate
-	 * 
 	 * @param p the player
 	 * @return player's y-coordinate
 	 */

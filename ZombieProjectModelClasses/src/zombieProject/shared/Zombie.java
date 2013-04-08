@@ -134,23 +134,43 @@ public class Zombie extends Game {
 		}
 		
 		/**
-		 * 
+		 * determines if zombie has collided with something
 		 * @param z
 		 * @return true if zombie CAN move, false if zombie CANNOT move
 		 */
-		public boolean canMove(Player p){
+		public boolean canMove(Map m){
 			
 			//NOTE: Change 1's to 2's
+			//check if zombie is in boundaries first, if zombie is within boundaries then it CAN move around, 
+			if(this.x != m.getLeft() || this.x + zombie_width != m.getRight() || this.y != m.getTop() || this.y + zombie_height != m.getBottom()){
+				return true;
+			}else{
+				return false;
+			}
 			
-			//check if zombie is in boundaries first, then check if zombie collides with player
 			
 			//if player's next move is a zombie location, player cannot move there.
-			if((x + this.zombie_width) + 1 == p.getX() || x - 1 == p.getX() || (y + this.zombie_height) + 1 == p.getY() || y - 1 == p.getY()){
+			/*if((x + this.zombie_width) + 1 == p.getX() || x - 1 == p.getX() || (y + this.zombie_height) + 1 == p.getY() || y - 1 == p.getY()){
 				return false;
 			}else{
 				return true;
-			}
+			}*/
 			
+		}
+		/**
+		 * set the width of the zombie's image to 
+		 * @param image_width width of the zombie's image
+		 */
+		public void setZombieImageWidth(int image_width){
+			zombie_width = image_width;
+		}
+		
+		/**
+		 * set the height of the zombie's image to 
+		 * @param image_height height of the zombie's image
+		 */
+		public void setZombieImageHeight(int image_height){
+			zombie_height = image_height;
 		}
 		
 		
