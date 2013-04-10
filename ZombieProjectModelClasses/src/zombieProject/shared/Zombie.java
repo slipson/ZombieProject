@@ -143,7 +143,7 @@ public class Zombie{
 			else if(this.direction==1){
 				//up right
 				this.setY(this.getY()-1);
-				this.setX(this.getX()+1);
+				this.setX(this.getY()+1);
 			}
 			else if(this.direction==2){
 				//right
