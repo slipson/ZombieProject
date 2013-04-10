@@ -1,5 +1,9 @@
 package zombieProject.shared;
 
+import java.util.ArrayList;
+import java.util.Random;
+
+
 public class Game {
 	/*	
 	public static void main(String[] args){
@@ -58,21 +62,38 @@ public class Game {
 	}
 	*/
 	
+	Random generator = new Random();
+
+	
+	
 	private Player player;
-	private Zombie zombie;
+//	private Zombie zombie;
+	
+	ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
+
 
 	
 	public Game() {
 		this.player = new Player(50, 50);
-		this.zombie = new Zombie(0, 0);
+		this.zombieList.add(new Zombie(0, 0));
 	}
 	
 	public Player getPlayer() {
 		return player;
 	}
 	
-	public Zombie getZombie() {
-		return zombie;
+	public Zombie getZombie(int i) {
+		return zombieList.get(i);
+	}
+	
+	public void newZombie(){
+		int x = generator.nextInt(50);
+		int y = generator.nextInt(50);
+		this.zombieList.add(new Zombie(x, y));
+	}
+	
+	public int listSize(){
+		return zombieList.size();
 	}
 	
 	
