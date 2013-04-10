@@ -2,8 +2,8 @@ package zombieProject.shared;
 
 public class Player {
 
-	private double x; //player's x coordinate
-	private double y; //player's y coordinate
+	public double x; //player's x coordinate
+	public double y; //player's y coordinate
 	
 	private double health; //player's health
 	

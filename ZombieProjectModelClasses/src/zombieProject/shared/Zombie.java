@@ -28,9 +28,9 @@ public class Zombie{
 
 
 
-		private double x; //zombie x-coordinate
-		private double y; //zombie y-coordinate
-		private int direction = -1;
+		public double x; //zombie x-coordinate
+		public double y; //zombie y-coordinate
+		public int direction = -1;
 		
 		
 		private double health; //zombie health
