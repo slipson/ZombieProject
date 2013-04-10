@@ -87,8 +87,8 @@ public class Game {
 	}
 	
 	public void newZombie(){
-		int x = generator.nextInt(600);
-		int y = generator.nextInt(600);
+		int x = generator.nextInt(50);
+		int y = generator.nextInt(50);
 		this.zombieList.add(new Zombie(x, y));
 	}
 	

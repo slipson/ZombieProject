@@ -26,7 +26,7 @@ public class GameView extends Composite{
 	private Timer timer;
 
 	private int counter = 0;
-
+	private int addz = 0;
 
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
@@ -131,6 +131,11 @@ public class GameView extends Composite{
 	
 	protected void handleTimerTick() {
 		counter++;
+		addz++;
+		if(addz==60){
+			addz=0;
+			this.model.newZombie();
+		}
 		if(counter == 5){
 			counter = 0;
 			for(int i = 0; i < this.model.listSize(); i++){
