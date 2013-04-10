@@ -22,6 +22,8 @@ import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.event.dom.client.MouseDownEvent;
+import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
@@ -93,6 +95,18 @@ public class GameView extends Composite{
 			}
 
 		});
+		
+		canvas.addMouseDownHandler(new MouseDownHandler(){
+
+			@Override
+			public void onMouseDown(MouseDownEvent event) {
+				onMouseDown(event);
+				
+			}
+			
+			
+			
+		});
 					
 		timer = new Timer() {
 			@Override
@@ -113,6 +127,10 @@ public class GameView extends Composite{
 
 
 		
+	}
+	
+	protected void onMouseDown(MouseDownEvent event){
+		//fill with bullet creation, velocity, etc.
 	}
 	
 	protected void handleKeyDown(KeyDownEvent event){//reacts when keys are pressed
@@ -138,6 +156,9 @@ public class GameView extends Composite{
 			model.getPlayer().setX(model.getPlayer().getX());
 		}
 	}
+	
+	
+	
 	
 	public void setModel(Game model) {
 		this.model = model;
