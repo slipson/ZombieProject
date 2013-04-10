@@ -101,8 +101,8 @@ public class Game {
 	
 	*/
 	
-	private Player player;
-	private Zombie zombie;
+	public Player player;
+	public Zombie zombie;
 	
 	public Game(){
 		this.player = new Player(50,50);

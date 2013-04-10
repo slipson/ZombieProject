@@ -179,8 +179,8 @@ public class GameView extends Composite{
 	private void paint() {
 
 
-		double playerX = game.getPlayerX(game.p);
-		double playerY = game.getPlayerY(game.p); 
+		double playerX = game.getPlayerX(game.player);
+		double playerY = game.getPlayerY(game.player); 
 		
 
 
