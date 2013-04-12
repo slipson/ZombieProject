@@ -283,5 +283,5 @@ public class GameView extends Composite{
 	
 	
 	
-	private void
+	//private void
 }
