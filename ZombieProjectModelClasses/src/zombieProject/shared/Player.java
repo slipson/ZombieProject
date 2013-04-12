@@ -66,28 +66,34 @@ public class Player {
 	}
 	
 	/**
-	 * boolean to determine whether player can move to new coordinates
-	 * @param z the zombie
+	 * boolean to determine whether player can move to new coordinates on map
+	 * @param m the map
 	 * @return false = player CANNOT move, true = player CAN move
 	 */
-	public boolean canMove(Zombie z, Map m){
+	public boolean canMove(Map m){
 		//NOTE: Change 1's to 2's
 		
 		//check to see if player is within playable boundaries, if player is trying to move outside boundaries, return false
-		//if player is within boundaries, check for collisions with all zombies in the game
-		if(this.x != m.getLeft() || this.x + player_width != m.getRight() || this.y != m.getTop() || this.y + player_height != m.getBottom()){
-		
+		if(this.x < m.getLeft() || this.x + player_width >= m.getRight() || this.y <= m.getTop() || this.y + player_height >= m.getBottom()){
+			return false;
+		}else{
 			//if player's next move is a zombie location, player cannot move there.
-			if((x + this.player_width) + 1 == z.getX() || x - 1 == z.getX() || (y + this.player_height) + 1 == z.getY() || y - 1 == z.getY()){
+			/*if((x + this.player_width) + 1 == z.getX() || x - 1 == z.getX() || (y + this.player_height) + 1 == z.getY() || y - 1 == z.getY()){
 				return false;
 			}else{
 				return true;
-			}
-		
-		}else{
-			return false;
+			}*/
+			
+			return true;
+			
 		}
 		
 	}
+	
+	public void checkZombieCollision(){
+		
+	}
+	
+	
 	
 }

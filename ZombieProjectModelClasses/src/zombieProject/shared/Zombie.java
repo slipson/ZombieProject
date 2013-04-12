@@ -2,14 +2,12 @@ package zombieProject.shared;
 
 import java.util.Random;
 
-
 /**
  * @author jcoady
  * 
  * The Zombie class creates a zombie object which will act as an enemy to the player object and controlled by the computer.
  * This class has a constructor that initializes a zombie's location as well as its health. There are also getter and setter methods
  * to affect location and health of the zombie. 
- *
  */
 
 public class Zombie extends Game {
@@ -142,19 +140,13 @@ public class Zombie extends Game {
 			
 			//NOTE: Change 1's to 2's
 			//check if zombie is in boundaries first, if zombie is within boundaries then it CAN move around, 
-			if(this.x != m.getLeft() || this.x + zombie_width != m.getRight() || this.y != m.getTop() || this.y + zombie_height != m.getBottom()){
-				return true;
-			}else{
+			if(this.x <= m.getLeft() || this.x + zombie_width >= m.getRight() || this.y <= m.getTop() || this.y + zombie_height >= m.getBottom()){
 				return false;
+			}else{
+				return true;
+				//check collisions with other zombies
 			}
 			
-			
-			//if player's next move is a zombie location, player cannot move there.
-			/*if((x + this.zombie_width) + 1 == p.getX() || x - 1 == p.getX() || (y + this.zombie_height) + 1 == p.getY() || y - 1 == p.getY()){
-				return false;
-			}else{
-				return true;
-			}*/
 			
 		}
 		/**
