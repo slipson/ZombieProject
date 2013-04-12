@@ -53,12 +53,15 @@ public class GameView extends Composite{
 	private final double HEIGHT = 4.0;
 
 	
-	//private Game game;
+	private int up=0;
+	private int down=0;
+	private int left=0;
+	private int right=0;
 
-	//private Game game;
-
-
-
+	private double mouseX;
+	private double mouseY;
+	
+	private double slope; //slope value to make bullet go towards the zombie
 	
 	public GameView() {
 		LayoutPanel layoutPanel = new LayoutPanel();
@@ -131,6 +134,10 @@ public class GameView extends Composite{
 	
 	protected void onMouseDown(MouseDownEvent event){
 		//fill with bullet creation, velocity, etc.
+		mouseX = event.getX();
+		mouseY = event.getY();
+		
+		
 	}
 	
 	protected void handleKeyDown(KeyDownEvent event){//reacts when keys are pressed
@@ -253,7 +260,14 @@ public class GameView extends Composite{
 		canvas.getContext2d().fillRect(zombieX, zombieY, 4.0, 4.0);//x and y; width and height
 		
 
-
+		//bullet lines
+		canvas.getContext2d().setFillStyle("#000000");
+		canvas.getContext2d().fillRect(playerX, playerY, .5, .5); //put the bullet at the player's top left point
+		
+		slope = (mouseY - playerY)/(mouseX-playerX);
+		
+		
+		
 		canvas.getContext2d().fillRect(playerX, playerY, WIDTH, HEIGHT);//x and y; width and height
 
 
@@ -266,4 +280,8 @@ public class GameView extends Composite{
 		}
 		
 	}
+	
+	
+	
+	private void
 }
