@@ -140,6 +140,9 @@ public class GameView extends Composite{
 			counter = 0;
 			for(int i = 0; i < this.model.listSize(); i++){
 				this.model.getZombie(i).zMove(this.model.getPlayer());
+				if(this.model.getZombie(i).getX()==this.model.getPlayer().getX() && this.model.getZombie(i).getY()==this.model.getPlayer().getY()){
+					this.model.getPlayer().decreaseHealth(1);
+				}
 			}
 			if(this.up==1){
 				model.getPlayer().setY(model.getPlayer().getY()-3);
@@ -154,6 +157,7 @@ public class GameView extends Composite{
 				model.getPlayer().setX(model.getPlayer().getX()+3);
 			}
 		}
+		
 		reset();
 		paint();
 		
@@ -185,6 +189,13 @@ public class GameView extends Composite{
 		for(int i = 0; i < this.model.listSize(); i++){
 			canvas.getContext2d().fillRect(this.model.getZombie(i).getX(), this.model.getZombie(i).getY(), WIDTH, HEIGHT);//x and y; width and height
 		}
+		
+		
+		//health
+		canvas.getContext2d().setFillStyle("#000000");//black
+		canvas.getContext2d().fillRect(10.0, 135.0, 250.0, HEIGHT);
+		canvas.getContext2d().setFillStyle("#FF0000");//black
+		canvas.getContext2d().fillRect(10.0, 135.0, 250.0*(this.model.getPlayer().getHealth()/100), HEIGHT);
 		
 	}
 }

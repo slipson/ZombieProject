@@ -96,5 +96,8 @@ public class Game {
 		return zombieList.size();
 	}
 	
+	public void removeZ(int i){
+		this.zombieList.remove(i);
+	}
 	
 }
