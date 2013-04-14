@@ -27,12 +27,6 @@ public class ZombieProjectWebApp implements EntryPoint {
 		setView(zombieView);
 
 
-	
-
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/slipson/master
 		
 
 	}

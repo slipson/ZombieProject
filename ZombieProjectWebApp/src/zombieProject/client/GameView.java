@@ -1,9 +1,5 @@
 package zombieProject.client;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/slipson/master
 import zombieProject.shared.Game;
 <<<<<<< HEAD
 
@@ -30,29 +26,13 @@ public class GameView extends Composite{
 	
 	private Canvas canvas;
 	private Timer timer;
-<<<<<<< HEAD
 
 	private int counter=0;
 
-=======
->>>>>>> refs/remotes/slipson/master
-
-	private int counter = 0;
-
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
-<<<<<<< HEAD
-	
-=======
->>>>>>> refs/remotes/slipson/master
 
 	//private Game game;
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> refs/remotes/slipson/master
-	
 	public GameView() {
 		LayoutPanel layoutPanel = new LayoutPanel();
 		initWidget(layoutPanel);
