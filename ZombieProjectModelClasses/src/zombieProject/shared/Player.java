@@ -67,7 +67,7 @@ public class Player {
 	
 	/**
 	 * boolean to determine whether player can move to new coordinates on map
-	 * @param m the map
+	 * @param m the map coordinates
 	 * @return false = player CANNOT move, true = player CAN move
 	 */
 	public boolean canMove(Map m){

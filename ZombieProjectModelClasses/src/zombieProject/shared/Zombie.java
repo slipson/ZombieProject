@@ -133,22 +133,31 @@ public class Zombie extends Game {
 		
 		/**
 		 * determines if zombie has collided with something
-		 * @param z
+		 * @param m the map coordinates
 		 * @return true if zombie CAN move, false if zombie CANNOT move
 		 */
 		public boolean canMove(Map m){
-			
-			//NOTE: Change 1's to 2's
 			//check if zombie is in boundaries first, if zombie is within boundaries then it CAN move around, 
-			if(this.x <= m.getLeft() || this.x + zombie_width >= m.getRight() || this.y <= m.getTop() || this.y + zombie_height >= m.getBottom()){
+			if(this.x < m.getLeft() || this.x + zombie_width > m.getRight() || this.y < m.getTop() || this.y + zombie_height > m.getBottom()){
 				return false;
 			}else{
 				return true;
 				//check collisions with other zombies
 			}
+		}
+		/**
+		 * check to see if a zombie is colliding with any other zombie
+		 * @param z the zombie being compared with the current zombie
+		 * @return true = zombie is not colliding, false = zombie is colliding 
+		 */
+		public boolean checkZombieCollisions(Zombie z){
+			return false;
 			
+			//loop and check each zombie
 			
 		}
+		
+		
 		/**
 		 * set the width of the zombie's image to 
 		 * @param image_width width of the zombie's image
