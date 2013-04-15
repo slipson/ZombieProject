@@ -70,6 +70,7 @@ public class Game {
 //	private Zombie zombie;
 	
 	ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
+	ArrayList<Spawned> spawnList = new ArrayList<Spawned>();
 
 
 	
@@ -86,6 +87,10 @@ public class Game {
 		return zombieList.get(i);
 	}
 	
+	public Spawned getSpawned(int i) {
+		return spawnList.get(i);
+	}
+	
 	public void newZombie(){
 		int x = generator.nextInt(100);
 		int y = generator.nextInt(100);
@@ -98,6 +103,27 @@ public class Game {
 	
 	public void removeZ(int i){
 		this.zombieList.remove(i);
+	}
+	
+	
+	public int spawnSize(){
+		return spawnList.size();
+	}
+	
+	public void newSpawn(){
+		int x = generator.nextInt(100);
+		int y = generator.nextInt(100);
+		this.spawnList.add(new Spawned(x, y));
+	}
+	
+
+	
+	public void removeS(int i){
+		this.spawnList.remove(i);
+	}
+	
+	public boolean checkList(){
+		return this.spawnList.isEmpty();
 	}
 	
 }
