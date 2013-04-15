@@ -1,5 +1,6 @@
 package zombieProject.shared;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Random;
  * 
  * The Zombie class creates a zombie object which will act as an enemy to the player object and controlled by the computer.
  * This class has a constructor that initializes a zombie's location as well as its health. There are also getter and setter methods
- * to affect location and health of the zombie. 
+ * to affect location, image size and health of the zombie. 
  */
 
 public class Zombie extends Game {
@@ -18,16 +19,14 @@ public class Zombie extends Game {
 		private int zombie_width = 0; // width of image representing zombie
 		private int zombie_height = 0; // height of image representing zombie
 		
-		Random generator = new Random();
+		Random generator = new Random(); //a random number generator, for what???
 		
 		private double health; //zombie health
-		
 		
 		public Zombie(double x, double y){
 			this.x = x;
 			this.y = y;
-			
-			health = 50;
+			this.health = 50;
 		}
 		
 		public double getX(){
@@ -59,8 +58,6 @@ public class Zombie extends Game {
 		public void decreaseHealth(double val){
 			this.health -= val;
 		}
-
-
 		
 		public void zMove(Player p){
 			double temp;
@@ -99,7 +96,7 @@ public class Zombie extends Game {
 			else if(a==1){
 				//up right
 				this.setY(this.getY()-1);
-				this.setX(this.getY()+1);
+				this.setX(this.getX()+1);
 			}
 			else if(a==2){
 				//right
@@ -128,7 +125,6 @@ public class Zombie extends Game {
 				this.setX(this.getX()-1);
 				this.setY(this.getY()-1);
 			}
-			
 		}
 		
 		/**
@@ -142,21 +138,35 @@ public class Zombie extends Game {
 				return false;
 			}else{
 				return true;
-				//check collisions with other zombies
 			}
 		}
 		/**
-		 * check to see if a zombie is colliding with any other zombie
-		 * @param z the zombie being compared with the current zombie
+		 * checks all zombies on map if they are colliding with the zombie calling this method
+		 * @param zombie arrayList of zombies on the map
 		 * @return true = zombie is not colliding, false = zombie is colliding 
 		 */
-		public boolean checkZombieCollisions(Zombie z){
-			return false;
+		//NOTE: canMove() method should return true before calling this method.
+		//NOTE: this is going to wreak havoc on game speed
+		//TODO: make a method to find zombies within a certain radius of zombie calling this method
+			//  this will reduce havoc on the game speed
+		public boolean checkZombieCollisions(ArrayList<Zombie> zombies){
+			boolean collision = true; // bool to determine if there is another collision with a zombie, true = NO COLLISION, false = COLLISION
 			
-			//loop and check each zombie
-			
+			//check each zombie on the map and check if they are colliding 
+			for(int i = 0; i < zombies.size(); i++){
+				Zombie zombie = zombies.get(i); // zombie currently being compared to the zombie calling this method
+				
+				//check to see if the zombie calling this method is colliding with any other zombie on the map
+				if(this.getX() > zombie.getX() && this.getX() < zombie.getBullet_X() + zombie_width && this.getY() > zombie.getY() && this.getY() < zombie.getY() + zombie_height){
+					//ensures that zombie calling this method is not checking collisions on itself
+					if(this.getX() != zombie.getX() && this.getY() != zombie.getY()){
+						collision = false;
+						break;
+					}
+				}
+			}
+			return collision;
 		}
-		
 		
 		/**
 		 * set the width of the zombie's image to 
@@ -173,7 +183,5 @@ public class Zombie extends Game {
 		public void setZombieImageHeight(int image_height){
 			zombie_height = image_height;
 		}
-		
-		
 
 }

@@ -1,14 +1,12 @@
 package zombieProject.client;
 
+import java.awt.font.LayoutPath;
+
 import zombieProject.shared.Game;
-<<<<<<< HEAD
 
 
 //import java.awt.event.KeyEvent;
 //import java.awt.event.KeyListener;
-
-=======
->>>>>>> refs/remotes/slipson/master
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.KeyDownEvent;
@@ -34,7 +32,7 @@ public class GameView extends Composite{
 
 	//private Game game;
 	public GameView() {
-		LayoutPanel layoutPanel = new LayoutPanel();
+		LayoutPath layoutPanel = new LayoutPath();
 		initWidget(layoutPanel);
 		
 		this.canvas = Canvas.createIfSupported();
@@ -113,6 +111,37 @@ public class GameView extends Composite{
 	
 	
 	protected void handleTimerTick() {
+<<<<<<< HEAD
+=======
+		counter++;
+		addz++;
+		if(addz==60){
+			addz=0;
+			this.model.newZombie();
+		}
+		if(counter == 5){
+			counter = 0;
+			for(int i = 0; i < this.model.listSize(); i++){
+				this.model.getZombie(i).zMove(this.model.getPlayer());
+				if(this.model.getZombie(i).getX()==this.model.getPlayer().getX() && this.model.getZombie(i).getY()==this.model.getPlayer().getY()){
+					this.model.getPlayer().decreaseHealth(1);
+				}
+			}
+			if(this.up==1){
+				model.getPlayer().setY(model.getPlayer().getY()-3);
+			}
+			if(this.down==1){
+				model.getPlayer().setY(model.getPlayer().getY()+3);
+			}
+			if(this.left==1){
+				model.getPlayer().setX(model.getPlayer().getX()-3);
+			}
+			if(this.right==1){
+				model.getPlayer().setX(model.getPlayer().getX()+3);
+			}
+		}
+		
+>>>>>>> refs/remotes/aschin/master
 		reset();
 		paint();
 	}
@@ -128,6 +157,20 @@ public class GameView extends Composite{
 		canvas.getContext2d().fillRect(this.model.getPlayer().getX(), this.model.getPlayer().getY(), WIDTH, HEIGHT);//x and y; width and height
 		
 		canvas.getContext2d().setFillStyle("#008600");//zombie color
+<<<<<<< HEAD
 		canvas.getContext2d().fillRect(this.model.getZombie().getX(), this.model.getZombie().getY(), WIDTH, HEIGHT);//x and y; width and height
+=======
+		for(int i = 0; i < this.model.listSize(); i++){
+			canvas.getContext2d().fillRect(this.model.getZombie(i).getX(), this.model.getZombie(i).getY(), WIDTH, HEIGHT);//x and y; width and height
+		}
+		
+		
+		//health
+		canvas.getContext2d().setFillStyle("#000000");//black
+		canvas.getContext2d().fillRect(10.0, 135.0, 250.0, HEIGHT);
+		canvas.getContext2d().setFillStyle("#FF0000");//black
+		canvas.getContext2d().fillRect(10.0, 135.0, 250.0*(this.model.getPlayer().getHealth()/100), HEIGHT);
+		
+>>>>>>> refs/remotes/aschin/master
 	}
 }

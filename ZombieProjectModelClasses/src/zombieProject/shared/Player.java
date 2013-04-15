@@ -14,11 +14,10 @@ public class Player {
 	 * @param y initial y coordinate
 	 */
 	public Player(double x, double y){
-		
 		//NOTE: may need to add parameters for width and height of image representing player.
 		this.x = x;
 		this.y = y;
-		health = 100;
+		this.health = 100;
 	}
 
 	public double getX(){
@@ -71,29 +70,12 @@ public class Player {
 	 * @return false = player CANNOT move, true = player CAN move
 	 */
 	public boolean canMove(Map m){
-		//NOTE: Change 1's to 2's
-		
 		//check to see if player is within playable boundaries, if player is trying to move outside boundaries, return false
 		if(this.x < m.getLeft() || this.x + player_width >= m.getRight() || this.y <= m.getTop() || this.y + player_height >= m.getBottom()){
 			return false;
 		}else{
-			//if player's next move is a zombie location, player cannot move there.
-			/*if((x + this.player_width) + 1 == z.getX() || x - 1 == z.getX() || (y + this.player_height) + 1 == z.getY() || y - 1 == z.getY()){
-				return false;
-			}else{
-				return true;
-			}*/
-			
 			return true;
-			
 		}
-		
 	}
-	
-	public void checkZombieCollision(){
-		
-	}
-	
-	
 	
 }
