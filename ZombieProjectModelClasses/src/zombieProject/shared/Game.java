@@ -1,100 +1,104 @@
 package zombieProject.shared;
 
 import java.util.ArrayList;
-import java.util.Random;
 
-
+/**
+ * @author jcoady
+ * 
+ * The Game class is essentially the engine for this game. This class updates initializes, and updates the game state
+ * which would be shown by the UI of the game. Methods in this class include getter and setter methods for the player object.
+ */
 public class Game {
-	/*	
-	public static void main(String[] args){
 
-		Map m = new Map();
-		//spawns player in center of map
-		Player p = new Player(m.getRight()/2, m.getBottom()/2);
+	private Map m; //game map
+	private Player p; //player
+	private ArrayList<Zombie> zombies; // arraylist of zombies (if this is how we store zombies...)
+	
+	private int x_bullet = 0; // x direction of the bullet
+	private int y_bullet = 0; // y direction of the bullet
+	
+	/**
+	 * game constructor
+	 */
+	public Game(){
+		m = new Map();
+		p = new Player(0, 0);
+		zombies = new ArrayList<Zombie>();
+	}
+	
+	/**
+	 * updates the game state
+	 * @param game the game object
+	 */
+	public void updateGame(Game game){
 		
-		//We are going to need to decide on if we are using a 
-		//loop to generate multiple zombies and generate them
-		//either randomly or according to a difficulty.
-		//Difficulty could depend on the room that the user
-		//has just entered. 
-		
-		int numZombies = 2;//temporary value
-		Zombie[] zombiArr = new Zombie[numZombies];
-		
-		for(int i = 0; i < numZombies; i++){//loop to initialize all zombies
-			zombiArr[i].setX((i * 10) + 10);
-			zombiArr[i].setY(10);
-		}
-		boolean collision;// use this value later to regulate movement of player
-		
-		for(Zombie z : zombiArr){
-			if((p.getX() + 1 < z.getX() - 1) | (p.getX() - 1 > z.getX() + 1)){
-				if((p.getY() + 1 < z.getY() - 1) | (p.getY() - 1 > z.getY() + 1)){
-					collision = false;
-				}
-				else{
-					collision = true;
-				}
-			}
-			else{
-				collision = true;
+		//checks all of zombie collisions
+		for(int i = 0; i < zombies.size(); i++){
+			Zombie zombie = zombies.get(i);
+			
+			//if zombie is within map boundaries, check that the zombie is not colliding with other zomibes
+			if(zombie.canMove(m)){
+				boolean moveable = zombie.checkZombieCollisions(zombies);
 			}
 		}
 		
 		
 	}
 	
-	
-	
-	
-	public double getPlayerX(Player p){
+	/**
+	 * returns player's x-coordinate
+	 * @param p the player
+	 * @return player's x-coordinate
+	 */
+	public double getPlayerX(){
 		return p.getX();
 	}
-	public double getPlayerY(Player p){
-		return p.getY();
-		
+	
+	/**
+	 * returns player's y-coordinate
+	 * @param p the player
+	 * @return player's y-coordinate
+	 */
+	public double getPlayerY(){
+		return p.getY();	
 	}
+	
+	/**
+	 * sets the direction the bullet will move
+	 * @param x bullet's x direction
+	 * @param y bullet's y direction
+	 */
+	public void setBulletDirection(int x, int y){
+		this.x_bullet = x;
+		this.y_bullet = y;
+	}
+	
+	/**
+	 * get the x direction of the bullet
+	 * @return bullet's x direction
+	 */
+	public int getBullet_X(){
+		return this.x_bullet;
+	}
+	
+	/**
+	 * get the y direction of the bullet
+	 * @return bullet's y direction
+	 */
+	public int getBullet_Y(){
+		return this.y_bullet;
+	}
+	
 	public double getZombieX(Zombie z){
 		return z.getX();
 	}
+	
 	public double getZombieY(Zombie z){
 		return z.getY();
 	}
-	*/
 	
-	Random generator = new Random();
-
-	
-	
-	private Player player;
-//	private Zombie zombie;
-	
-	ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
-
-
-	
-	public Game() {
-		this.player = new Player(50, 50);
-		this.zombieList.add(new Zombie(0, 0));
+	public void removeZ(int i){
+		this.zombieList.remove(i);
 	}
-	
-	public Player getPlayer() {
-		return player;
-	}
-	
-	public Zombie getZombie(int i) {
-		return zombieList.get(i);
-	}
-	
-	public void newZombie(){
-		int x = generator.nextInt(100);
-		int y = generator.nextInt(100);
-		this.zombieList.add(new Zombie(x, y));
-	}
-	
-	public int listSize(){
-		return zombieList.size();
-	}
-	
 	
 }

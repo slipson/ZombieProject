@@ -1,42 +1,32 @@
 package zombieProject.shared;
 
-
-
+import java.util.ArrayList;
 import java.util.Random;
-
 
 /**
  * @author jcoady
  * 
  * The Zombie class creates a zombie object which will act as an enemy to the player object and controlled by the computer.
  * This class has a constructor that initializes a zombie's location as well as its health. There are also getter and setter methods
- * to affect location and health of the zombie. 
- *
+ * to affect location, image size and health of the zombie. 
  */
 
-
-
-
-
-public class Zombie{
-
-
-
+public class Zombie extends Game {
 
 		private double x; //zombie x-coordinate
 		private double y; //zombie y-coordinate
-		private int direction = -1;
 		
-		Random generator = new Random();
+		private int zombie_width = 0; // width of image representing zombie
+		private int zombie_height = 0; // height of image representing zombie
+		
+		Random generator = new Random(); //a random number generator, for what???
 		
 		private double health; //zombie health
-		
 		
 		public Zombie(double x, double y){
 			this.x = x;
 			this.y = y;
-			
-			health = 50;
+			this.health = 50;
 		}
 		
 		public double getX(){
@@ -69,12 +59,6 @@ public class Zombie{
 			this.health -= val;
 		}
 		
-//		public void setDirection(int d){
-//			this.direction = d;
-//		}
-
-
-		
 		public void zMove(Player p){
 			double temp;
 			// distance formula sqrt((zx-px)^2+(zy-py)^2))
@@ -88,7 +72,6 @@ public class Zombie{
 		}
 		
 		public void moveTowardsPlayer(Player p){
-			this.direction=(-1);
 			if(p.getX()>this.getX()){
 				this.setX(this.getX()+1);
 			}
@@ -104,66 +87,36 @@ public class Zombie{
 		}
 		
 		
-		public void initDir(){
-			this.direction = generator.nextInt(8);
-		}
-		
-		public void chnDir(){
-			int a = generator.nextInt(3);
+		public void zombieRoam(){		//TODO: needs to check if collide with walls
+			int a = generator.nextInt(8);
 			if(a==0){
-				this.direction=this.direction-1;
-			}
-			if(a==1){
-				
-			}
-			if(a==2){
-				this.direction=this.direction+1;
-			}
-			if(this.direction==-1){
-				this.direction=7;
-			}
-			if(this.direction==8){
-				this.direction=0;
-			}
-		}
-		
-		public void zombieRoam(){
-			if(this.direction==-1){
-				this.initDir();
-			}
-			this.chnDir();
-			this.move();
-		}
-		
-		public void move(){		//TODO: needs to check if collide with walls
-			if(this.direction==0){
 				//up
 				this.setY(this.getY()-1);
 			}
-			else if(this.direction==1){
+			else if(a==1){
 				//up right
 				this.setY(this.getY()-1);
-				this.setX(this.getY()+1);
+				this.setX(this.getX()+1);
 			}
-			else if(this.direction==2){
+			else if(a==2){
 				//right
 				this.setX(this.getX()+1);
 			}
-			else if(this.direction==3){
+			else if(a==3){
 				//right down
 				this.setX(this.getX()+1);
 				this.setY(this.getY()+1);
 			}
-			else if(this.direction==4){
+			else if(a==4){
 				//down
 				this.setY(this.getY()+1);
 			}
-			else if(this.direction==5){
+			else if(a==5){
 				//down left
 				this.setY(this.getY()+1);
 				this.setX(this.getX()-1);
 			}
-			else if(this.direction==6){
+			else if(a==6){
 				//left
 				this.setX(this.getX()-1);
 			}
@@ -172,9 +125,63 @@ public class Zombie{
 				this.setX(this.getX()-1);
 				this.setY(this.getY()-1);
 			}
-			
 		}
 		
+		/**
+		 * determines if zombie has collided with something
+		 * @param m the map coordinates
+		 * @return true if zombie CAN move, false if zombie CANNOT move
+		 */
+		public boolean canMove(Map m){
+			//check if zombie is in boundaries first, if zombie is within boundaries then it CAN move around, 
+			if(this.x < m.getLeft() || this.x + zombie_width > m.getRight() || this.y < m.getTop() || this.y + zombie_height > m.getBottom()){
+				return false;
+			}else{
+				return true;
+			}
+		}
+		/**
+		 * checks all zombies on map if they are colliding with the zombie calling this method
+		 * @param zombie arrayList of zombies on the map
+		 * @return true = zombie is not colliding, false = zombie is colliding 
+		 */
+		//NOTE: canMove() method should return true before calling this method.
+		//NOTE: this is going to wreak havoc on game speed
+		//TODO: make a method to find zombies within a certain radius of zombie calling this method
+			//  this will reduce havoc on the game speed
+		public boolean checkZombieCollisions(ArrayList<Zombie> zombies){
+			boolean collision = true; // bool to determine if there is another collision with a zombie, true = NO COLLISION, false = COLLISION
+			
+			//check each zombie on the map and check if they are colliding 
+			for(int i = 0; i < zombies.size(); i++){
+				Zombie zombie = zombies.get(i); // zombie currently being compared to the zombie calling this method
+				
+				//check to see if the zombie calling this method is colliding with any other zombie on the map
+				if(this.getX() > zombie.getX() && this.getX() < zombie.getBullet_X() + zombie_width && this.getY() > zombie.getY() && this.getY() < zombie.getY() + zombie_height){
+					//ensures that zombie calling this method is not checking collisions on itself
+					if(this.getX() != zombie.getX() && this.getY() != zombie.getY()){
+						collision = false;
+						break;
+					}
+				}
+			}
+			return collision;
+		}
 		
+		/**
+		 * set the width of the zombie's image to 
+		 * @param image_width width of the zombie's image
+		 */
+		public void setZombieImageWidth(int image_width){
+			zombie_width = image_width;
+		}
+		
+		/**
+		 * set the height of the zombie's image to 
+		 * @param image_height height of the zombie's image
+		 */
+		public void setZombieImageHeight(int image_height){
+			zombie_height = image_height;
+		}
 
 }
