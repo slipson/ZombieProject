@@ -11,15 +11,7 @@ import java.util.Random;
  * to affect location and health of the zombie. 
  *
  */
-
-
-
-
-
 public class Zombie{
-
-
-
 
 		private double x; //zombie x-coordinate
 		private double y; //zombie y-coordinate
@@ -71,13 +63,7 @@ public class Zombie{
 		public void decreaseHealth(double val){
 			this.health -= val;
 		}
-		
-//		public void setDirection(int d){
-//			this.direction = d;
-//		}
 
-
-		
 		public void zMove(Player p){
 			double temp;
 			// distance formula sqrt((zx-px)^2+(zy-py)^2))
@@ -178,10 +164,6 @@ public class Zombie{
 			
 		}
 		
-		
-
-
-		
 		/**
 		 * determines if zombie has collided with something
 		 * @param m the map coordinates
@@ -212,7 +194,7 @@ public class Zombie{
 				Zombie zombie = zombies.get(i); // zombie currently being compared to the zombie calling this method
 				
 				//check to see if the zombie calling this method is colliding with any other zombie on the map
-				if(this.getX() > zombie.getX() && this.getX() < zombie.getBullet_X() + zombie_width && this.getY() > zombie.getY() && this.getY() < zombie.getY() + zombie_height){
+				if(this.getX() > zombie.getX() && this.getX() < zombie.getX() + zombie_width && this.getY() > zombie.getY() && this.getY() < zombie.getY() + zombie_height){
 					//ensures that zombie calling this method is not checking collisions on itself
 					if(this.getX() != zombie.getX() && this.getY() != zombie.getY()){
 						collision = false;
