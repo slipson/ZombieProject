@@ -8,6 +8,7 @@ import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.ImageElement;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
@@ -88,31 +89,31 @@ public class GameView extends Composite{
 	}
 	
 	protected void handleKeyDown(KeyDownEvent event){//reacts when keys are pressed
-		if(event.isUpArrow()){
+		if(event.getNativeKeyCode() == 87){//keycode for 'W'
 			this.up=1;
 		}
-		if(event.isDownArrow()){
+		if(event.getNativeKeyCode() == 83){//keycode for 'S'
 			this.down=1;
 		}
-		if(event.isLeftArrow()){
+		if(event.getNativeKeyCode() == 65){//keycode for 'A'
 			this.left=1;
 		}
-		if(event.isRightArrow()){
+		if(event.getNativeKeyCode() == 68){//keycode for 'D'
 			this.right=1;
 		}
 	}
 	
 	protected void handleKeyUp(KeyUpEvent event){//reacts when keys are released
-		if(event.isUpArrow()){
+		if(event.getNativeKeyCode() == 87){//keycode for 'W'
 			this.up=0;
 		}
-		if(event.isDownArrow()){
+		if(event.getNativeKeyCode() == 83){//keycode for 'S'
 			this.down=0;
 		}
-		if(event.isLeftArrow()){
+		if(event.getNativeKeyCode() == 65){//keycode for 'A'
 			this.left=0;
 		}
-		if(event.isRightArrow()){
+		if(event.getNativeKeyCode() == 68){//keycode for 'D'
 			this.right=0;
 		}
 	}
