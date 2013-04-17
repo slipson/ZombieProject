@@ -8,25 +8,38 @@ import java.util.Random;
  * 
  * The Zombie class creates a zombie object which will act as an enemy to the player object and controlled by the computer.
  * This class has a constructor that initializes a zombie's location as well as its health. There are also getter and setter methods
- * to affect location, image size and health of the zombie. 
+ * to affect location and health of the zombie. 
+ *
  */
 
-public class Zombie extends Game {
+
+
+
+
+public class Zombie{
+
+
+
 
 		private double x; //zombie x-coordinate
 		private double y; //zombie y-coordinate
+		private int direction = -1;
+		
 		
 		private int zombie_width = 0; // width of image representing zombie
 		private int zombie_height = 0; // height of image representing zombie
 		
-		Random generator = new Random(); //a random number generator, for what???
+		
+		Random generator = new Random();
 		
 		private double health; //zombie health
+		
 		
 		public Zombie(double x, double y){
 			this.x = x;
 			this.y = y;
-			this.health = 50;
+			
+			health = 50;
 		}
 		
 		public double getX(){
@@ -59,6 +72,12 @@ public class Zombie extends Game {
 			this.health -= val;
 		}
 		
+//		public void setDirection(int d){
+//			this.direction = d;
+//		}
+
+
+		
 		public void zMove(Player p){
 			double temp;
 			// distance formula sqrt((zx-px)^2+(zy-py)^2))
@@ -72,6 +91,7 @@ public class Zombie extends Game {
 		}
 		
 		public void moveTowardsPlayer(Player p){
+			this.direction=(-1);
 			if(p.getX()>this.getX()){
 				this.setX(this.getX()+1);
 			}
@@ -86,36 +106,67 @@ public class Zombie extends Game {
 			}
 		}
 		
-		public void zombieRoam(){		//TODO: needs to check if collide with walls
-			int a = generator.nextInt(8);
+		
+		public void initDir(){
+			this.direction = generator.nextInt(8);
+		}
+		
+		public void chnDir(){
+			int a = generator.nextInt(3);
 			if(a==0){
+				this.direction=this.direction-1;
+			}
+			if(a==1){
+				
+			}
+			if(a==2){
+				this.direction=this.direction+1;
+			}
+			if(this.direction==-1){
+				this.direction=7;
+			}
+			if(this.direction==8){
+				this.direction=0;
+			}
+		}
+		
+		public void zombieRoam(){
+			if(this.direction==-1){
+				this.initDir();
+			}
+			this.chnDir();
+			this.move();
+		}
+		
+		public void move(){		//TODO: needs to check if collide with walls
+			if(this.direction==0){
 				//up
 				this.setY(this.getY()-1);
 			}
-			else if(a==1){
+			else if(this.direction==1){
 				//up right
 				this.setY(this.getY()-1);
 				this.setX(this.getX()+1);
 			}
-			else if(a==2){
+			else if(this.direction==2){
 				//right
 				this.setX(this.getX()+1);
 			}
-			else if(a==3){
+			else if(this.direction==3){
 				//right down
 				this.setX(this.getX()+1);
 				this.setY(this.getY()+1);
 			}
-			else if(a==4){
+			else if(this.direction==4){
 				//down
 				this.setY(this.getY()+1);
 			}
-			else if(a==5){
+			else if(this.direction==5){
 				//down left
 				this.setY(this.getY()+1);
 				this.setX(this.getX()-1);
 			}
-			else if(a==6){
+			else if(this.direction==6){
 				//left
 				this.setX(this.getX()-1);
 			}
@@ -124,7 +175,12 @@ public class Zombie extends Game {
 				this.setX(this.getX()-1);
 				this.setY(this.getY()-1);
 			}
+			
 		}
+		
+		
+
+
 		
 		/**
 		 * determines if zombie has collided with something
