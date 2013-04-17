@@ -27,6 +27,11 @@ public class Zombie{
 		private double y; //zombie y-coordinate
 		private int direction = -1;
 		
+		
+		private int zombie_width = 0; // width of image representing zombie
+		private int zombie_height = 0; // height of image representing zombie
+		
+		
 		Random generator = new Random();
 		
 		private double health; //zombie health
@@ -176,5 +181,64 @@ public class Zombie{
 		}
 		
 		
+
+
+		
+		/**
+		 * determines if zombie has collided with something
+		 * @param m the map coordinates
+		 * @return true if zombie CAN move, false if zombie CANNOT move
+		 */
+		public boolean canMove(Map m){
+			//check if zombie is in boundaries first, if zombie is within boundaries then it CAN move around, 
+			if(this.x < m.getLeft() || this.x + zombie_width > m.getRight() || this.y < m.getTop() || this.y + zombie_height > m.getBottom()){
+				return false;
+			}else{
+				return true;
+			}
+		}
+		/**
+		 * checks all zombies on map if they are colliding with the zombie calling this method
+		 * @param zombie arrayList of zombies on the map
+		 * @return true = zombie is not colliding, false = zombie is colliding 
+		 */
+		//NOTE: canMove() method should return true before calling this method.
+		//NOTE: this is going to wreak havoc on game speed
+		//TODO: make a method to find zombies within a certain radius of zombie calling this method
+			//  this will reduce havoc on the game speed
+		public boolean checkZombieCollisions(ArrayList<Zombie> zombies){
+			boolean collision = true; // bool to determine if there is another collision with a zombie, true = NO COLLISION, false = COLLISION
+			
+			//check each zombie on the map and check if they are colliding 
+			for(int i = 0; i < zombies.size(); i++){
+				Zombie zombie = zombies.get(i); // zombie currently being compared to the zombie calling this method
+				
+				//check to see if the zombie calling this method is colliding with any other zombie on the map
+				if(this.getX() > zombie.getX() && this.getX() < zombie.getBullet_X() + zombie_width && this.getY() > zombie.getY() && this.getY() < zombie.getY() + zombie_height){
+					//ensures that zombie calling this method is not checking collisions on itself
+					if(this.getX() != zombie.getX() && this.getY() != zombie.getY()){
+						collision = false;
+						break;
+					}
+				}
+			}
+			return collision;
+		}
+		
+		/**
+		 * set the width of the zombie's image to 
+		 * @param image_width width of the zombie's image
+		 */
+		public void setZombieImageWidth(int image_width){
+			zombie_width = image_width;
+		}
+		
+		/**
+		 * set the height of the zombie's image to 
+		 * @param image_height height of the zombie's image
+		 */
+		public void setZombieImageHeight(int image_height){
+			zombie_height = image_height;
+		}
 
 }
