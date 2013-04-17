@@ -86,7 +86,6 @@ public class Zombie extends Game {
 			}
 		}
 		
-		
 		public void zombieRoam(){		//TODO: needs to check if collide with walls
 			int a = generator.nextInt(8);
 			if(a==0){

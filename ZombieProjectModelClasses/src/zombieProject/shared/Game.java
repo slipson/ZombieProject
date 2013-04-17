@@ -36,9 +36,9 @@ public class Game {
 		for(int i = 0; i < zombies.size(); i++){
 			Zombie zombie = zombies.get(i);
 			
-			//if zombie is within map boundaries, check that the zombie is not colliding with other zomibes
-			if(zombie.canMove(m)){
-				boolean moveable = zombie.checkZombieCollisions(zombies);
+			//if zombie is within map boundaries, let the zombie move around
+			if(zombie.canMove(m) == true){
+				zombie.zMove(p);
 			}
 		}
 		
