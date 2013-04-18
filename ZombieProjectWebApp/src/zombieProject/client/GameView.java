@@ -1,5 +1,6 @@
 package zombieProject.client;
 
+import zombieProject.client.EndGameView;
 
 import zombieProject.shared.Game;
 import com.google.gwt.canvas.client.Canvas;
@@ -101,6 +102,15 @@ public class GameView extends Composite{
 		if(event.getNativeKeyCode() == 68){//keycode for 'D'
 			this.right=1;
 		}
+		if(event.isShiftKeyDown()){
+			endGame();
+			
+			
+		}
+	}
+	protected void endGame() {
+		EndGameView endview = new EndGameView();
+		ZombieProjectWebApp.instance.setView(endview);
 	}
 	
 	protected void handleKeyUp(KeyUpEvent event){//reacts when keys are released

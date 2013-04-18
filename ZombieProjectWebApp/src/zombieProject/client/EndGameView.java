@@ -24,31 +24,29 @@ public class EndGameView extends Composite{
 			layoutPanel.setSize("1275px", "601px");
 			
 			Image image = new Image();
-			image.setUrl(GWT.getModuleBaseURL() + "");//put image address here
+			image.setUrl(GWT.getModuleBaseURL() + "GameOverScrn.jpg");//put image address here
 			image.setSize("100%", "100%");
 			layoutPanel.add(image);
-			layoutPanel.setWidgetLeftRight(image, 0.0, Unit.PX, 61.0, Unit.PX);
+			layoutPanel.setWidgetLeftRight(image, 15.0, Unit.PX, 48.0, Unit.PX);
 			layoutPanel.setWidgetTopBottom(image, 0.0, Unit.PX, 0.0, Unit.PX);
 			
 			startButton = new Button("New button");
+			startButton.setStylePrimaryName("EndButton");
+			startButton.setText("Play Again?");
 			startButton.addClickHandler(new ClickHandler() {
 				public void onClick(ClickEvent event) {
 					handleStartGame();
 				}
 			});
-			startButton.setText("Play Again");
-			startButton.addClickHandler(new ClickHandler() {
-				public void onClick(ClickEvent event) {
-					if(startButton.isEnabled()){
-						startButton.setText("Good Luck!");
-					}
-				}
-			});
+			
+			startButton.setStyleName("EndButton");
 			layoutPanel.add(startButton);
-			layoutPanel.setWidgetLeftWidth(startButton, 515.0, Unit.PX, 180.0, Unit.PX);
-			layoutPanel.setWidgetBottomHeight(startButton, 318.0, Unit.PX, 30.0, Unit.PX);
+			startButton.setSize("40", "10");
+			layoutPanel.setWidgetLeftWidth(startButton, 40.0, Unit.EM, 11.0, Unit.EM);
+			layoutPanel.setWidgetBottomHeight(startButton, 23.5, Unit.EM, 4.5, Unit.EM);
 				
 		}
+		
 		
 		protected void handleStartGame() {
 			Game model = new Game();
