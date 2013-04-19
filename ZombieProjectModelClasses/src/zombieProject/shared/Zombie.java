@@ -2,6 +2,7 @@ package zombieProject.shared;
 
 
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -27,6 +28,10 @@ public class Zombie{
 		private double y; //zombie y-coordinate
 		private int direction = -1;
 		
+		
+		private final int Speed = 1;
+		private final int attackSpeed = 2;
+
 		
 		private int zombie_width = 0; // width of image representing zombie
 		private int zombie_height = 0; // height of image representing zombie
@@ -95,16 +100,16 @@ public class Zombie{
 		public void moveTowardsPlayer(Player p){
 			this.direction=(-1);
 			if(p.getX()>this.getX()){
-				this.setX(this.getX()+1);
+				this.setX(this.getX()+this.attackSpeed);
 			}
 			else if(p.getX()<this.getX()){
-				this.setX(this.getX()-1);
+				this.setX(this.getX()-this.attackSpeed);
 			}
 			if(p.getY()>this.getY()){
-				this.setY(this.getY()+1);
+				this.setY(this.getY()+this.attackSpeed);
 			}
 			else if(p.getY()<this.getY()){
-				this.setY(this.getY()-1);
+				this.setY(this.getY()-this.attackSpeed);
 			}
 		}
 		
@@ -143,39 +148,39 @@ public class Zombie{
 		public void move(){		//TODO: needs to check if collide with walls
 			if(this.direction==0){
 				//up
-				this.setY(this.getY()-1);
+				this.setY(this.getY()-this.Speed);
 			}
 			else if(this.direction==1){
 				//up right
-				this.setY(this.getY()-1);
-				this.setX(this.getX()+1);
+				this.setY(this.getY()-this.Speed);
+				this.setX(this.getX()+this.Speed);
 			}
 			else if(this.direction==2){
 				//right
-				this.setX(this.getX()+1);
+				this.setX(this.getX()+this.Speed);
 			}
 			else if(this.direction==3){
 				//right down
-				this.setX(this.getX()+1);
-				this.setY(this.getY()+1);
+				this.setX(this.getX()+this.Speed);
+				this.setY(this.getY()+this.Speed);
 			}
 			else if(this.direction==4){
 				//down
-				this.setY(this.getY()+1);
+				this.setY(this.getY()+this.Speed);
 			}
 			else if(this.direction==5){
 				//down left
-				this.setY(this.getY()+1);
-				this.setX(this.getX()-1);
+				this.setY(this.getY()+this.Speed);
+				this.setX(this.getX()-this.Speed);
 			}
 			else if(this.direction==6){
 				//left
-				this.setX(this.getX()-1);
+				this.setX(this.getX()-this.Speed);
 			}
 			else{
 				//left up
-				this.setX(this.getX()-1);
-				this.setY(this.getY()-1);
+				this.setX(this.getX()-this.Speed);
+				this.setY(this.getY()-this.Speed);
 			}
 			
 		}

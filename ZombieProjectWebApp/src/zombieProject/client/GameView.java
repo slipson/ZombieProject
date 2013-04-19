@@ -31,6 +31,8 @@ public class GameView extends Composite{
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
 	
+	private final int pSpeed = 3;
+
 	
 	private int up=0;
 	private int down=0;
@@ -88,31 +90,31 @@ public class GameView extends Composite{
 	}
 	
 	protected void handleKeyDown(KeyDownEvent event){//reacts when keys are pressed
-		if(event.isUpArrow()){
+		if(event.getNativeKeyCode() == 87){//keycode for 'W'
 			this.up=1;
 		}
-		if(event.isDownArrow()){
+		if(event.getNativeKeyCode() == 83){//keycode for 'S'
 			this.down=1;
 		}
-		if(event.isLeftArrow()){
+		if(event.getNativeKeyCode() == 65){//keycode for 'A'
 			this.left=1;
 		}
-		if(event.isRightArrow()){
+		if(event.getNativeKeyCode() == 68){//keycode for 'D'
 			this.right=1;
 		}
 	}
 	
 	protected void handleKeyUp(KeyUpEvent event){//reacts when keys are released
-		if(event.isUpArrow()){
+		if(event.getNativeKeyCode() == 87){//keycode for 'W'
 			this.up=0;
 		}
-		if(event.isDownArrow()){
+		if(event.getNativeKeyCode() == 83){//keycode for 'S'
 			this.down=0;
 		}
-		if(event.isLeftArrow()){
+		if(event.getNativeKeyCode() == 65){//keycode for 'A'
 			this.left=0;
 		}
-		if(event.isRightArrow()){
+		if(event.getNativeKeyCode() == 68){//keycode for 'D'
 			this.right=0;
 		}
 	}
@@ -153,16 +155,16 @@ public class GameView extends Composite{
 				}
 			}
 			if(this.up==1){
-				model.getPlayer().setY(model.getPlayer().getY()-3);
+				model.getPlayer().setY(model.getPlayer().getY()-this.pSpeed);
 			}
 			if(this.down==1){
-				model.getPlayer().setY(model.getPlayer().getY()+3);
+				model.getPlayer().setY(model.getPlayer().getY()+this.pSpeed);
 			}
 			if(this.left==1){
-				model.getPlayer().setX(model.getPlayer().getX()-3);
+				model.getPlayer().setX(model.getPlayer().getX()-this.pSpeed);
 			}
 			if(this.right==1){
-				model.getPlayer().setX(model.getPlayer().getX()+3);
+				model.getPlayer().setX(model.getPlayer().getX()+this.pSpeed);
 			}
 		}
 		
