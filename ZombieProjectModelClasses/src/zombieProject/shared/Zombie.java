@@ -152,6 +152,7 @@ public class Zombie{
 			}
 			else if(this.direction==1){
 				//up right
+
 				this.setY(this.getY()-this.Speed);
 				this.setX(this.getX()+this.Speed);
 			}
