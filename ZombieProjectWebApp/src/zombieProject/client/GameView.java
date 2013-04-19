@@ -1,7 +1,6 @@
 package zombieProject.client;
 
 import zombieProject.client.EndGameView;
-
 import zombieProject.shared.Game;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.core.client.GWT;
