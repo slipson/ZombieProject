@@ -29,8 +29,7 @@ public class Game {
 			if(this.zombieList.get(i).canMove(m)){
 				boolean moveable = this.zombieList.get(i).checkZombieCollisions(this.zombieList);
 			}
-		}
-		
+		}		
 	}
 
 	/**
