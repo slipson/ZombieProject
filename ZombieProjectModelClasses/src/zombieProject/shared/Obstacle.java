@@ -10,13 +10,13 @@ import java.awt.Rectangle;
  */
 public class Obstacle {
 
-	private Rectangle obstacle;
+	private Rectangle obstacle; //the obstacle
 	
 	/**
 	 * Obstacle constructor
 	 */
-	public Obstacle(int x, int y, int width, int height){
-		obstacle = new Rectangle(x, y, width, height);
+	public Obstacle(int x, int y, int size){
+		obstacle = new Rectangle(x, y, size, size);
 	}
 	
 	/**
@@ -60,7 +60,5 @@ public class Obstacle {
 	public int getHeight(){
 		return (int) obstacle.getHeight();
 	}
-	
-	
 	
 }
