@@ -135,6 +135,42 @@ public class Zombie{
 			if(this.direction==8){
 				this.direction=0;
 			}
+			if(this.direction == 7 && this.getX() == 1){	//left wall bounce away
+				this.direction=1;
+			}
+			if(this.direction == 6 && this.getX() == 1){
+				this.direction=2;
+			}
+			if(this.direction == 5 && this.getX() == 1){
+				this.direction=3;
+			}
+			if(this.direction == 1 && this.getX() == 295){	//right wall bounce
+				this.direction=7;
+			}
+			if(this.direction == 2 && this.getX() == 295){
+				this.direction=6;
+			}
+			if(this.direction == 3 && this.getX() == 295){
+				this.direction=5;
+			}
+			if(this.direction == 7 && this.getY() == 1){	//top wall bounce
+				this.direction=5;
+			}
+			if(this.direction == 0 && this.getY() == 1){
+				this.direction=4;
+			}
+			if(this.direction == 1 && this.getY() == 1){
+				this.direction=3;
+			}
+			if(this.direction == 3 && this.getY() == 144){	//bottom wall bounce
+				this.direction=1;
+			}
+			if(this.direction == 4 && this.getY() == 144){
+				this.direction=0;
+			}
+			if(this.direction == 5 && this.getY() == 144){
+				this.direction=7;
+			}
 		}
 		
 		public void zombieRoam(){
@@ -189,6 +225,9 @@ public class Zombie{
 		
 
 
+		
+		
+		
 		
 		/**
 		 * determines if zombie has collided with something

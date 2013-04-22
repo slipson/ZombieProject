@@ -96,7 +96,7 @@ public class Game {
 	}
 	
 	public void newZombie(){
-		int x = generator.nextInt(225);
+		int x = generator.nextInt(295);
 		int y = generator.nextInt(145);
 		this.zombieList.add(new Zombie(x, y));
 	}
@@ -115,7 +115,7 @@ public class Game {
 	}
 	
 	public void newSpawn(){
-		int x = generator.nextInt(225);
+		int x = generator.nextInt(295);
 		int y = generator.nextInt(145);
 		this.spawnList.add(new Spawned(x, y));
 	}

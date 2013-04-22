@@ -174,15 +174,27 @@ public class GameView extends Composite{
 			}
 			if(this.up==1){
 				model.getPlayer().setY(model.getPlayer().getY()-this.pSpeed);
+				if(model.getPlayer().getY()<=0){
+					model.getPlayer().setY(1);
+				}
 			}
 			if(this.down==1){
 				model.getPlayer().setY(model.getPlayer().getY()+this.pSpeed);
+				if(model.getPlayer().getY()>=145){
+					model.getPlayer().setY(144);
+				}
 			}
 			if(this.left==1){
 				model.getPlayer().setX(model.getPlayer().getX()-this.pSpeed);
+				if(model.getPlayer().getX()<=0){
+					model.getPlayer().setX(1);
+				}
 			}
 			if(this.right==1){
 				model.getPlayer().setX(model.getPlayer().getX()+this.pSpeed);
+				if(model.getPlayer().getX()>=295){
+					model.getPlayer().setX(294);
+				}
 			}
 		}
 		
