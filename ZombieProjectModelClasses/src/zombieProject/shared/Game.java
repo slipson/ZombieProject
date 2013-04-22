@@ -11,6 +11,7 @@ import java.util.Random;
  */
 public class Game {
 
+
 	
 	private int x_bullet = 0; // x direction of the bullet
 	private int y_bullet = 0; // y direction of the bullet
@@ -19,28 +20,21 @@ public class Game {
 
 	/*
 
+	private int x_bullet = 0; // x direction of the bullet
+	private int y_bullet = 0; // y direction of the bullet
+	Map m = new Map();
 	
-	private Map m; //game map
-	public Player p; //player
-	public Zombie z; //WILL NEED TO BECOME AN ARRAY EVENTUALLY
-	
-	/**
-	 * game constructor
-	 
-	public Game(){
-		
-		m = new Map();
-		p = new Player(0, 0);
-		z = new Zombie(0, 0);
-	}
+
+
+
 	
 	/**
 	 * updates the game state
-	 * 
 	 * @param game the game object
 	 */
 	//public void updateGame(Game game){
 		
+
 		//We are going to need to decide on if we are using a 
 		//loop to generate multiple zombies and generate them
 		//either randomly or according to a difficulty.
@@ -88,6 +82,7 @@ public class Game {
 	 */
 	public void updateGame(Game game){
 		
+
 		//checks all of zombie collisions
 		for(int i = 0; i < this.zombieList.size(); i++){
 			this.zombieList.get(i);
@@ -101,6 +96,7 @@ public class Game {
 		
 	}
 	
+
 
 
 	/**
@@ -130,15 +126,14 @@ public class Game {
 	}
 	
 
-
-
 	
 
-	public Player player;
-	public Zombie zombie;
-
+	
 	Random generator = new Random();
 
+	
+	
+	private Player player;
 //	private Zombie zombie;
 	
 	ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
@@ -147,26 +142,15 @@ public class Game {
 
 
 	
-
-	public Game(){
-		this.player = new Player(50,50);
-		this.zombie = new Zombie(0,0);
-
-	
+	public Game() {
 		this.player = new Player(50, 50);
 		this.zombieList.add(new Zombie(0, 0));
-
 	}
 	
-	public Player getPlayer(){
+	public Player getPlayer() {
 		return player;
 	}
 	
-
-	public Zombie getZombie(){
-		return zombie;
-	}	
-
 	public Zombie getZombie(int i) {
 		return zombieList.get(i);
 	}
@@ -176,17 +160,18 @@ public class Game {
 	}
 	
 	public void newZombie(){
-		int x = generator.nextInt(600);
-		int y = generator.nextInt(600);
+		int x = generator.nextInt(225);
+		int y = generator.nextInt(145);
 		this.zombieList.add(new Zombie(x, y));
 	}
 	
 	public int listSize(){
 		return zombieList.size();
-
 	}
 
+
 	
+
 	public void removeZ(int i){
 		this.zombieList.remove(i);
 	}
@@ -197,8 +182,8 @@ public class Game {
 	}
 	
 	public void newSpawn(){
-		int x = generator.nextInt(100);
-		int y = generator.nextInt(100);
+		int x = generator.nextInt(225);
+		int y = generator.nextInt(145);
 		this.spawnList.add(new Spawned(x, y));
 	}
 	

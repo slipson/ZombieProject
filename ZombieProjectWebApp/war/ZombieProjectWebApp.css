@@ -35,3 +35,12 @@ h1 {
 }
 .gwt-Image {
 }
+.EndButton {
+background-color: transparent;
+	color: red;
+	border: thin black;
+	font-size: 12pt;
+	font-weight: bold;
+	width:auto;
+	height:auto;
+}

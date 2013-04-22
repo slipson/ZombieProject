@@ -3,13 +3,12 @@ package zombieProject.shared;
 public class Player {
 
 
+
 	public double x; //player's x coordinate
 	public double y; //player's y coordinate
 	private int player_width = 0; //the width of player image
 	private int player_height = 0; //the height of player image
 
-
-	
 
 	private double health; //player's health
 	
@@ -43,6 +42,9 @@ public class Player {
 	
 	public void increaseHealth(double val){
 		this.health += val;
+		if(this.health>100){
+			this.health=100;
+		}
 	}
 	
 	public void decreaseHealth(double val){
