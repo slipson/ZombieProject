@@ -14,10 +14,17 @@ public class Obstacle {
 	private Rectangle obstacle; //the obstacle
 	
 	/**
-	 * Obstacle constructor
+	 * Obstacle constructor w/ same width and height
 	 */
 	public Obstacle(int x, int y, int size){
 		obstacle = new Rectangle(x, y, size, size);
+	}
+	
+	/**
+	 * Obstacle constructor w/ different width and height
+	 */
+	public Obstacle(int x, int y, int width, int height){
+		obstacle = new Rectangle(x, y, width, height);
 	}
 	
 	/**
