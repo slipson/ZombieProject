@@ -1,7 +1,6 @@
 package zombieProject.client;
 
 import zombieProject.client.EndGameView;
-
 import zombieProject.shared.Game;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.core.client.GWT;
@@ -109,6 +108,7 @@ public class GameView extends Composite{
 		}
 	}
 	protected void endGame() {
+		this.model.getPlayer().increaseHealth(1000000);
 		EndGameView endview = new EndGameView();
 		ZombieProjectWebApp.instance.setView(endview);
 	}

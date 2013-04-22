@@ -53,6 +53,8 @@ public class EndGameView extends Composite{
 			GameView view = new GameView();
 			view.setModel(model);
 			ZombieProjectWebApp.instance.setView(view);
+			
+			
 		}
 	}
 
