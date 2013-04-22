@@ -6,7 +6,8 @@ import java.awt.Rectangle;
  * @author jcoady
  * 
  * This class creates objects of rectangular shape that act as physical obstacles for the player in the game.
- *
+ * In this class, there are methods to determine if two or more obstacles are overlapping, there are also getter methods
+ * for the coordinates of the obstacle's top left point and its width and height
  */
 public class Obstacle {
 
