@@ -32,6 +32,8 @@ public class GameView extends Composite{
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
 	
+	private final int pSpeed = 3;
+
 	
 	private int up=0;
 	private int down=0;
@@ -137,6 +139,7 @@ public class GameView extends Composite{
 //		this.model.getZombie().setX(60.0);//zombie's x
 //		this.model.getZombie().setY(30.0);//zombie's y
 		this.model.newZombie();
+		this.model.newSpawn();
 	}
 	
 	
@@ -146,25 +149,36 @@ public class GameView extends Composite{
 		if(addz==60){
 			addz=0;
 			this.model.newZombie();
+			this.model.newSpawn();
 		}
 		if(counter == 5){
 			counter = 0;
 			for(int i = 0; i < this.model.listSize(); i++){
 				this.model.getZombie(i).zMove(this.model.getPlayer());
+				if(this.model.getZombie(i).getX()==this.model.getPlayer().getX() && this.model.getZombie(i).getY()==this.model.getPlayer().getY()){
+					this.model.getPlayer().decreaseHealth(1);
+				}
+			}
+			for(int i = 0; i < this.model.spawnSize(); i++){
+				if(this.model.getSpawned(i).getX()<this.model.getPlayer().getX() + 4 && this.model.getSpawned(i).getY()<this.model.getPlayer().getY() + 4 &&this.model.getSpawned(i).getX()>this.model.getPlayer().getX() - 4 && this.model.getSpawned(i).getY()>this.model.getPlayer().getY() - 4){
+					this.model.getPlayer().increaseHealth(10);
+					this.model.removeS(i);
+				}
 			}
 			if(this.up==1){
-				model.getPlayer().setY(model.getPlayer().getY()-3);
+				model.getPlayer().setY(model.getPlayer().getY()-this.pSpeed);
 			}
 			if(this.down==1){
-				model.getPlayer().setY(model.getPlayer().getY()+3);
+				model.getPlayer().setY(model.getPlayer().getY()+this.pSpeed);
 			}
 			if(this.left==1){
-				model.getPlayer().setX(model.getPlayer().getX()-3);
+				model.getPlayer().setX(model.getPlayer().getX()-this.pSpeed);
 			}
 			if(this.right==1){
-				model.getPlayer().setX(model.getPlayer().getX()+3);
+				model.getPlayer().setX(model.getPlayer().getX()+this.pSpeed);
 			}
 		}
+		
 		reset();
 		paint();
 		
@@ -196,6 +210,24 @@ public class GameView extends Composite{
 		for(int i = 0; i < this.model.listSize(); i++){
 			canvas.getContext2d().fillRect(this.model.getZombie(i).getX(), this.model.getZombie(i).getY(), WIDTH, HEIGHT);//x and y; width and height
 		}
+		
+		//health pack
+		canvas.getContext2d().setFillStyle("#FF0000");//red
+		
+		for(int i = 0; i < this.model.spawnSize(); i++){
+			canvas.getContext2d().fillRect(this.model.getSpawned(i).getX()-1, this.model.getSpawned(i).getY()-3, 2, 6);
+			canvas.getContext2d().fillRect(this.model.getSpawned(i).getX()-3, this.model.getSpawned(i).getY()-1, 6, 2);
+		}
+		
+
+		
+		
+		
+		//health bar
+		canvas.getContext2d().setFillStyle("#000000");//black
+		canvas.getContext2d().fillRect(10.0, 135.0, 250.0, HEIGHT);
+		canvas.getContext2d().setFillStyle("#FF0000");//red
+		canvas.getContext2d().fillRect(10.0, 135.0, 250.0*(this.model.getPlayer().getHealth()/100), HEIGHT);
 		
 	}
 }

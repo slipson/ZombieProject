@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
+import zombieProject.shared.Map;
 import zombieProject.shared.Player;
 import zombieProject.shared.Zombie;
 
@@ -11,13 +12,17 @@ import zombieProject.shared.Zombie;
 	public class ZombieTest extends TestCase {
 		Zombie z1;
 		Zombie z2;
+		Zombie z3;
 		Player p1;
+		Map m;
 		
 		@Override
 		protected void setUp() throws Exception {
 			z1 = new Zombie(0,0);
 			z2 = new Zombie(128, 256);
+			z3 = new Zombie(10.0, 10.0);
 			p1 = new Player(10, 10);
+			m = new Map();
 		}
 		
 		@Test
@@ -128,6 +133,19 @@ import zombieProject.shared.Zombie;
 			
 		}
 		
+		@Test
+		public void testCanMove(){
+			assertTrue(z3.canMove(m)); //test inboundaries
+			z3.setX(m.getLeft() - 10);
+			assertFalse(z3.canMove(m)); // test left boundary
+			z3.setX(m.getRight() + 30);
+			assertFalse(z3.canMove(m)); // test right boundary
+			z3.setX(m.getLeft() + 10);
+			z3.setY(m.getTop() - 30);
+			assertFalse(z3.canMove(m)); // test top boundary
+			z3.setY(m.getBottom() + 20);
+			assertFalse(z3.canMove(m)); // test bottom boundary
+		}
 
 		/*
 		 * 

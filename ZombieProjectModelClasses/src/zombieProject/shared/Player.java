@@ -4,16 +4,20 @@ public class Player {
 
 	private double x; //player's x coordinate
 	private double y; //player's y coordinate
-	
+	private int player_width = 0; //the width of player image
+	private int player_height = 0; //the height of player image
 	private double health; //player's health
 	
-	//constructor
+	/**
+	 * Player constructor
+	 * @param x initial x coordinate
+	 * @param y initial y coordinate
+	 */
 	public Player(double x, double y){
+		//NOTE: may need to add parameters for width and height of image representing player.
 		this.x = x;
 		this.y = y;
-		
-		health = 100;
-		
+		this.health = 100;
 	}
 
 	public double getX(){
@@ -34,6 +38,9 @@ public class Player {
 	
 	public void increaseHealth(double val){
 		this.health += val;
+		if(this.health>100){
+			this.health=100;
+		}
 	}
 	
 	public void decreaseHealth(double val){
@@ -45,60 +52,33 @@ public class Player {
 	}
 	
 	/**
-	 * boolean to determine whether player can move to new coordinates
-	 * 
-	 * @param player_width the width of the player's image
-	 * @param player_height the height of the player's image
-	 * @param z the zombie
-	 * 
-	 * @return false = player CANNOT move, true = player CAN move
+	 * set image_width variable to width of the image representing player
+	 * @param width the width of the player image
 	 */
-	public boolean canMove(int player_width, int player_height, Zombie z){
-		
-		//if player's next move is a zombie location, player cannot move there.
-		if((x + player_width) + 1 == z.getX() || x - 1 == z.getX() || (y + player_height) + 1 == z.getY() || y - 1 == z.getY()){
-			
-			return false;
-			
-		}else{
-			
-			return true;
-			
-		}
-		
+	public void setPlayerImageWidth(int width){
+		this.player_width = width;
 	}
 	
-//	/**
-//	 * move the player according to it's x-, y- coordinates
-//	 * 
-//	 * @param x player's x-coordinate
-//	 * @param y player's y-coordinate
-//	 * 
-//	 */
-//	private void move(boolean canMove, /*button?*/){
-//		
-//		if(canMove == true){
-//			
-//			if(/*push left button*/){
-//				
-//				x++;
-//				
-//			}else if(/*push right button*/){
-//				
-//				x--;
-//				
-//			}else if(/*push up button*/){
-//				
-//				y--;
-//				
-//			}else if(/*push down button*/){
-//				
-//				y++;
-//				
-//			}
-//			
-//		}
-//	
-//	}
+	/**
+	 * set image_height variable to height of the image representing player
+	 * @param height the height of the player image
+	 */
+	public void setPlayerImageHeight(int height){
+		this.player_height = height;
+	}
+	
+	/**
+	 * boolean to determine whether player can move to new coordinates on map
+	 * @param m the map coordinates
+	 * @return false = player CANNOT move, true = player CAN move
+	 */
+	public boolean canMove(Map m){
+		//check to see if player is within playable boundaries, if player is trying to move outside boundaries, return false
+		if(this.x < m.getLeft() || this.x + player_width >= m.getRight() || this.y <= m.getTop() || this.y + player_height >= m.getBottom()){
+			return false;
+		}else{
+			return true;
+		}
+	}
 	
 }

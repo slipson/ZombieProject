@@ -2,7 +2,9 @@ package zombieProject;
 
 import org.junit.Test;
 
+import zombieProject.shared.Map;
 import zombieProject.shared.Player;
+import zombieProject.shared.Zombie;
 
 import junit.framework.TestCase;
 
@@ -10,11 +12,13 @@ import junit.framework.TestCase;
 public class PlayerTest extends TestCase {
 	Player p1;
 	Player p2;
+	Map m;
 	
 	@Override
 	protected void setUp() throws Exception {
 		p1 = new Player(0,0);
 		p2 = new Player(128, 256);
+		m = new Map();
 	}
 	
 	@Test
@@ -65,5 +69,14 @@ public class PlayerTest extends TestCase {
 		assertEquals(50.0, p1.getHealth());
 		p2.decreaseHealth(50);
 		assertEquals(50.0, p2.getHealth());
+	}
+	
+	@Test
+	public void testCanMove() throws Exception{
+		p1.setX(-10.0);
+		p1.setY(14.0);
+		assertFalse(p1.canMove(m));
+		
+		
 	}
 }
