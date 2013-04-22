@@ -2,10 +2,15 @@ package zombieProject.shared;
 
 public class Player {
 
-	private double x; //player's x coordinate
-	private double y; //player's y coordinate
+
+	public double x; //player's x coordinate
+	public double y; //player's y coordinate
 	private int player_width = 0; //the width of player image
 	private int player_height = 0; //the height of player image
+
+
+	
+
 	private double health; //player's health
 	
 	/**
