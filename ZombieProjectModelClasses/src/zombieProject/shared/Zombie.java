@@ -100,16 +100,36 @@ public class Zombie{
 		public void moveTowardsPlayer(Player p){
 			this.direction=(-1);
 			if(p.getX()>this.getX()){
-				this.setX(this.getX()+this.attackSpeed);
+				if(p.getX()==this.getX()+1){
+					this.setX(this.getX()+1);
+				}
+				else{
+					this.setX(this.getX()+this.attackSpeed);
+				}
 			}
 			else if(p.getX()<this.getX()){
-				this.setX(this.getX()-this.attackSpeed);
+				if(p.getX()==this.getX()-1){
+					this.setX(this.getX()-1);
+				}
+				else{
+					this.setX(this.getX()-this.attackSpeed);
+				}
 			}
 			if(p.getY()>this.getY()){
-				this.setY(this.getY()+this.attackSpeed);
+				if(p.getY()==this.getY()+1){
+					this.setY(this.getY()+1);
+				}
+				else{
+					this.setY(this.getY()+this.attackSpeed);
+				}
 			}
 			else if(p.getY()<this.getY()){
-				this.setY(this.getY()-this.attackSpeed);
+				if(p.getY()==this.getY()-1){
+					this.setY(this.getY()-1);
+				}
+				else{
+					this.setY(this.getY()-this.attackSpeed);
+				}
 			}
 		}
 		
