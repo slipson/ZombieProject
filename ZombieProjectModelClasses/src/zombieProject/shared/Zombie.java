@@ -13,10 +13,13 @@ import java.util.Random;
  */
 public class Zombie{
 
+
 		private double x; //zombie x-coordinate
 		private double y; //zombie y-coordinate
 		private int direction = -1;
-		
+
+		private final int Speed = 1;
+		private final int attackSpeed = 2;
 		
 		private int zombie_width = 0; // width of image representing zombie
 		private int zombie_height = 0; // height of image representing zombie
@@ -131,8 +134,14 @@ public class Zombie{
 			}
 			else if(this.direction==1){
 				//up right
+
 				this.setY(this.getY()-1);
 				this.setX(this.getX()+1);
+
+
+				this.setY(this.getY()-this.Speed);
+				this.setX(this.getX()+this.Speed);
+				
 			}
 			else if(this.direction==2){
 				//right
@@ -163,7 +172,7 @@ public class Zombie{
 			}
 			
 		}
-		
+
 		/**
 		 * determines if zombie has collided with something
 		 * @param m the map coordinates
@@ -222,3 +231,4 @@ public class Zombie{
 		}
 
 }
+

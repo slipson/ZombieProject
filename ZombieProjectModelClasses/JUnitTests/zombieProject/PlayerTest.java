@@ -4,8 +4,6 @@ import org.junit.Test;
 
 import zombieProject.shared.Map;
 import zombieProject.shared.Player;
-import zombieProject.shared.Zombie;
-
 import junit.framework.TestCase;
 
 

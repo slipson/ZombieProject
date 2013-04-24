@@ -27,7 +27,6 @@ public class ZombieProjectWebApp implements EntryPoint {
 		setView(zombieView);
 
 
-		
 
 	}
 
