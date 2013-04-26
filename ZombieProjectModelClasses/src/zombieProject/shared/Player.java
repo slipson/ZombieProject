@@ -11,7 +11,7 @@ public class Player {
 
 
 	private double health; //player's health
-	private int playrScore = 0;
+	private int playrScore = 0; //player's score
 	
 	/**
 	 * Player constructor
