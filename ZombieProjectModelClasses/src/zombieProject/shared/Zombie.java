@@ -252,19 +252,6 @@ public class Zombie{
 
 		
 		
-
-
-		
-
-
-
-		
-		
-
-
-		
-
-
 		
 		
 		
