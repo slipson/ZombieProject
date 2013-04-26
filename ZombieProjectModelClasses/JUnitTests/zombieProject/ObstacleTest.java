@@ -22,6 +22,21 @@ public class ObstacleTest {
 	}
 	
 	@Test
+	public void getYTest(){
+		assertEquals(10, obstacle.getY());
+	}
+	
+	@Test
+	public void getWidthTest(){
+		assertEquals(50, obstacle.getWidth());
+	}
+	
+	@Test
+	public void getHeightTest(){
+		assertEquals(20, obstacle.getHeight());
+	}
+	
+	@Test
 	public void doesOverLapTest(){
 		assertFalse(obstacle.doesOverlap(30, 60));
 		assertTrue(obstacle.doesOverlap(15, 15));
