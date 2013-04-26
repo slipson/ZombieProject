@@ -162,6 +162,7 @@ public class GameView extends Composite{
 			for(int i = 0; i < this.model.spawnSize(); i++){
 				if(this.model.getSpawned(i).getX()<this.model.getPlayer().getX() + 4 && this.model.getSpawned(i).getY()<this.model.getPlayer().getY() + 4 &&this.model.getSpawned(i).getX()>this.model.getPlayer().getX() - 4 && this.model.getSpawned(i).getY()>this.model.getPlayer().getY() - 4){
 					this.model.getPlayer().increaseHealth(10);
+					model.getPlayer().increasePscore(1000);
 					this.model.removeS(i);
 				}
 			}
@@ -178,7 +179,7 @@ public class GameView extends Composite{
 				model.getPlayer().setX(model.getPlayer().getX()+this.pSpeed);
 			}
 		}
-		
+		model.getPlayer().increasePscore(1);
 		reset();
 		paint();
 		
@@ -219,9 +220,10 @@ public class GameView extends Composite{
 			canvas.getContext2d().fillRect(this.model.getSpawned(i).getX()-3, this.model.getSpawned(i).getY()-1, 6, 2);
 		}
 		
-
-		
-		
+		//score text
+		canvas.getContext2d().setFillStyle("#FFFF00");
+		canvas.getContext2d().setFont("bold 10px Comic Sans MS, cursive, sans-serif");
+		canvas.getContext2d().fillText(model.getPlayer().getPscore() + "", 260.0, 140.0);
 		
 		//health bar
 		canvas.getContext2d().setFillStyle("#000000");//black

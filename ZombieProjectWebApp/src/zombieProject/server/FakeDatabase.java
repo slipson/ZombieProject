@@ -51,4 +51,14 @@ public class FakeDatabase implements IDatabase {
 		}
 		return null;
 	}
+	@Override
+	public boolean logisValid(String username, String password){
+		for(User user : userList){
+			if(user.getUsername().equals(username) && user.getPassword().equals(password)){
+				return true;
+			}
+		}
+		return false;
+		
+	}
 }
