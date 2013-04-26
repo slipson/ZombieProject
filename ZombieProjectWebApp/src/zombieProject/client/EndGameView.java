@@ -51,8 +51,8 @@ public class EndGameView extends Composite{
 		protected void handleStartGame() {
 			Game model = new Game();
 			GameView view = new GameView();
-			view.setModel(model);
 			ZombieProjectWebApp.instance.setView(view);
+			view.setModel(model); // also starts the animation timer
 		}
 	}
 

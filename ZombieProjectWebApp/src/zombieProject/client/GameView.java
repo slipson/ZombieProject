@@ -40,6 +40,8 @@ public class GameView extends Composite{
 	private int counter = 0;
 
 	private int addz = 0;
+	private int adds = 0;
+	private int whenSpawn = 60;
 
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
@@ -125,7 +127,7 @@ public class GameView extends Composite{
 				handleTimerTick();
 			}
 		};
-		timer.scheduleRepeating(1000 / 60);
+		//timer.scheduleRepeating(1000 / 60);
 
 
 
@@ -170,13 +172,15 @@ public class GameView extends Composite{
 		if(event.getNativeKeyCode() == 68){//keycode for 'D'
 			this.right=1;
 		}
-		if(event.isShiftKeyDown()){
-			endGame();
+		
 			
 			
-		}
+			
+		
 	}
 	protected void endGame() {
+		timer.cancel();
+		this.model.getPlayer().increaseHealth(1000000);
 		EndGameView endview = new EndGameView();
 		ZombieProjectWebApp.instance.setView(endview);
 	}
@@ -206,18 +210,28 @@ public class GameView extends Composite{
 //		this.model.getZombie().setY(30.0);//zombie's y
 		this.model.newZombie();
 		this.model.newSpawn();
+		
+		timer.scheduleRepeating(1000 / 60);
 	}
 	
 	
 	protected void handleTimerTick() {
+		if(this.model.getPlayer().getHealth()<=0){
+			endGame();
+		}
 		counter++;
 
 
 		addz++;
+		adds++;
+		if(adds==whenSpawn){
+			adds=0;
+			whenSpawn+=60;
+			this.model.newSpawn();
+		}
 		if(addz==60){
 			addz=0;
 			this.model.newZombie();
-			this.model.newSpawn();
 		}
 
 
@@ -245,15 +259,27 @@ public class GameView extends Composite{
 			}
 			if(this.up==1){
 				model.getPlayer().setY(model.getPlayer().getY()-this.pSpeed);
+				if(model.getPlayer().getY()<=0){
+					model.getPlayer().setY(1);
+				}
 			}
 			if(this.down==1){
 				model.getPlayer().setY(model.getPlayer().getY()+this.pSpeed);
+				if(model.getPlayer().getY()>=145){
+					model.getPlayer().setY(144);
+				}
 			}
 			if(this.left==1){
 				model.getPlayer().setX(model.getPlayer().getX()-this.pSpeed);
+				if(model.getPlayer().getX()<=0){
+					model.getPlayer().setX(1);
+				}
 			}
 			if(this.right==1){
 				model.getPlayer().setX(model.getPlayer().getX()+this.pSpeed);
+				if(model.getPlayer().getX()>=295){
+					model.getPlayer().setX(294);
+				}
 			}
 		}
 		
