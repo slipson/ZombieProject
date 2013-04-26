@@ -1,26 +1,30 @@
 package zombieProject;
 
+import static org.junit.Assert.*;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import zombieProject.shared.Obstacle;
-import junit.framework.TestCase;
 
-public class ObstacleTest extends TestCase {
+public class ObstacleTest {
+	
+	Obstacle obstacle;
 
-	Obstacle obstacle1;
-	Obstacle obstacle2;
-	
-	
-	@Override
-	public void setUp(){
-		obstacle1 = new Obstacle(0, 0, 5);
-		obstacle2 = new Obstacle(10, 10, 50, 20);
+	@Before
+	public void setUp() throws Exception {
+		obstacle = new Obstacle(10, 10, 50, 20);
+	}
+
+	@Test
+	public void getXTest() {
+		assertEquals(10, obstacle.getX());
 	}
 	
 	@Test
-	public void doesOverlapTest() throws Exception{
-		assertFalse(obstacle1.doesOverlap(obstacle2.getX(), obstacle2.getY()));
+	public void doesOverLapTest(){
+		assertFalse(obstacle.doesOverlap(30, 60));
+		assertTrue(obstacle.doesOverlap(15, 15));
 	}
-	
-	
+
 }
