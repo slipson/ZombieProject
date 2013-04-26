@@ -15,18 +15,25 @@ public class FakeDatabase implements IDatabase {
 		scoreList = new ArrayList<Score>();
 		
 		User user1 = new User();
-		user1.setUsername("alice");
-		user1.setPassword("abc");
+		user1.setUsername("aschin");
+		user1.setPassword("zombie");
 		
 		User user2 = new User();
-		user2.setUsername("bob");
-		user2.setPassword("def");
+		user2.setUsername("slipson");
+		user2.setPassword("zombie");
+		
+		User user3 = new User();
+		user2.setUsername("sbonner");
+		user2.setPassword("zombie");
 		
 		userList.add(user1);
 		user1.setId(userList.size());
 		
 		userList.add(user2);
 		user2.setId(userList.size());
+		
+		userList.add(user3);
+		user3.setId(userList.size());
 		
 		scoreList = new ArrayList<Score>();
 		
@@ -51,19 +58,19 @@ public class FakeDatabase implements IDatabase {
 		}
 		return null;
 	}
-	@Override
-	public boolean logisValid(String username, String password){
-		boolean bool = false;
-		
-		for(User user : userList){
-			if(user.getUsername().equals(username) && user.getPassword().equals(password)){
-				bool = true;
-				break;
-			}else{
-				bool = false;
-			}
-		}
-		return bool;
-		
-	}
+//	@Override
+//	public boolean logisValid(String username, String password){
+//		boolean bool = false;
+//		
+//		for(User user : userList){
+//			if(user.getUsername().equals(username) && user.getPassword().equals(password)){
+//				bool = true;
+//				break;
+//			}else{
+//				bool = false;
+//			}
+//		}
+//		return bool;
+//		
+//	}
 }

@@ -7,6 +7,7 @@ import zombieProject.shared.IDatabase;
 import zombieProject.shared.User;
 import zombieProject.client.ZombieView;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.LayoutPanel;
@@ -56,11 +57,33 @@ import com.google.gwt.user.client.ui.Image;
 				startButton.setText("ENTER");
 				startButton.addClickHandler(new ClickHandler() {
 					public void onClick(ClickEvent event) {
-						if(DB.instance().logisValid(UsernameBox.getValue(), PasswordBox.getValue()) == true){
+						/*
+						if(DB.instance().logisValid(UsernameBox.getText(), PasswordBox.getText()) == true){
 							handleStartGame();
 						}else{
 							startButton.setText("Retry!");
 						}
+						*/
+						RPC.userService.logIn(UsernameBox.getText(), PasswordBox.getText(), new AsyncCallback<User>() {
+							
+							@Override
+							public void onSuccess(User result) {
+								if (result == null) {
+									// no such username/password
+									// TODO: update UI
+									startButton.setText("Retry!");
+								} else {
+									handleStartGame();
+								}
+								
+							}
+							
+							@Override
+							public void onFailure(Throwable caught) {
+								// TODO: update UI
+								startButton.setText("FAIL!");
+							}
+						});
 					}
 				});
 				

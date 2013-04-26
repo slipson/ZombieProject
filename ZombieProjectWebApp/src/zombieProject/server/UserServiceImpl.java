@@ -11,5 +11,9 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	public User logIn(String username, String password) {
 		return DB.instance().logIn(username, password);
 	}
+	
+//	public boolean logisValid(String username, String password){
+//		return DB.instance().logisValid(username, password);
+//	}
 
 }
