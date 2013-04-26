@@ -31,6 +31,7 @@ public class GameView extends Composite{
 	private int addz = 0;
 	private int adds = 0;
 	private int whenSpawn = 60;
+	private int whenZom = 120;
 
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
@@ -161,8 +162,12 @@ public class GameView extends Composite{
 			whenSpawn+=60;
 			this.model.newSpawn();
 		}
-		if(addz==60){
+		if(addz==whenZom){
 			addz=0;
+			whenZom-=1;
+			if(whenZom<30){
+				whenZom=30;
+			}
 			this.model.newZombie();
 		}
 		if(counter == 5){
