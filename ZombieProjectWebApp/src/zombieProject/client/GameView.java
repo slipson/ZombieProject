@@ -14,6 +14,8 @@ import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.event.dom.client.MouseDownEvent;
+import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
@@ -27,7 +29,16 @@ public class GameView extends Composite{
 	private Canvas canvas;
 	private Timer timer;
 
+
+
+	private Game game;
+
+	private double playerX;
+	private double playerY;
+
+
 	private int counter = 0;
+
 	private int addz = 0;
 	private int adds = 0;
 	private int whenSpawn = 60;
@@ -35,17 +46,30 @@ public class GameView extends Composite{
 
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
+
+
+	
+	public double mouseX = 0;
+	public double mouseY = 0;
+	public double slope = 0;
+	
+
 	
 	private final int pSpeed = 3;
+
 
 	
 	private int up=0;
 	private int down=0;
 	private int left=0;
 	private int right=0;
+
+
+
 	
 	//private Game game;
 	
+
 	
 	public GameView() {
 		LayoutPanel layoutPanel = new LayoutPanel();
@@ -82,6 +106,21 @@ public class GameView extends Composite{
 			}
 
 		});
+
+		
+		canvas.addMouseDownHandler(new MouseDownHandler(){
+
+			@Override
+			public void onMouseDown(MouseDownEvent event) {
+
+				// TODO Auto-generated method stub
+				onMouseDown(event);
+			};
+			
+		});
+
+		
+
 					
 		timer = new Timer() {
 			@Override
@@ -91,9 +130,36 @@ public class GameView extends Composite{
 		};
 		//timer.scheduleRepeating(1000 / 60);
 
-		
-	}
+
+
+		counter++;
+		if(counter==15){
+			counter=0;
+//			for(the array of zombies){
+//				z.zombieRoam();
+//			}
+		}
+
+
+		}
 	
+	
+
+	protected void onMouseDown(MouseDownEvent event){
+		//fill with bullet creation, velocity, etc.
+		mouseX = event.getX();
+		mouseY = event.getY();
+		
+		for(int i = 0; i < this.model.listSize(); i++){
+			if(mouseX >= this.model.getZombie(i).getX()-2 && mouseY <= this.model.getZombie(i).getY()+2){
+				if(mouseX <= this.model.getZombie(i).getX()+2 && mouseY >= this.model.getZombie(i).getY()-2){
+					this.model.removeZ(i);
+				}
+			}
+			
+		}
+
+	}
 	protected void handleKeyDown(KeyDownEvent event){//reacts when keys are pressed
 		if(event.getNativeKeyCode() == 87){//keycode for 'W'
 			this.up=1;
@@ -155,6 +221,8 @@ public class GameView extends Composite{
 			endGame();
 		}
 		counter++;
+
+
 		addz++;
 		adds++;
 		if(adds==whenSpawn){
@@ -170,6 +238,16 @@ public class GameView extends Composite{
 			}
 			this.model.newZombie();
 		}
+
+
+
+		addz++;
+		if(addz==60){
+			addz=0;
+			this.model.newZombie();
+			this.model.newSpawn();
+		}
+
 		if(counter == 5){
 			counter = 0;
 			for(int i = 0; i < this.model.listSize(); i++){
@@ -210,6 +288,7 @@ public class GameView extends Composite{
 			}
 		}
 		
+
 		reset();
 		paint();
 		
@@ -237,6 +316,16 @@ public class GameView extends Composite{
 		canvas.getContext2d().setFillStyle("#FFCC99");//human color
 		canvas.getContext2d().fillRect(this.model.getPlayer().getX(), this.model.getPlayer().getY(), WIDTH, HEIGHT);//x and y; width and height
 		
+		//bullet lines
+		canvas.getContext2d().setFillStyle("#FF0000");
+		canvas.getContext2d().fillRect(model.getPlayer().getX(), model.getPlayer().getY(), .5, .5); //put the bullet at the player's top left point
+				
+		slope = (mouseY - model.getPlayer().getY()) / (mouseX-model.getPlayer().getY());
+		
+		
+		
+		
+		
 		canvas.getContext2d().setFillStyle("#008600");//zombie color
 		for(int i = 0; i < this.model.listSize(); i++){
 			canvas.getContext2d().fillRect(this.model.getZombie(i).getX(), this.model.getZombie(i).getY(), WIDTH, HEIGHT);//x and y; width and height
@@ -261,4 +350,16 @@ public class GameView extends Composite{
 		canvas.getContext2d().fillRect(10.0, 135.0, 250.0*(this.model.getPlayer().getHealth()/100), HEIGHT);
 		
 	}
+
+
 }
+
+	
+	
+	
+	//private void
+
+
+
+
+
