@@ -35,6 +35,8 @@ public class GameView extends Composite{
 
 	private double playerX;
 	private double playerY;
+	
+	private boolean canMove;
 
 
 	private int counter = 0;
@@ -128,17 +130,6 @@ public class GameView extends Composite{
 				handleTimerTick();
 			}
 		};
-		//timer.scheduleRepeating(1000 / 60);
-
-
-
-		counter++;
-		if(counter==15){
-			counter=0;
-//			for(the array of zombies){
-//				z.zombieRoam();
-//			}
-		}
 
 
 		}
@@ -147,12 +138,12 @@ public class GameView extends Composite{
 
 	protected void onMouseDown(MouseDownEvent event){
 		//fill with bullet creation, velocity, etc.
-		mouseX = event.getX();
-		mouseY = event.getY();
+		mouseX = event.getClientX();
+		mouseY = event.getClientY();
 		
 		for(int i = 0; i < this.model.listSize(); i++){
-			if(mouseX >= this.model.getZombie(i).getX()-2 && mouseY <= this.model.getZombie(i).getY()+2){
-				if(mouseX <= this.model.getZombie(i).getX()+2 && mouseY >= this.model.getZombie(i).getY()-2){
+			if(mouseX >= this.model.getZombie(i).getX()-25 && mouseY <= this.model.getZombie(i).getY()+25){
+				if(mouseX <= this.model.getZombie(i).getX()+25 && mouseY >= this.model.getZombie(i).getY()-25){
 					this.model.removeZ(i);
 				}
 			}
@@ -207,8 +198,6 @@ public class GameView extends Composite{
 		this.model.getPlayer().setX(100.0);//initiates player's x position
 		this.model.getPlayer().setY(100.0);//initiates player's y position
 		
-//		this.model.getZombie().setX(60.0);//zombie's x
-//		this.model.getZombie().setY(30.0);//zombie's y
 		this.model.newZombie();
 		this.model.newSpawn();
 		
@@ -241,17 +230,19 @@ public class GameView extends Composite{
 
 
 
-		addz++;
-		if(addz==60){
-			addz=0;
-			this.model.newZombie();
-			this.model.newSpawn();
-		}
-
 		if(counter == 5){
 			counter = 0;
 			for(int i = 0; i < this.model.listSize(); i++){
 				this.model.getZombie(i).zMove(this.model.getPlayer());
+				this.canMove=true;
+				for(int k = 0; k < this.model.listSize(); k++){
+					if(this.model.getZombie(k).getX()==this.model.getZombie(i).getRX() && this.model.getZombie(k).getY()==this.model.getZombie(i).getRY()){
+						this.canMove=false;
+					}
+				}
+				if(this.canMove){
+					this.model.getZombie(i).moveActual();
+				}
 				if(this.model.getZombie(i).getX()==this.model.getPlayer().getX() && this.model.getZombie(i).getY()==this.model.getPlayer().getY()){
 					this.model.getPlayer().decreaseHealth(1);
 				}
