@@ -11,6 +11,7 @@ public class Player {
 
 
 	private double health; //player's health
+	private int playrScore = 0;
 	
 	/**
 	 * Player constructor
@@ -50,6 +51,14 @@ public class Player {
 	
 	public double getHealth() {
 		return health;
+	}
+	
+	public int getPscore(){
+		return playrScore;
+	}
+	
+	public void increasePscore(int playScore){// increase playrScore by playScore
+		this.playrScore += playScore;
 	}
 	
 	/**
