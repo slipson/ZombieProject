@@ -28,6 +28,9 @@ public class Zombie{
 		private double x; //zombie x-coordinate
 		private double y; //zombie y-coordinate
 		private int direction = -1;
+		
+		private double requestX;
+		private double requestY;
 
 		
 		
@@ -67,6 +70,14 @@ public class Zombie{
 			this.y = y;
 		}
 		
+		public double getRX(){
+			return this.requestX;
+		}
+		
+		public double getRY(){
+			return this.requestY;
+		}
+		
 		public double getHealth() {
 			return health;
 		}
@@ -85,7 +96,10 @@ public class Zombie{
 //			this.direction = d;
 //		}
 
-
+		public void moveActual(){
+			this.x=this.requestX;
+			this.y=this.requestY;
+		}
 		
 		public void zMove(Player p){
 			double temp;
@@ -103,34 +117,34 @@ public class Zombie{
 			this.direction=(-1);
 			if(p.getX()>this.getX()){
 				if(p.getX()==this.getX()+1){
-					this.setX(this.getX()+1);
+					this.requestX=(this.getX()+1);
 				}
 				else{
-					this.setX(this.getX()+this.attackSpeed);
+					this.requestX=(this.getX()+this.attackSpeed);
 				}
 			}
 			else if(p.getX()<this.getX()){
 				if(p.getX()==this.getX()-1){
-					this.setX(this.getX()-1);
+					this.requestX=(this.getX()-1);
 				}
 				else{
-					this.setX(this.getX()-this.attackSpeed);
+					this.requestX=(this.getX()-this.attackSpeed);
 				}
 			}
 			if(p.getY()>this.getY()){
 				if(p.getY()==this.getY()+1){
-					this.setY(this.getY()+1);
+					this.requestY=(this.getY()+1);
 				}
 				else{
-					this.setY(this.getY()+this.attackSpeed);
+					this.requestY=(this.getY()+this.attackSpeed);
 				}
 			}
 			else if(p.getY()<this.getY()){
 				if(p.getY()==this.getY()-1){
-					this.setY(this.getY()-1);
+					this.requestY=(this.getY()-1);
 				}
 				else{
-					this.setY(this.getY()-this.attackSpeed);
+					this.requestY=(this.getY()-this.attackSpeed);
 				}
 			}
 		}
@@ -203,18 +217,58 @@ public class Zombie{
 			this.move();
 		}
 		
+		
 		public void move(){		//TODO: needs to check if collide with walls
+			if(this.direction==0){
+				//up
+				this.requestY=this.getY()-this.Speed;
+			}
+			else if(this.direction==1){
+				//up right
+				this.requestY=(this.getY()-this.Speed);
+				this.requestX=(this.getX()+this.Speed);
+
+			}
+			else if(this.direction==2){
+				//right
+				this.requestX=(this.getX()+this.Speed);
+			}
+			else if(this.direction==3){
+				//right down
+				this.requestX=(this.getX()+this.Speed);
+				this.requestY=(this.getY()+this.Speed);
+			}
+			else if(this.direction==4){
+				//down
+				this.requestY=(this.getY()+this.Speed);
+			}
+			else if(this.direction==5){
+				//down left
+				this.requestY=(this.getY()+this.Speed);
+				this.requestX=(this.getX()-this.Speed);
+			}
+			else if(this.direction==6){
+				//left
+				this.requestX=(this.getX()-this.Speed);
+			}
+			else{
+				//left up
+				this.requestX=(this.getX()-this.Speed);
+				this.requestY=(this.getY()-this.Speed);
+			}
+			
+		}
+
+		
+		
+		
+/*		public void move(){		//TODO: needs to check if collide with walls
 			if(this.direction==0){
 				//up
 				this.setY(this.getY()-this.Speed);
 			}
 			else if(this.direction==1){
 				//up right
-
-				this.setY(this.getY()-1);
-				this.setX(this.getX()+1);
-
-
 				this.setY(this.getY()-this.Speed);
 				this.setX(this.getX()+this.Speed);
 
@@ -247,13 +301,14 @@ public class Zombie{
 				this.setY(this.getY()-this.Speed);
 			}
 			
-		}
+		}	*/
 
 
+
 		
 		
 		
-		
+
 		
 
 		/**
@@ -286,7 +341,7 @@ public class Zombie{
 				Zombie zombie = zombies.get(i); // zombie currently being compared to the zombie calling this method
 				
 				//check to see if the zombie calling this method is colliding with any other zombie on the map
-				if(this.getX() > zombie.getX() && this.getX() < zombie.getBullet_X() + zombie_width && this.getY() > zombie.getY() && this.getY() < zombie.getY() + zombie_height){
+				if(this.getX() > zombie.getX() && this.getY() > zombie.getY() && this.getY() < zombie.getY() + zombie_height){
 					//ensures that zombie calling this method is not checking collisions on itself
 					if(this.getX() != zombie.getX() && this.getY() != zombie.getY()){
 						collision = false;
