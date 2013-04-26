@@ -172,6 +172,7 @@ public class Zombie{
 			
 		}
 
+
 		/**
 		 * determines if zombie has collided with something
 		 * @param m the map coordinates
