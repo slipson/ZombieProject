@@ -16,6 +16,8 @@ import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
+import com.google.gwt.event.dom.client.MouseUpEvent;
+import com.google.gwt.event.dom.client.MouseUpHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
@@ -67,7 +69,7 @@ public class GameView extends Composite{
 	private int right=0;
 
 
-
+	boolean mouseClick = false;
 	
 	//private Game game;
 	
@@ -116,14 +118,32 @@ public class GameView extends Composite{
 			public void onMouseDown(MouseDownEvent event) {
 
 				// TODO Auto-generated method stub
-				onMouseDown(event);
+				handleMouseDown(event);
 			};
 			
 		});
 
-		
+		canvas.addMouseUpHandler(new MouseUpHandler(){
 
-					
+			@Override
+			public void onMouseUp(MouseUpEvent event) {
+				// TODO Auto-generated method stub
+				handleMouseUp(event);
+			}
+
+			private void handleMouseUp(MouseUpEvent event) {
+				// TODO Auto-generated method stub
+				mouseClick = false;
+			}
+			
+		});
+
+	
+		
+		
+		
+		
+		
 		timer = new Timer() {
 			@Override
 			public void run() {
@@ -136,19 +156,25 @@ public class GameView extends Composite{
 	
 	
 
-	protected void onMouseDown(MouseDownEvent event){
-		//fill with bullet creation, velocity, etc.
-		mouseX = event.getClientX();
-		mouseY = event.getClientY();
+	protected void handleMouseDown(MouseDownEvent event){
 		
+		//fill with bullet creation, velocity, etc.
+		mouseX = event.getX()/2.5;
+		mouseY = event.getY()/2.5;
+		
+		mouseClick = true;
 		for(int i = 0; i < this.model.listSize(); i++){
-			if(mouseX >= this.model.getZombie(i).getX()-25 && mouseY <= this.model.getZombie(i).getY()+25){
-				if(mouseX <= this.model.getZombie(i).getX()+25 && mouseY >= this.model.getZombie(i).getY()-25){
+			
+			if(mouseX >= this.model.getZombie(i).getX()-25 && mouseX <= this.model.getZombie(i).getX()+25 && mouseY <= this.model.getZombie(i).getY()+25 && mouseY >= this.model.getZombie(i).getY()-25){
+				this.model.getZombie(i).decreaseHealth(25);
+				if(this.model.getZombie(i).getHealth() <= 0){
 					this.model.removeZ(i);
 				}
 			}
+				
 			
 		}
+		
 
 	}
 	protected void handleKeyDown(KeyDownEvent event){//reacts when keys are pressed
@@ -243,7 +269,7 @@ public class GameView extends Composite{
 				if(this.canMove){
 					this.model.getZombie(i).moveActual();
 				}
-				if(this.model.getZombie(i).getX()==this.model.getPlayer().getX() && this.model.getZombie(i).getY()==this.model.getPlayer().getY()){
+				if(this.model.getZombie(i).getX()<this.model.getPlayer().getX() + 4 && this.model.getZombie(i).getY()<this.model.getPlayer().getY() + 4 &&this.model.getZombie(i).getX()>this.model.getPlayer().getX() - 4 && this.model.getZombie(i).getY()>this.model.getPlayer().getY() - 4){
 					this.model.getPlayer().decreaseHealth(1);
 				}
 			}
@@ -308,14 +334,10 @@ public class GameView extends Composite{
 		canvas.getContext2d().fillRect(this.model.getPlayer().getX(), this.model.getPlayer().getY(), WIDTH, HEIGHT);//x and y; width and height
 		
 		//bullet lines
-		canvas.getContext2d().setFillStyle("#FF0000");
-		canvas.getContext2d().fillRect(model.getPlayer().getX(), model.getPlayer().getY(), .5, .5); //put the bullet at the player's top left point
+		 //put the bullet at the player's top left point
 				
-		slope = (mouseY - model.getPlayer().getY()) / (mouseX-model.getPlayer().getY());
 		
-		
-		
-		
+
 		
 		canvas.getContext2d().setFillStyle("#008600");//zombie color
 		for(int i = 0; i < this.model.listSize(); i++){
@@ -331,8 +353,12 @@ public class GameView extends Composite{
 		}
 		
 
-		
-		
+		if(mouseClick = true){
+			canvas.getContext2d().setFillStyle("#FF0000");
+			canvas.getContext2d().fillRect(mouseX, mouseY, .5, .5);
+		}
+		canvas.getContext2d().fillText(mouseX+"", 25, 25);
+		canvas.getContext2d().fillText(mouseY+"", 25, 35);
 		
 		//health bar
 		canvas.getContext2d().setFillStyle("#000000");//black
