@@ -146,6 +146,15 @@ public class GameView extends Composite{
 		//fill with bullet creation, velocity, etc.
 		mouseX = event.getX();
 		mouseY = event.getY();
+		
+		for(int i = 0; i < this.model.listSize(); i++){
+			if(mouseX >= this.model.getZombie(i).getX()-2 && mouseY <= this.model.getZombie(i).getY()+2){
+				if(mouseX <= this.model.getZombie(i).getX()+2 && mouseY >= this.model.getZombie(i).getY()-2){
+					this.model.removeZ(i);
+				}
+			}
+			
+		}
 
 	}
 	protected void handleKeyDown(KeyDownEvent event){//reacts when keys are pressed
