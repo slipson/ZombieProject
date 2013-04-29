@@ -50,5 +50,10 @@ public class EndGameView extends Composite{
 			GameView view = new GameView();
 			view.setModel(model);
 			ZombieProjectWebApp.instance.setView(view);
+<<<<<<< HEAD
+=======
+			
+			
+>>>>>>> refs/remotes/slipson/master
 		}
 	}
