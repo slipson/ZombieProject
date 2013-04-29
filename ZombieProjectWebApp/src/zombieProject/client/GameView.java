@@ -49,7 +49,7 @@ public class GameView extends Composite{
 	public double mouseY = 0;
 	public double slope = 0;
 	
-
+	boolean mouseClick = false;
 	
 	private final int pSpeed = 3;
 
@@ -143,10 +143,10 @@ public class GameView extends Composite{
 
 	protected void onMouseDown(MouseDownEvent event){
 		//fill with bullet creation, velocity, etc.
-<<<<<<< HEAD
+
 		mouseX = event.getX();
 		mouseY = event.getY();
-=======
+
 		mouseX = event.getX()/2.6;
 		mouseY = event.getY()/4;
 		
@@ -163,7 +163,7 @@ public class GameView extends Composite{
 			
 		}
 		
->>>>>>> refs/remotes/sbonner1/master
+
 
 	}
 	protected void handleKeyDown(KeyDownEvent event){//reacts when keys are pressed
@@ -265,12 +265,12 @@ public class GameView extends Composite{
 				model.getPlayer().setX(model.getPlayer().getX()+this.pSpeed);
 			}
 		}
-<<<<<<< HEAD
+
 		
 
-=======
+
 		model.getPlayer().increasePscore(1);
->>>>>>> refs/remotes/slipson/master
+
 		reset();
 		paint();
 		
@@ -321,14 +321,13 @@ public class GameView extends Composite{
 			canvas.getContext2d().fillRect(this.model.getSpawned(i).getX()-3, this.model.getSpawned(i).getY()-1, 6, 2);
 		}
 		
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
+
 		//score text
 		canvas.getContext2d().setFillStyle("#FFFF00");
 		canvas.getContext2d().setFont("bold 10px Comic Sans MS, cursive, sans-serif");
 		canvas.getContext2d().fillText(model.getPlayer().getPscore() + "", 260.0, 140.0);
-=======
+
 
 		if(mouseClick = true){
 			canvas.getContext2d().setFillStyle("#FF0000");
@@ -338,9 +337,7 @@ public class GameView extends Composite{
 		canvas.getContext2d().fillText(mouseX+"", 25, 25);
 		canvas.getContext2d().fillText(mouseY+"", 25, 35);
 		canvas.getContext2d().fillRect(mouseX, mouseY, HEIGHT, HEIGHT);
->>>>>>> refs/remotes/sbonner1/master
-		
->>>>>>> refs/remotes/slipson/master
+
 		//health bar
 		canvas.getContext2d().setFillStyle("#000000");//black
 		canvas.getContext2d().fillRect(10.0, 135.0, 250.0, HEIGHT);
