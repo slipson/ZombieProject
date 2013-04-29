@@ -21,10 +21,6 @@ import java.util.Random;
 
 public class Zombie{
 
-
-
-
-
 		private double x; //zombie x-coordinate
 		private double y; //zombie y-coordinate
 		private int direction = -1;
