@@ -1,6 +1,5 @@
 package zombieProject.client;
 
-import zombieProject.client.EndGameView;
 import zombieProject.shared.Game;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.core.client.GWT;
@@ -13,6 +12,10 @@ import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.event.dom.client.MouseDownEvent;
+import com.google.gwt.event.dom.client.MouseDownHandler;
+import com.google.gwt.event.dom.client.MouseUpEvent;
+import com.google.gwt.event.dom.client.MouseUpHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
@@ -26,19 +29,41 @@ public class GameView extends Composite{
 	private Canvas canvas;
 	private Timer timer;
 
+	private double playerX;
+	private double playerY;
+	
+	private boolean canMove;
+
+
 	private int counter = 0;
+
 	private int addz = 0;
+	private int adds = 0;
+	private int whenSpawn = 60;
+	private int whenZom = 120;
 
 	private final double WIDTH = 4.0;
 	private final double HEIGHT = 4.0;
+
+
+	
+	public double mouseX = 0;
+	public double mouseY = 0;
+	public double slope = 0;
+	
+
 	
 	private final int pSpeed = 3;
+
 
 	
 	private int up=0;
 	private int down=0;
 	private int left=0;
 	private int right=0;
+
+
+	boolean mouseClick = false;
 	
 	//private Game game;
 	
@@ -78,6 +103,32 @@ public class GameView extends Composite{
 			}
 
 		});
+		
+		canvas.addMouseDownHandler(new MouseDownHandler(){
+
+			@Override
+			public void onMouseDown(MouseDownEvent event) {
+
+				// TODO Auto-generated method stub
+				handleMouseDown(event);
+			};
+			
+		});
+
+		canvas.addMouseUpHandler(new MouseUpHandler(){
+
+			@Override
+			public void onMouseUp(MouseUpEvent event) {
+				// TODO Auto-generated method stub
+				handleMouseUp(event);
+			}
+
+			private void handleMouseUp(MouseUpEvent event) {
+				// TODO Auto-generated method stub
+				mouseClick = false;
+			}
+			
+		});
 					
 		timer = new Timer() {
 			@Override
@@ -85,9 +136,27 @@ public class GameView extends Composite{
 				handleTimerTick();
 			}
 		};
-		timer.scheduleRepeating(1000 / 60);
+
 
 		
+	}
+	
+	protected void handleMouseDown(MouseDownEvent event){
+		
+		//fill with bullet creation, velocity, etc.
+		mouseX = event.getX()/2.6;
+		mouseY = event.getY()/4.0;
+		
+		mouseClick = true;
+		for(int i = 0; i < this.model.listSize(); i++){
+			
+			if(mouseX >= this.model.getZombie(i).getX()-25 && mouseX <= this.model.getZombie(i).getX()+25 && mouseY <= this.model.getZombie(i).getY()+25 && mouseY >= this.model.getZombie(i).getY()-25){
+				this.model.getZombie(i).decreaseHealth(25);
+				if(this.model.getZombie(i).getHealth() <= 0){
+					this.model.removeZ(i);
+				}
+			}
+		}
 	}
 	
 	protected void handleKeyDown(KeyDownEvent event){//reacts when keys are pressed
@@ -140,46 +209,88 @@ public class GameView extends Composite{
 //		this.model.getZombie().setY(30.0);//zombie's y
 		this.model.newZombie();
 		this.model.newSpawn();
+		
+		timer.scheduleRepeating(1000 / 60);
 	}
 	
 	
 	protected void handleTimerTick() {
+		if(this.model.getPlayer().getHealth()<=0){
+			endGame();
+		}
 		counter++;
+		
+		this.model.getPlayer().increasePscore(1);
+
 		addz++;
-		if(addz==60){
-			addz=0;
-			this.model.newZombie();
+		adds++;
+		if(adds==whenSpawn){
+			adds=0;
+			whenSpawn+=60;
 			this.model.newSpawn();
 		}
+		if(addz==whenZom){
+			addz=0;
+			whenZom-=1;
+			if(whenZom<30){
+				whenZom=30;
+			}
+			this.model.newZombie();
+		}
+
+
+
 		if(counter == 5){
 			counter = 0;
 			for(int i = 0; i < this.model.listSize(); i++){
 				this.model.getZombie(i).zMove(this.model.getPlayer());
-				if(this.model.getZombie(i).getX()==this.model.getPlayer().getX() && this.model.getZombie(i).getY()==this.model.getPlayer().getY()){
+				this.canMove=true;
+				for(int k = 0; k < this.model.listSize(); k++){
+					if(this.model.getZombie(k).getX()==this.model.getZombie(i).getRX() && this.model.getZombie(k).getY()==this.model.getZombie(i).getRY()){
+						this.canMove=false;
+					}
+				}
+				if(this.canMove){
+					this.model.getZombie(i).moveActual();
+				}
+				if(this.model.getZombie(i).getX()<this.model.getPlayer().getX() + 4 && this.model.getZombie(i).getY()<this.model.getPlayer().getY() + 4 &&this.model.getZombie(i).getX()>this.model.getPlayer().getX() - 4 && this.model.getZombie(i).getY()>this.model.getPlayer().getY() - 4){
 					this.model.getPlayer().decreaseHealth(1);
 				}
 			}
 			for(int i = 0; i < this.model.spawnSize(); i++){
 				if(this.model.getSpawned(i).getX()<this.model.getPlayer().getX() + 4 && this.model.getSpawned(i).getY()<this.model.getPlayer().getY() + 4 &&this.model.getSpawned(i).getX()>this.model.getPlayer().getX() - 4 && this.model.getSpawned(i).getY()>this.model.getPlayer().getY() - 4){
 					this.model.getPlayer().increaseHealth(10);
-					model.getPlayer().increasePscore(1000);
 					this.model.removeS(i);
+					this.model.getPlayer().increasePscore(1000);
 				}
 			}
 			if(this.up==1){
 				model.getPlayer().setY(model.getPlayer().getY()-this.pSpeed);
+				if(model.getPlayer().getY()<=0){
+					model.getPlayer().setY(1);
+				}
 			}
 			if(this.down==1){
 				model.getPlayer().setY(model.getPlayer().getY()+this.pSpeed);
+				if(model.getPlayer().getY()>=145){
+					model.getPlayer().setY(144);
+				}
 			}
 			if(this.left==1){
 				model.getPlayer().setX(model.getPlayer().getX()-this.pSpeed);
+				if(model.getPlayer().getX()<=0){
+					model.getPlayer().setX(1);
+				}
 			}
 			if(this.right==1){
 				model.getPlayer().setX(model.getPlayer().getX()+this.pSpeed);
+				if(model.getPlayer().getX()>=295){
+					model.getPlayer().setX(294);
+				}
 			}
 		}
-		model.getPlayer().increasePscore(1);
+		
+
 		reset();
 		paint();
 		
