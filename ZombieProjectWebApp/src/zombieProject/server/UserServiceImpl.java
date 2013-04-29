@@ -7,12 +7,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class UserServiceImpl extends RemoteServiceServlet implements UserService {
 
-<<<<<<< HEAD
-	@Override
-	public User logIn(String username, String password) {
-		return DB.instance().logIn(username, password);
-	}
-=======
+
 	/**
 	 * 
 	 */
@@ -26,6 +21,6 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 //	public boolean logisValid(String username, String password){
 //		return DB.instance().logisValid(username, password);
 //	}
->>>>>>> refs/remotes/slipson/master
+
 
 }
