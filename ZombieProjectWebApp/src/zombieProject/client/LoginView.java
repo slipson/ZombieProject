@@ -56,11 +56,11 @@ import com.google.gwt.user.client.ui.Image;
 				startButton.setText("Sign In");
 				startButton.addClickHandler(new ClickHandler() {
 					public void onClick(ClickEvent event) {
-						if(DB.instance().logisValid(UsernameBox.getText(), PasswordBox.getText())){
+//						if(DB.instance().logisValid(UsernameBox.getText(), PasswordBox.getText())){
 							handleStartZview();
-						}else{
+//						}else{
 							startButton.setText("Retry Login Input");
-						}
+//						}
 					}
 				});
 				

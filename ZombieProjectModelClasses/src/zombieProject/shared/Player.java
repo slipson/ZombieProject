@@ -43,6 +43,9 @@ public class Player {
 	
 	public void increaseHealth(double val){
 		this.health += val;
+		if(this.health>100){
+			this.health=100;
+		}
 	}
 	
 	public void decreaseHealth(double val){

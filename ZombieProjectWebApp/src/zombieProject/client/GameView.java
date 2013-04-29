@@ -154,6 +154,7 @@ public class GameView extends Composite{
 				this.model.getZombie(i).decreaseHealth(25);
 				if(this.model.getZombie(i).getHealth() <= 0){
 					this.model.removeZ(i);
+					this.model.getPlayer().increasePscore(1000);
 				}
 			}
 		}
@@ -205,8 +206,7 @@ public class GameView extends Composite{
 		this.model.getPlayer().setX(100.0);//initiates player's x position
 		this.model.getPlayer().setY(100.0);//initiates player's y position
 		
-//		this.model.getZombie().setX(60.0);//zombie's x
-//		this.model.getZombie().setY(30.0);//zombie's y
+
 		this.model.newZombie();
 		this.model.newSpawn();
 		
