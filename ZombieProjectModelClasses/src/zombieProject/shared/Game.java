@@ -10,8 +10,6 @@ import java.util.Random;
  * which would be shown by the UI of the game. Methods in this class include getter and setter methods for the player object.
  */
 public class Game {
-
-
 	
 	private int x_bullet = 0; // x direction of the bullet
 	private int y_bullet = 0; // y direction of the bullet
@@ -72,10 +70,7 @@ public class Game {
 
 	public static void main(String[] args){
 
->>>>>>> branch 'master' of git@github.com:sbonner1/ZombieProject.git
 
-
-	
 	/**
 	 * updates the game state
 	 * @param game the game object
@@ -91,12 +86,8 @@ public class Game {
 			if(this.zombieList.get(i).canMove(m)){
 				boolean moveable = this.zombieList.get(i).checkZombieCollisions(this.zombieList);
 			}
-		}
-		
-		
+		}		
 	}
-	
-
 
 
 	/**
@@ -124,15 +115,9 @@ public class Game {
 	public int getBullet_Y(){
 		return this.y_bullet;
 	}
-	
 
-	
-
-	
 	Random generator = new Random();
 
-	
-	
 	private Player player;
 //	private Zombie zombie;
 	
@@ -140,8 +125,6 @@ public class Game {
 	ArrayList<Spawned> spawnList = new ArrayList<Spawned>();
 
 
-
-	
 	public Game() {
 		this.player = new Player(50, 50);
 		this.zombieList.add(new Zombie(0, 0));
@@ -160,8 +143,8 @@ public class Game {
 	}
 	
 	public void newZombie(){
-		int x = generator.nextInt(295);
-		int y = generator.nextInt(145);
+		int x = generator.nextInt(100);
+		int y = generator.nextInt(100);
 		this.zombieList.add(new Zombie(x, y));
 	}
 	
@@ -182,18 +165,13 @@ public class Game {
 	}
 	
 	public void newSpawn(){
-		int x = generator.nextInt(295);
-		int y = generator.nextInt(145);
+		int x = generator.nextInt(100);
+		int y = generator.nextInt(100);
 		this.spawnList.add(new Spawned(x, y));
 	}
-	
 
-	
 	public void removeS(int i){
 		this.spawnList.remove(i);
 	}
-	
 }
-
-
 

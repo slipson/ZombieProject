@@ -363,4 +363,3 @@ public class Zombie{
 		}
 
 }
-

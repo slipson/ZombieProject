@@ -1,7 +1,5 @@
 package zombieProject.client;
 
-import zombieProject.client.EndGameView;
-
 import zombieProject.shared.Game;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.core.client.GWT;
@@ -30,10 +28,6 @@ public class GameView extends Composite{
 	
 	private Canvas canvas;
 	private Timer timer;
-
-
-
-	private Game game;
 
 	private double playerX;
 	private double playerY;
@@ -73,7 +67,6 @@ public class GameView extends Composite{
 	
 	//private Game game;
 	
-
 	
 	public GameView() {
 		LayoutPanel layoutPanel = new LayoutPanel();
@@ -110,7 +103,6 @@ public class GameView extends Composite{
 			}
 
 		});
-
 		
 		canvas.addMouseDownHandler(new MouseDownHandler(){
 
@@ -137,13 +129,7 @@ public class GameView extends Composite{
 			}
 			
 		});
-
-	
-		
-		
-		
-		
-		
+					
 		timer = new Timer() {
 			@Override
 			public void run() {
@@ -152,15 +138,14 @@ public class GameView extends Composite{
 		};
 
 
-		}
+		
+	}
 	
-	
-
 	protected void handleMouseDown(MouseDownEvent event){
 		
 		//fill with bullet creation, velocity, etc.
 		mouseX = event.getX()/2.6;
-		mouseY = event.getY()/4;
+		mouseY = event.getY()/4.0;
 		
 		mouseClick = true;
 		for(int i = 0; i < this.model.listSize(); i++){
@@ -171,12 +156,9 @@ public class GameView extends Composite{
 					this.model.removeZ(i);
 				}
 			}
-				
-			
 		}
-		
-
 	}
+	
 	protected void handleKeyDown(KeyDownEvent event){//reacts when keys are pressed
 		if(event.getNativeKeyCode() == 87){//keycode for 'W'
 			this.up=1;
@@ -190,14 +172,13 @@ public class GameView extends Composite{
 		if(event.getNativeKeyCode() == 68){//keycode for 'D'
 			this.right=1;
 		}
-		
+		if(event.isShiftKeyDown()){
+			endGame();
 			
 			
-			
-		
+		}
 	}
 	protected void endGame() {
-		timer.cancel();
 		this.model.getPlayer().increaseHealth(1000000);
 		EndGameView endview = new EndGameView();
 		ZombieProjectWebApp.instance.setView(endview);
@@ -224,6 +205,8 @@ public class GameView extends Composite{
 		this.model.getPlayer().setX(100.0);//initiates player's x position
 		this.model.getPlayer().setY(100.0);//initiates player's y position
 		
+//		this.model.getZombie().setX(60.0);//zombie's x
+//		this.model.getZombie().setY(30.0);//zombie's y
 		this.model.newZombie();
 		this.model.newSpawn();
 		
@@ -236,7 +219,8 @@ public class GameView extends Composite{
 			endGame();
 		}
 		counter++;
-
+		
+		this.model.getPlayer().increasePscore(1);
 
 		addz++;
 		adds++;
@@ -277,6 +261,7 @@ public class GameView extends Composite{
 				if(this.model.getSpawned(i).getX()<this.model.getPlayer().getX() + 4 && this.model.getSpawned(i).getY()<this.model.getPlayer().getY() + 4 &&this.model.getSpawned(i).getX()>this.model.getPlayer().getX() - 4 && this.model.getSpawned(i).getY()>this.model.getPlayer().getY() - 4){
 					this.model.getPlayer().increaseHealth(10);
 					this.model.removeS(i);
+					this.model.getPlayer().increasePscore(1000);
 				}
 			}
 			if(this.up==1){
@@ -333,12 +318,6 @@ public class GameView extends Composite{
 		canvas.getContext2d().setFillStyle("#FFCC99");//human color
 		canvas.getContext2d().fillRect(this.model.getPlayer().getX(), this.model.getPlayer().getY(), WIDTH, HEIGHT);//x and y; width and height
 		
-		//bullet lines
-		 //put the bullet at the player's top left point
-				
-		
-
-		
 		canvas.getContext2d().setFillStyle("#008600");//zombie color
 		for(int i = 0; i < this.model.listSize(); i++){
 			canvas.getContext2d().fillRect(this.model.getZombie(i).getX(), this.model.getZombie(i).getY(), WIDTH, HEIGHT);//x and y; width and height
@@ -352,15 +331,10 @@ public class GameView extends Composite{
 			canvas.getContext2d().fillRect(this.model.getSpawned(i).getX()-3, this.model.getSpawned(i).getY()-1, 6, 2);
 		}
 		
-
-		if(mouseClick = true){
-			canvas.getContext2d().setFillStyle("#FF0000");
-			canvas.getContext2d().fillRect(mouseX, mouseY, .5, .5);
-		}
+		//score text
 		canvas.getContext2d().setFillStyle("#FFFF00");
-		canvas.getContext2d().fillText(mouseX+"", 25, 25);
-		canvas.getContext2d().fillText(mouseY+"", 25, 35);
-		canvas.getContext2d().fillRect(mouseX, mouseY, HEIGHT, HEIGHT);
+		canvas.getContext2d().setFont("bold 10px Comic Sans MS, cursive, sans-serif");
+		canvas.getContext2d().fillText(model.getPlayer().getPscore() + "", 260.0, 140.0);
 		
 		//health bar
 		canvas.getContext2d().setFillStyle("#000000");//black
@@ -369,16 +343,4 @@ public class GameView extends Composite{
 		canvas.getContext2d().fillRect(10.0, 135.0, 250.0*(this.model.getPlayer().getHealth()/100), HEIGHT);
 		
 	}
-
-
 }
-
-	
-	
-	
-	//private void
-
-
-
-
-

@@ -1,7 +1,6 @@
 package zombieProject.client;
 
 import zombieProject.shared.Game;
-
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Button;
@@ -13,7 +12,6 @@ import com.google.gwt.user.client.ui.Image;
 
 public class EndGameView extends Composite{
 	
-
 		private Button startButton;
 		//private RichTextArea titleBox;
 		private LayoutPanel layoutPanel;
@@ -47,13 +45,11 @@ public class EndGameView extends Composite{
 				
 		}
 		
-		
 		protected void handleStartGame() {
 			Game model = new Game();
 			GameView view = new GameView();
+			view.setModel(model);
 			ZombieProjectWebApp.instance.setView(view);
-			view.setModel(model); // also starts the animation timer
+
 		}
 	}
-
-

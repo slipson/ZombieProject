@@ -14,6 +14,7 @@ h1 {
 .sendButton {
   display: block;
   font-size: 16pt;
+
 }
 
 /** Most GWT widgets already have a style name defined */
@@ -34,13 +35,4 @@ h1 {
   margin: 15px 6px 6px;
 }
 .gwt-Image {
-}
-.EndButton {
-background-color: transparent;
-	color: red;
-	border: thin black;
-	font-size: 12pt;
-	font-weight: bold;
-	width:auto;
-	height:auto;
 }

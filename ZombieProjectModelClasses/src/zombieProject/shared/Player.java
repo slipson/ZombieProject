@@ -2,15 +2,16 @@ package zombieProject.shared;
 
 public class Player {
 
-
-
-	public double x; //player's x coordinate
-	public double y; //player's y coordinate
+	private double x; //player's x coordinate
+	private double y; //player's y coordinate
 	private int player_width = 0; //the width of player image
 	private int player_height = 0; //the height of player image
-
-
 	private double health; //player's health
+
+	private int playrScore = 0; //player's score
+
+
+
 	
 	/**
 	 * Player constructor
@@ -42,9 +43,6 @@ public class Player {
 	
 	public void increaseHealth(double val){
 		this.health += val;
-		if(this.health>100){
-			this.health=100;
-		}
 	}
 	
 	public void decreaseHealth(double val){
@@ -53,6 +51,14 @@ public class Player {
 	
 	public double getHealth() {
 		return health;
+	}
+	
+	public int getPscore(){
+		return playrScore;
+	}
+	
+	public void increasePscore(int playScore){// increase playrScore by playScore
+		this.playrScore += playScore;
 	}
 	
 	/**
