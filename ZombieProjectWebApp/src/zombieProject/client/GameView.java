@@ -159,8 +159,8 @@ public class GameView extends Composite{
 	protected void handleMouseDown(MouseDownEvent event){
 		
 		//fill with bullet creation, velocity, etc.
-		mouseX = event.getX()/2.5;
-		mouseY = event.getY()/2.5;
+		mouseX = event.getX()/2.6;
+		mouseY = event.getY()/4;
 		
 		mouseClick = true;
 		for(int i = 0; i < this.model.listSize(); i++){
@@ -357,8 +357,10 @@ public class GameView extends Composite{
 			canvas.getContext2d().setFillStyle("#FF0000");
 			canvas.getContext2d().fillRect(mouseX, mouseY, .5, .5);
 		}
+		canvas.getContext2d().setFillStyle("#FFFF00");
 		canvas.getContext2d().fillText(mouseX+"", 25, 25);
 		canvas.getContext2d().fillText(mouseY+"", 25, 35);
+		canvas.getContext2d().fillRect(mouseX, mouseY, HEIGHT, HEIGHT);
 		
 		//health bar
 		canvas.getContext2d().setFillStyle("#000000");//black
