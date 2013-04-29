@@ -15,7 +15,7 @@ public class FakeDatabase implements IDatabase {
 		scoreList = new ArrayList<Score>();
 		
 		User user1 = new User();
-<<<<<<< HEAD
+
 		user1.setUsername("alice");
 		user1.setPassword("abc");
 		
@@ -62,7 +62,7 @@ public class FakeDatabase implements IDatabase {
 		return false;
 		
 	}
-=======
+
 		user1.setUsername("aschin");
 		user1.setPassword("zombie");
 		
@@ -138,5 +138,5 @@ public class FakeDatabase implements IDatabase {
 //		return bool;
 //		
 //	}
->>>>>>> refs/remotes/slipson/master
+
 }
