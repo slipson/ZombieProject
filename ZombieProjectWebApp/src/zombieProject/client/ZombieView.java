@@ -5,6 +5,9 @@ import zombieProject.server.FakeDatabase;
 import zombieProject.shared.Game;
 import zombieProject.shared.IDatabase;
 import zombieProject.shared.User;
+import zombieProject.client.GameView;
+import zombieProject.client.RPC;
+import zombieProject.client.ZombieProjectWebApp;
 import zombieProject.client.ZombieView;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
