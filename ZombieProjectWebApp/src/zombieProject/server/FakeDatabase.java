@@ -15,8 +15,8 @@ public class FakeDatabase implements IDatabase {
 		scoreList = new ArrayList<Score>();
 		
 		User user1 = new User();
-		user1.setUsername("aschin");
-		user1.setPassword("zombie");
+		user1.setUsername("LordDeathMaster");
+		user1.setPassword("adam");
 		
 		User user2 = new User();
 		user2.setUsername("slipson");
