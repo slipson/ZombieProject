@@ -9,7 +9,7 @@ public class Player {
 	private double health; //player's health
 	private int Ammo = 6;
 	private int MaxAmmo = 6;
-	private int playrScore = 0; //player's score
+	private double playrScore = 0; //player's score
 
 
 
@@ -57,12 +57,12 @@ public class Player {
 		return health;
 	}
 	
-	public int getPscore(){
+	public double getPscore(){
 		return playrScore;
 	}
 	
-	public void increasePscore(int playScore){// increase playrScore by playScore
-		this.playrScore += playScore;
+	public void increasePscore(double d){// increase playrScore by playScore
+		this.playrScore += d;
 	}
 	
 	/**

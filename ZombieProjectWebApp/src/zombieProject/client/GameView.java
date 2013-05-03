@@ -155,7 +155,7 @@ public class GameView extends Composite{
 					this.model.getZombie(i).decreaseHealth(25);
 					if(this.model.getZombie(i).getHealth() <= 0){
 						this.model.removeZ(i);
-						this.model.getPlayer().increasePscore(1000);
+						this.model.getPlayer().increasePscore(1000.0);
 					}
 				}
 			}
@@ -266,7 +266,6 @@ public class GameView extends Composite{
 				if(this.model.getSpawned(i).getX()<this.model.getPlayer().getX() + 4 && this.model.getSpawned(i).getY()<this.model.getPlayer().getY() + 4 &&this.model.getSpawned(i).getX()>this.model.getPlayer().getX() - 4 && this.model.getSpawned(i).getY()>this.model.getPlayer().getY() - 4){
 					this.model.getPlayer().increaseHealth(10);
 					this.model.removeS(i);
-					this.model.getPlayer().increasePscore(1000);
 				}
 			}
 			//ammo pack collect
