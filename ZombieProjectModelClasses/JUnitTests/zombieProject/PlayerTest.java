@@ -17,6 +17,7 @@ public class PlayerTest extends TestCase {
 		p1 = new Player(0,0);
 		p2 = new Player(128, 256);
 		m = new Map();
+		
 	}
 	
 	@Test
@@ -77,4 +78,6 @@ public class PlayerTest extends TestCase {
 		
 		
 	}
+	
 }
+	
