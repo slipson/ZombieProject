@@ -11,8 +11,7 @@ import java.util.Random;
  */
 public class Game {
 	
-	private int x_bullet = 0; // x direction of the bullet
-	private int y_bullet = 0; // y direction of the bullet
+
 	Map m = new Map();
 	
 
@@ -90,31 +89,7 @@ public class Game {
 	}
 
 
-	/**
-	 * sets the direction the bullet will move
-	 * @param x bullet's x direction
-	 * @param y bullet's y direction
-	 */
-	public void setBulletDirection(int x, int y){
-		this.x_bullet = x;
-		this.y_bullet = y;
-	}
-	
-	/**
-	 * get the x direction of the bullet
-	 * @return bullet's x direction
-	 */
-	public int getBullet_X(){
-		return this.x_bullet;
-	}
-	
-	/**
-	 * get the y direction of the bullet
-	 * @return bullet's y direction
-	 */
-	public int getBullet_Y(){
-		return this.y_bullet;
-	}
+
 
 	Random generator = new Random();
 
@@ -123,6 +98,7 @@ public class Game {
 	
 	ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
 	ArrayList<Spawned> spawnList = new ArrayList<Spawned>();
+	ArrayList<Ammo> AmmoList = new ArrayList<Ammo>();
 
 
 	public Game() {
@@ -142,9 +118,13 @@ public class Game {
 		return spawnList.get(i);
 	}
 	
+	public Ammo getAmmo(int i) {
+		return AmmoList.get(i);
+	}
+	
 	public void newZombie(){
-		int x = generator.nextInt(100);
-		int y = generator.nextInt(100);
+		int x = generator.nextInt(294);
+		int y = generator.nextInt(144);
 		this.zombieList.add(new Zombie(x, y));
 	}
 	
@@ -165,13 +145,28 @@ public class Game {
 	}
 	
 	public void newSpawn(){
-		int x = generator.nextInt(100);
-		int y = generator.nextInt(100);
+		int x = generator.nextInt(294);
+		int y = generator.nextInt(144);
 		this.spawnList.add(new Spawned(x, y));
 	}
 
 	public void removeS(int i){
 		this.spawnList.remove(i);
+	}
+	
+	
+	public int AmmoSize(){
+		return AmmoList.size();
+	}
+	
+	public void newAmmo(){
+		int x = generator.nextInt(294);
+		int y = generator.nextInt(144);
+		this.AmmoList.add(new Ammo(x, y));
+	}
+
+	public void removeA(int i){
+		this.AmmoList.remove(i);
 	}
 }
 
