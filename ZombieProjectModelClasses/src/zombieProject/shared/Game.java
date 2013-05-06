@@ -12,63 +12,24 @@ import java.util.Random;
 public class Game {
 	
 
-	Map m = new Map();
-	
 
-	/*
 
+	private Player player;
+	ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
+	ArrayList<Spawned> spawnList = new ArrayList<Spawned>();
+	ArrayList<Ammo> AmmoList = new ArrayList<Ammo>();
 	private int x_bullet = 0; // x direction of the bullet
 	private int y_bullet = 0; // y direction of the bullet
+
 	Map m = new Map();
 	
-
-
-
-	
 	/**
-	 * updates the game state
-	 * @param game the game object
+	 * game constructor
 	 */
-	//public void updateGame(Game game){
-		
-
-		//We are going to need to decide on if we are using a 
-		//loop to generate multiple zombies and generate them
-		//either randomly or according to a difficulty.
-		//Difficulty could depend on the room that the user
-		//has just entered. 
-		/*for(int i = 0; i < numZombies; i++){//loop to initialize all zombies
-			zombiArr[i].setX((i * 10) + 10);
-			zombiArr[i].setY(10);
-		}
-		boolean collision;// use this value later to regulate movement of player
-		
-		for(Zombie z : zombiArr){
-			if((p.getX() + 1 < z.getX() - 1) | (p.getX() - 1 > z.getX() + 1)){
-				if((p.getY() + 1 < z.getY() - 1) | (p.getY() - 1 > z.getY() + 1)){
-					collision = false;
-				}
-				else{
-					collision = true;
-				}
-			}
-			else{
-				collision = true;
-			}
-		}*/
-		
-		
-	
-
-	
-	/*public static void main(String[] args){
-
-	/*
-
-	/*	
-
-	public static void main(String[] args){
-
+	public Game() {
+		this.player = new Player(50, 50);
+		this.zombieList.add(new Zombie(0, 0));
+	}
 
 	/**
 	 * updates the game state
@@ -90,22 +51,35 @@ public class Game {
 
 
 
+	/**
+	 * sets the direction the bullet will move
+	 * @param x bullet's x direction
+	 * @param y bullet's y direction
+	 */
+	public void setBulletDirection(int x, int y){
+		this.x_bullet = x;
+		this.y_bullet = y;
+	}
+	/**
+	 * get the x direction of the bullet
+	 * @return bullet's x direction
+	 */
+	public int getBullet_X(){
+		return this.x_bullet;
+	}
+	/**
+	 * get the y direction of the bullet
+	 * @return bullet's y direction
+	 */
+	public int getBullet_Y(){
+		return this.y_bullet;
+	}
+
 
 	Random generator = new Random();
 
-	private Player player;
-//	private Zombie zombie;
-	
-	ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
-	ArrayList<Spawned> spawnList = new ArrayList<Spawned>();
-	ArrayList<Ammo> AmmoList = new ArrayList<Ammo>();
 
 
-	public Game() {
-		this.player = new Player(50, 50);
-		this.zombieList.add(new Zombie(0, 0));
-	}
-	
 	public Player getPlayer() {
 		return player;
 	}
@@ -132,13 +106,9 @@ public class Game {
 		return zombieList.size();
 	}
 
-
-	
-
 	public void removeZ(int i){
 		this.zombieList.remove(i);
 	}
-	
 	
 	public int spawnSize(){
 		return spawnList.size();

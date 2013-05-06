@@ -9,11 +9,12 @@ import zombieProject.shared.Obstacle;
 
 public class ObstacleTest {
 	
-	Obstacle obstacle;
+	Obstacle obstacle, obstacle2;
 
 	@Before
 	public void setUp() throws Exception {
 		obstacle = new Obstacle(10, 10, 50, 20);
+		obstacle2 = new Obstacle(10, 10, 10);
 	}
 
 	@Test

@@ -24,13 +24,11 @@ import zombieProject.shared.Zombie;
 			p1 = new Player(10, 10);
 			m = new Map();
 		}
-		
 		@Test
 		public void testGetX() throws Exception{
 			assertEquals(0.0, z1.getX());
 			assertEquals(128.0, z2.getX());
 		}
-		
 		@Test
 		public void testSetX() throws Exception{
 			z1.setX(90.0);
@@ -38,13 +36,11 @@ import zombieProject.shared.Zombie;
 			z2.setX(346.0);
 			assertEquals(346.0, z2.getX());
 		}
-		
 		@Test
 		public void testGetY() throws Exception{
 			assertEquals(0.0, z1.getY());
 			assertEquals(256.0, z2.getY());
 		}
-		
 		@Test
 		public void testSetY() throws Exception{
 			z1.setY(72.0);
@@ -52,14 +48,11 @@ import zombieProject.shared.Zombie;
 			z2.setY(925.0);
 			assertEquals(925.0, z2.getY());
 		}
-		
 		@Test
 		public void testGetHealth() throws Exception{
 			assertEquals(50.0, z1.getHealth());
 			assertEquals(50.0, z2.getHealth());
 		}
-		
-		
 		@Test
 		public void testDecreaseHealth() throws Exception{
 			z1.decreaseHealth(50.0);
@@ -67,8 +60,6 @@ import zombieProject.shared.Zombie;
 			z2.decreaseHealth(25);
 			assertEquals(25.0, z2.getHealth());
 		}
-		
-		
 		@Test
 		public void testMoveTowardsPlayerUp() throws Exception{
 			p1.setY(10.0);
@@ -81,8 +72,6 @@ import zombieProject.shared.Zombie;
 			assertEquals(6.0, z1.getY());
 			assertEquals(6.0, z1.getX());
 		}
-		
-		
 		@Test
 		public void testMoveTowardsPlayerDown() throws Exception{
 			p1.setY(10.0);
@@ -94,10 +83,13 @@ import zombieProject.shared.Zombie;
 			z1.moveTowardsPlayer(p1);
 			assertEquals(14.0, z1.getX());
 			assertEquals(14.0, z1.getY());
+			
+			z1.setX(15.0);
+			z1.moveTowardsPlayer(p1);
+			assertEquals(14.0, z1.getX());
+			
+			
 		}
-		
-
-		
 		@Test
 		public void testzombieRoam() throws Exception{
 			z1.setX(15.0);
@@ -110,8 +102,6 @@ import zombieProject.shared.Zombie;
 				assertEquals(false, true);
 			}
 		}
-		
-		
 		@Test
 		public void testZombieMove() throws Exception{
 			p1.setY(10.0);
@@ -132,7 +122,6 @@ import zombieProject.shared.Zombie;
 			}
 			
 		}
-		
 		@Test
 		public void testCanMove(){
 			assertTrue(z3.canMove(m)); //test inboundaries
@@ -146,30 +135,16 @@ import zombieProject.shared.Zombie;
 			z3.setY(m.getBottom() + 20);
 			assertFalse(z3.canMove(m)); // test bottom boundary
 		}
-
-		/*
-		 * 
-		 * one or the other should change
-		 * 
-		 * 
 		@Test
-		public void testzombieRoamX() throws Exception{
-			z1.setX(15.0);
-			z1.setY(15.0);
-			z1.zombieRoam();
-			System.out.println(z1.getX());
-			assertEquals(15.0, z1.getX());
+		public void setZombieImageWidth(){
+			z1.setZombieImageWidth(50);
+			assertEquals(50, z1.getZombieImageWidth());
+		}
+		@Test
+		public void setZombieImageHeight(){
+			z1.setZombieImageHeight(20);
+			assertEquals(20, z1.getZombieImageHeight());
 		}
 		
-		
-		@Test
-		public void testzombieRoamY() throws Exception{
-			z1.setX(15.0);
-			z1.setY(15.0);
-			z1.zombieRoam();
-			System.out.println(z1.getY());
-			assertEquals(15.0, z1.getY());
-		}
-		*/
 }
 
