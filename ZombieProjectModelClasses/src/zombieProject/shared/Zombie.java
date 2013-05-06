@@ -310,12 +310,18 @@ public class Zombie{
 		 * @param m the map coordinates
 		 * @return true if zombie CAN move, false if zombie CANNOT move
 		 */
-		public boolean canMove(Map m){
+		public boolean canMove(Map m /*, Obstacle obs*/){
 			//check if zombie is in boundaries first, if zombie is within boundaries then it CAN move around, 
 			if(this.x < m.getLeft() || this.x + zombie_width > m.getRight() || this.y < m.getTop() || this.y + zombie_height > m.getBottom()){
 				return false;
 			}else{
 				return true;
+				//NOTE: may need to change taking obstacles into account
+				/*if(this.x > obs.getX() && this.x < obs.getX() + obs.getWidth() && this.y > obs.getY() && this.y < obs.getY() + obs.getHeight()){
+				return false;
+				}else{
+				return true;
+				}*/
 			}
 		}
 		/**
@@ -351,7 +357,7 @@ public class Zombie{
 		 * @param image_width width of the zombie's image
 		 */
 		public void setZombieImageWidth(int image_width){
-			zombie_width = image_width;
+			this.zombie_width = image_width;
 		}
 		
 		/**
@@ -359,7 +365,21 @@ public class Zombie{
 		 * @param image_height height of the zombie's image
 		 */
 		public void setZombieImageHeight(int image_height){
-			zombie_height = image_height;
+			this.zombie_height = image_height;
+		}
+		/**
+		 * getter for zombie's image width
+		 * @return zombie's image width
+		 */
+		public int getZombieImageWidth(){
+			return zombie_width;
+		}
+		/**
+		 * getter for zombie's image height
+		 * @return zombie's image width
+		 */
+		public int getZombieImageHeight(){
+			return zombie_height;
 		}
 
 }

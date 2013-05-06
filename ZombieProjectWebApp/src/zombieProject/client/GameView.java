@@ -117,6 +117,9 @@ public class GameView extends Composite{
 
 		canvas.addMouseUpHandler(new MouseUpHandler(){
 
+
+
+
 			@Override
 			public void onMouseUp(MouseUpEvent event) {
 				// TODO Auto-generated method stub
@@ -129,6 +132,7 @@ public class GameView extends Composite{
 			}
 			
 		});
+
 					
 		timer = new Timer() {
 			@Override
@@ -140,9 +144,16 @@ public class GameView extends Composite{
 
 		
 	}
+
+
 	
+
+
 	protected void handleMouseDown(MouseDownEvent event){
 		
+
+
+
 		//fill with bullet creation, velocity, etc.
 		if(this.model.getPlayer().getAmmo()>0){
 			mouseX = event.getX()/2.6;
@@ -157,9 +168,12 @@ public class GameView extends Composite{
 						this.model.removeZ(i);
 						this.model.getPlayer().increasePscore(1000.0);
 					}
+				
 				}
 			}
 		}
+
+
 	}
 	
 	protected void handleKeyDown(KeyDownEvent event){//reacts when keys are pressed
@@ -182,7 +196,11 @@ public class GameView extends Composite{
 		}
 	}
 	protected void endGame() {
+
+
+
 		this.model.getPlayer().increaseHealth(1000000);
+
 		EndGameView endview = new EndGameView();
 		ZombieProjectWebApp.instance.setView(endview);
 	}
@@ -329,7 +347,17 @@ public class GameView extends Composite{
 		// TODO: use Game object to determine what to draw
 		canvas.getContext2d().setFillStyle("#FFCC99");//human color
 		canvas.getContext2d().fillRect(this.model.getPlayer().getX(), this.model.getPlayer().getY(), WIDTH, HEIGHT);//x and y; width and height
+
+
+		//bullet lines
+		canvas.getContext2d().setFillStyle("#FF0000");
+		canvas.getContext2d().fillRect(model.getPlayer().getX(), model.getPlayer().getY(), .5, .5); //put the bullet at the player's top left point
+				
+		slope = (mouseY - model.getPlayer().getY()) / (mouseX-model.getPlayer().getY());
 		
+		
+		
+
 		canvas.getContext2d().setFillStyle("#008600");//zombie color
 		for(int i = 0; i < this.model.listSize(); i++){
 			canvas.getContext2d().fillRect(this.model.getZombie(i).getX(), this.model.getZombie(i).getY(), WIDTH, HEIGHT);//x and y; width and height
@@ -343,9 +371,15 @@ public class GameView extends Composite{
 			canvas.getContext2d().fillRect(this.model.getSpawned(i).getX()-3, this.model.getSpawned(i).getY()-1, 6, 2);
 		}
 		
+
+		//score text
+		canvas.getContext2d().setFillStyle("#FFFF00");
+		canvas.getContext2d().setFont("bold 10px Comic Sans MS, cursive, sans-serif");
+		canvas.getContext2d().fillText(model.getPlayer().getPscore() + "", 260.0, 140.0);
+
 		
 		canvas.getContext2d().setFillStyle("#FFFF00");//gold
-		
+		//ammo packs
 		for(int i = 0; i < this.model.AmmoSize(); i++){
 			canvas.getContext2d().fillRect(this.model.getAmmo(i).getX()-1, this.model.getAmmo(i).getY()-3, 2, 6);
 			canvas.getContext2d().fillRect(this.model.getAmmo(i).getX()-3, this.model.getAmmo(i).getY()-1, 6, 2);
@@ -353,6 +387,7 @@ public class GameView extends Composite{
 		
 		
 		
+
 		//score text
 		canvas.getContext2d().setFillStyle("#FFFF00");
 		canvas.getContext2d().setFont("bold 10px Comic Sans MS, cursive, sans-serif");
@@ -360,11 +395,24 @@ public class GameView extends Composite{
 		canvas.getContext2d().fillText(model.getPlayer().getAmmo() + "", 10.0, 150.0);
 		
 		
+
+
+
 		//health bar
 		canvas.getContext2d().setFillStyle("#000000");//black
 		canvas.getContext2d().fillRect(10.0, 135.0, 250.0, HEIGHT);
 		canvas.getContext2d().setFillStyle("#FF0000");//red
 		canvas.getContext2d().fillRect(10.0, 135.0, 250.0*(this.model.getPlayer().getHealth()/100), HEIGHT);
 		
-	}
+	
+
+
+
+
 }
+
+
+
+
+}
+
