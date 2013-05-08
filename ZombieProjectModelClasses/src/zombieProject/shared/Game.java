@@ -19,6 +19,7 @@ public class Game {
 	ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
 	ArrayList<Spawned> spawnList = new ArrayList<Spawned>();
 	ArrayList<Ammo> AmmoList = new ArrayList<Ammo>();
+	ArrayList<Obstacle> obsList = new ArrayList<Obstacle>();
 
 
 
@@ -28,7 +29,7 @@ public class Game {
 	 */
 	public Game() {
 		this.player = new Player(50, 50);
-		this.zombieList.add(new Zombie(0, 0));
+		this.zombieList.add(new Zombie(1, 1));
 	}
 
 
@@ -96,6 +97,22 @@ public class Game {
 
 	public void removeA(int i){
 		this.AmmoList.remove(i);
+	}
+	
+	
+	public int obsSize(){
+		return obsList.size();
+	}
+	
+	public void newobs(){
+		int x = generator.nextInt(200)+25;
+		int y = generator.nextInt(100)+25;
+		int size = generator.nextInt(20)+5;
+		this.obsList.add(new Obstacle(x, y, size));
+	}
+	
+	public Obstacle getObs(int i) {
+		return obsList.get(i);
 	}
 }
 

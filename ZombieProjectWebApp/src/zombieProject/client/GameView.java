@@ -229,6 +229,9 @@ public class GameView extends Composite{
 
 		this.model.newZombie();
 		this.model.newSpawn();
+		this.model.newobs();
+		this.model.newobs();
+		
 		
 		timer.scheduleRepeating(1000 / 60);
 	}
@@ -236,6 +239,7 @@ public class GameView extends Composite{
 	
 	protected void handleTimerTick() {
 		if(this.model.getPlayer().getHealth()<=0){
+			timer.cancel();
 			endGame();
 		}
 		counter++;
@@ -269,6 +273,11 @@ public class GameView extends Composite{
 				this.canMove=true;
 				for(int k = 0; k < this.model.listSize(); k++){
 					if(this.model.getZombie(k).getX()==this.model.getZombie(i).getRX() && this.model.getZombie(k).getY()==this.model.getZombie(i).getRY()){
+						this.canMove=false;
+					}
+				}
+				for(int k = 0; k < this.model.obsSize(); k++){
+					if(this.model.getZombie(i).getRX()>=this.model.getObs(k).getX() && this.model.getZombie(i).getRX()<=this.model.getObs(k).getX()+this.model.getObs(k).getWidth() && this.model.getZombie(i).getRY()>=this.model.getObs(k).getY() && this.model.getZombie(i).getRY()<=this.model.getObs(k).getY()+this.model.getObs(k).getWidth()){
 						this.canMove=false;
 					}
 				}
@@ -406,7 +415,11 @@ public class GameView extends Composite{
 		
 	
 
-
+		//obstacle
+		canvas.getContext2d().setFillStyle("#663300");
+		for(int i = 0; i < this.model.obsSize(); i++){
+			canvas.getContext2d().fillRect(this.model.getObs(i).getX(), this.model.getObs(i).getY(), this.model.getObs(i).getWidth(), this.model.getObs(i).getHeight());
+		}
 
 
 }
