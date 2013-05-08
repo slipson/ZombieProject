@@ -2,6 +2,7 @@ package zombieProject.server;
 
 import java.util.ArrayList;
 
+import zombieProject.client.Session;
 import zombieProject.shared.IDatabase;
 import zombieProject.shared.Score;
 import zombieProject.shared.User;
@@ -13,9 +14,8 @@ public class FakeDatabase implements IDatabase {
 	public FakeDatabase() {
 		userList = new ArrayList<User>();
 		scoreList = new ArrayList<Score>();
-		
+				
 		User user1 = new User();
-
 		user1.setUsername("aschin");
 		user1.setPassword("zombie");
 		
@@ -59,7 +59,7 @@ public class FakeDatabase implements IDatabase {
 		
 		Score score4 = new Score();
 		score4.setUserId(user4.getId());
-		score4.setScore(44454);
+		score4.setScore(45654);
 		
 		scoreList.add(score1);
 		scoreList.add(score2);
@@ -76,20 +76,25 @@ public class FakeDatabase implements IDatabase {
 		}
 		return null;
 	}
-//	@Override
-//	public boolean logisValid(String username, String password){
-//		boolean bool = false;
-//		
-//		for(User user : userList){
-//			if(user.getUsername().equals(username) && user.getPassword().equals(password)){
-//				bool = true;
-//				break;
-//			}else{
-//				bool = false;
-//			}
-//		}
-//		return bool;
-//		
-//	}
+	
+	@Override
+	public Score getScore(int ID){
+		for(Score scor: scoreList){
+			if(scor.getUserId() == ID){
+				return scor;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public void setScore(Score score) {
+		// TODO Auto-generated method stub
+		for(User usr: userList){
+			if(score.getUserId() == usr.getId()){
+				scoreList.set(score.getUserId(), score);
+			}
+		}
+	}
 
 }

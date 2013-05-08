@@ -20,8 +20,8 @@ public class Score implements Serializable {
 		return userId;
 	}
 	
-	public void setScore(int score) {
-		this.score = score;
+	public void setScore(int i) {
+		this.score = i;
 	}
 	
 	public int getScore() {

@@ -259,65 +259,7 @@ public class Zombie{
 			
 		}
 
-		
-		
-		
-/*		public void move(){		//TODO: needs to check if collide with walls
-			if(this.direction==0){
-				//up
-				this.setY(this.getY()-this.Speed);
-			}
-			else if(this.direction==1){
-				//up right
-				this.setY(this.getY()-this.Speed);
-				this.setX(this.getX()+this.Speed);
 
-			}
-			else if(this.direction==2){
-				//right
-				this.setX(this.getX()+this.Speed);
-			}
-			else if(this.direction==3){
-				//right down
-				this.setX(this.getX()+this.Speed);
-				this.setY(this.getY()+this.Speed);
-			}
-			else if(this.direction==4){
-				//down
-				this.setY(this.getY()+this.Speed);
-			}
-			else if(this.direction==5){
-				//down left
-				this.setY(this.getY()+this.Speed);
-				this.setX(this.getX()-this.Speed);
-			}
-			else if(this.direction==6){
-				//left
-				this.setX(this.getX()-this.Speed);
-			}
-			else{
-				//left up
-				this.setX(this.getX()-this.Speed);
-				this.setY(this.getY()-this.Speed);
-			}
-			
-		}	*/
-
-		
-
-		/**
-		 * determines if zombie has collided with something
-		 * @param m the map coordinates
-		 * @return true if zombie CAN move, false if zombie CANNOT move
-		 */
-		public boolean canMove(Map m){
-			//check if zombie is in boundaries first, if zombie is within boundaries then it CAN move around, 
-			if(this.x < m.getLeft() || this.x + zombie_width > m.getRight() || this.y < m.getTop() || this.y + zombie_height > m.getBottom()){
-				return false;
-			}else{
-				return true;
-			}
-		}
 		/**
 		 * checks all zombies on map if they are colliding with the zombie calling this method
 		 * @param zombie arrayList of zombies on the map

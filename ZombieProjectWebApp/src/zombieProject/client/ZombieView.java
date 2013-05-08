@@ -1,9 +1,6 @@
 package zombieProject.client;
 
-import zombieProject.server.DB;
-import zombieProject.server.FakeDatabase;
 import zombieProject.shared.Game;
-import zombieProject.shared.IDatabase;
 import zombieProject.shared.User;
 import zombieProject.client.ZombieView;
 
@@ -12,7 +9,6 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.RichTextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
@@ -57,13 +53,6 @@ import com.google.gwt.user.client.ui.Image;
 				startButton.setText("ENTER");
 				startButton.addClickHandler(new ClickHandler() {
 					public void onClick(ClickEvent event) {
-						/*
-						if(DB.instance().logisValid(UsernameBox.getText(), PasswordBox.getText()) == true){
-							handleStartGame();
-						}else{
-							startButton.setText("Retry!");
-						}
-						*/
 						RPC.userService.logIn(UsernameBox.getText(), PasswordBox.getText(), new AsyncCallback<User>() {
 							
 							@Override
@@ -73,6 +62,8 @@ import com.google.gwt.user.client.ui.Image;
 									// TODO: update UI
 									startButton.setText("Retry!");
 								} else {
+									Session.instance().clear();
+									Session.instance().setUser(result);
 									handleStartGame();
 								}
 								

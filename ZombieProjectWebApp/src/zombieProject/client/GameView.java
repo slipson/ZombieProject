@@ -181,8 +181,10 @@ public class GameView extends Composite{
 	}
 	protected void endGame() {
 		this.model.getPlayer().increaseHealth(1000000);
+		Session.instance().setPlayerScore(model.getPlayer().getPscore());
 		EndGameView endview = new EndGameView();
 		ZombieProjectWebApp.instance.setView(endview);
+		endview.activate();
 	}
 	
 	protected void handleKeyUp(KeyUpEvent event){//reacts when keys are released
@@ -315,11 +317,21 @@ public class GameView extends Composite{
 		canvas.getContext2d().drawImage(imgElmt, 100.0, 75.0, 100.0, 75.0);// LM
 		canvas.getContext2d().drawImage(imgElmt, 200.0, 0.0, 100.0, 75.0);// UR
 		canvas.getContext2d().drawImage(imgElmt, 200.0, 75.0, 100.0, 75.0);// LR
+		
 		// TODO: use Game object to determine what to draw
 		canvas.getContext2d().setFillStyle("#FFCC99");//human color
 		canvas.getContext2d().fillRect(this.model.getPlayer().getX(), this.model.getPlayer().getY(), WIDTH, HEIGHT);//x and y; width and height
 		
-		canvas.getContext2d().setFillStyle("#008600");//zombie color
+//		Image playrPic = new Image();
+//		playrPic.setUrl(GWT.getModuleBaseURL() + "UserPixl.png");
+//		ImageElement plyElmt = ImageElement.as(playrPic.getElement());
+//		canvas.getContext2d().drawImage(plyElmt,this.model.getPlayer().getX(), this.model.getPlayer().getY(), WIDTH * 3, HEIGHT * 3);
+		
+		
+//		Image zombiPic = new Image();
+//		zombiPic.setUrl(GWT.getModuleBaseURL() + "ZenemyPixl.png");
+//		ImageElement zomElmt = ImageElement.as(zombiPic.getElement());
+//		canvas.getContext2d().setFillStyle("#008600");//zombie color
 		for(int i = 0; i < this.model.listSize(); i++){
 			canvas.getContext2d().fillRect(this.model.getZombie(i).getX(), this.model.getZombie(i).getY(), WIDTH, HEIGHT);//x and y; width and height
 		}
