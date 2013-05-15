@@ -16,8 +16,10 @@ public class FakeDatabase implements IDatabase {
 		scoreList = new ArrayList<Score>();
 				
 		User user1 = new User();
-		user1.setUsername("aschin");
-		user1.setPassword("zombie");
+
+		user1.setUsername("LordDeathMaster");
+		user1.setPassword("adam");
+
 		
 		User user2 = new User();
 		user2.setUsername("slipson");
@@ -76,6 +78,7 @@ public class FakeDatabase implements IDatabase {
 		}
 		return null;
 	}
+
 	
 	@Override
 	public Score getScore(int ID){
@@ -98,3 +101,20 @@ public class FakeDatabase implements IDatabase {
 	}
 
 }
+//	@Override
+//	public boolean logisValid(String username, String password){
+//		boolean bool = false;
+//		
+//		for(User user : userList){
+//			if(user.getUsername().equals(username) && user.getPassword().equals(password)){
+//				bool = true;
+//				break;
+//			}else{
+//				bool = false;
+//			}
+//		}
+//		return bool;
+//		
+//	}
+}
+

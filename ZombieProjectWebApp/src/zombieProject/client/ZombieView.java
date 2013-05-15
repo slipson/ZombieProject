@@ -2,6 +2,9 @@ package zombieProject.client;
 
 import zombieProject.shared.Game;
 import zombieProject.shared.User;
+import zombieProject.client.GameView;
+import zombieProject.client.RPC;
+import zombieProject.client.ZombieProjectWebApp;
 import zombieProject.client.ZombieView;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -81,8 +84,8 @@ import com.google.gwt.user.client.ui.Image;
 				startButton.setStyleName("sendButton");
 				layoutPanel.add(startButton);
 				startButton.setSize("40", "10");
-				layoutPanel.setWidgetLeftWidth(startButton, 40.9, Unit.EM, 11.0, Unit.EM);
-				layoutPanel.setWidgetBottomHeight(startButton, 0.0, Unit.EM, 4.5, Unit.EM);
+				layoutPanel.setWidgetLeftWidth(startButton, 200.0, Unit.EM, 40.0, Unit.EM);
+				layoutPanel.setWidgetBottomHeight(startButton, 10.0, Unit.EM, 10.0, Unit.EM);
 				
 				Label lblUsername = new Label();
 				lblUsername.setStyleName("dialogVPanel");

@@ -117,6 +117,7 @@ public class GameView extends Composite{
 
 		canvas.addMouseUpHandler(new MouseUpHandler(){
 
+
 			@Override
 			public void onMouseUp(MouseUpEvent event) {
 				// TODO Auto-generated method stub
@@ -129,6 +130,7 @@ public class GameView extends Composite{
 			}
 			
 		});
+
 					
 		timer = new Timer() {
 			@Override
@@ -140,10 +142,13 @@ public class GameView extends Composite{
 
 		
 	}
-	
+
+
+
+
 	protected void handleMouseDown(MouseDownEvent event){
 		
-		//fill with bullet creation, velocity, etc.
+
 		mouseX = event.getX()/2.6;
 		mouseY = event.getY()/4.0;
 		
@@ -155,9 +160,27 @@ public class GameView extends Composite{
 				if(this.model.getZombie(i).getHealth() <= 0){
 					this.model.removeZ(i);
 					this.model.getPlayer().increasePscore(1000);
+
+		if(this.model.getPlayer().getAmmo()>0){
+			mouseX = event.getX()/2.6;
+			mouseY = event.getY()/4.0;
+			this.model.getPlayer().decreaseAmmo();
+			mouseClick = true;
+			for(int i = 0; i < this.model.listSize(); i++){
+				
+				if(mouseX >= this.model.getZombie(i).getX()-25 && mouseX <= this.model.getZombie(i).getX()+25 && mouseY <= this.model.getZombie(i).getY()+25 && mouseY >= this.model.getZombie(i).getY()-25){
+					this.model.getZombie(i).decreaseHealth(25);
+					if(this.model.getZombie(i).getHealth() <= 0){
+						this.model.removeZ(i);
+						this.model.getPlayer().increasePscore(1000.0);
+					}
 				}
 			}
 		}
+
+
+
+
 	}
 	
 	protected void handleKeyDown(KeyDownEvent event){//reacts when keys are pressed
@@ -180,8 +203,15 @@ public class GameView extends Composite{
 		}
 	}
 	protected void endGame() {
+
+
+
+
+
 		this.model.getPlayer().increaseHealth(1000000);
+
 		Session.instance().setPlayerScore(model.getPlayer().getPscore());
+
 		EndGameView endview = new EndGameView();
 		ZombieProjectWebApp.instance.setView(endview);
 		endview.activate();
@@ -208,10 +238,14 @@ public class GameView extends Composite{
 		this.model.getPlayer().setX(100.0);//initiates player's x position
 		this.model.getPlayer().setY(100.0);//initiates player's y position
 		
-//		this.model.getZombie().setX(60.0);//zombie's x
-//		this.model.getZombie().setY(30.0);//zombie's y
+
 		this.model.newZombie();
 		this.model.newSpawn();
+
+		this.model.newobs();
+		this.model.newobs();
+		
+
 		
 		timer.scheduleRepeating(1000 / 60);
 	}
@@ -219,6 +253,8 @@ public class GameView extends Composite{
 	
 	protected void handleTimerTick() {
 		if(this.model.getPlayer().getHealth()<=0){
+
+			timer.cancel();
 			endGame();
 		}
 		counter++;
@@ -231,6 +267,7 @@ public class GameView extends Composite{
 			adds=0;
 			whenSpawn+=60;
 			this.model.newSpawn();
+			this.model.newAmmo();
 		}
 		if(addz==whenZom){
 			addz=0;
@@ -245,6 +282,7 @@ public class GameView extends Composite{
 
 		if(counter == 5){
 			counter = 0;
+			//zombie movement
 			for(int i = 0; i < this.model.listSize(); i++){
 				this.model.getZombie(i).zMove(this.model.getPlayer());
 				this.canMove=true;
@@ -253,6 +291,12 @@ public class GameView extends Composite{
 						this.canMove=false;
 					}
 				}
+				for(int k = 0; k < this.model.obsSize(); k++){
+					if(this.model.getZombie(i).getRX()>=this.model.getObs(k).getX() && this.model.getZombie(i).getRX()<=this.model.getObs(k).getX()+this.model.getObs(k).getWidth() && this.model.getZombie(i).getRY()>=this.model.getObs(k).getY() && this.model.getZombie(i).getRY()<=this.model.getObs(k).getY()+this.model.getObs(k).getWidth()){
+						this.canMove=false;
+					}
+				}
+
 				if(this.canMove){
 					this.model.getZombie(i).moveActual();
 				}
@@ -260,13 +304,21 @@ public class GameView extends Composite{
 					this.model.getPlayer().decreaseHealth(1);
 				}
 			}
+			//health pack collect
 			for(int i = 0; i < this.model.spawnSize(); i++){
 				if(this.model.getSpawned(i).getX()<this.model.getPlayer().getX() + 4 && this.model.getSpawned(i).getY()<this.model.getPlayer().getY() + 4 &&this.model.getSpawned(i).getX()>this.model.getPlayer().getX() - 4 && this.model.getSpawned(i).getY()>this.model.getPlayer().getY() - 4){
 					this.model.getPlayer().increaseHealth(10);
 					this.model.removeS(i);
-					this.model.getPlayer().increasePscore(1000);
 				}
 			}
+			//ammo pack collect
+			for(int i = 0; i < this.model.AmmoSize(); i++){
+				if(this.model.getAmmo(i).getX()<this.model.getPlayer().getX() + 4 && this.model.getAmmo(i).getY()<this.model.getPlayer().getY() + 4 &&this.model.getAmmo(i).getX()>this.model.getPlayer().getX() - 4 && this.model.getAmmo(i).getY()>this.model.getPlayer().getY() - 4){
+					this.model.getPlayer().refillAmmo();
+					this.model.removeA(i);
+				}
+			}
+			//player movement
 			if(this.up==1){
 				model.getPlayer().setY(model.getPlayer().getY()-this.pSpeed);
 				if(model.getPlayer().getY()<=0){
@@ -321,17 +373,20 @@ public class GameView extends Composite{
 		// TODO: use Game object to determine what to draw
 		canvas.getContext2d().setFillStyle("#FFCC99");//human color
 		canvas.getContext2d().fillRect(this.model.getPlayer().getX(), this.model.getPlayer().getY(), WIDTH, HEIGHT);//x and y; width and height
+
+
+
+		//bullet lines
+		canvas.getContext2d().setFillStyle("#FF0000");
+		canvas.getContext2d().fillRect(model.getPlayer().getX(), model.getPlayer().getY(), .5, .5); //put the bullet at the player's top left point
+				
+		slope = (mouseY - model.getPlayer().getY()) / (mouseX-model.getPlayer().getY());
 		
-//		Image playrPic = new Image();
-//		playrPic.setUrl(GWT.getModuleBaseURL() + "UserPixl.png");
-//		ImageElement plyElmt = ImageElement.as(playrPic.getElement());
-//		canvas.getContext2d().drawImage(plyElmt,this.model.getPlayer().getX(), this.model.getPlayer().getY(), WIDTH * 3, HEIGHT * 3);
 		
+
 		
-//		Image zombiPic = new Image();
-//		zombiPic.setUrl(GWT.getModuleBaseURL() + "ZenemyPixl.png");
-//		ImageElement zomElmt = ImageElement.as(zombiPic.getElement());
-//		canvas.getContext2d().setFillStyle("#008600");//zombie color
+
+		canvas.getContext2d().setFillStyle("#008600");//zombie color
 		for(int i = 0; i < this.model.listSize(); i++){
 			canvas.getContext2d().fillRect(this.model.getZombie(i).getX(), this.model.getZombie(i).getY(), WIDTH, HEIGHT);//x and y; width and height
 		}
@@ -344,10 +399,29 @@ public class GameView extends Composite{
 			canvas.getContext2d().fillRect(this.model.getSpawned(i).getX()-3, this.model.getSpawned(i).getY()-1, 6, 2);
 		}
 		
+
 		//score text
 		canvas.getContext2d().setFillStyle("#FFFF00");
 		canvas.getContext2d().setFont("bold 10px Comic Sans MS, cursive, sans-serif");
 		canvas.getContext2d().fillText(model.getPlayer().getPscore() + "", 260.0, 140.0);
+
+
+		canvas.getContext2d().setFillStyle("#FFFF00");//gold
+		//ammo packs
+		for(int i = 0; i < this.model.AmmoSize(); i++){
+			canvas.getContext2d().fillRect(this.model.getAmmo(i).getX()-1, this.model.getAmmo(i).getY()-3, 2, 6);
+			canvas.getContext2d().fillRect(this.model.getAmmo(i).getX()-3, this.model.getAmmo(i).getY()-1, 6, 2);
+		}
+		
+		
+		
+
+		//score text
+		canvas.getContext2d().setFillStyle("#FFFF00");
+		canvas.getContext2d().setFont("bold 10px Comic Sans MS, cursive, sans-serif");
+		canvas.getContext2d().fillText(model.getPlayer().getPscore() + "", 260.0, 140.0);
+		canvas.getContext2d().fillText(model.getPlayer().getAmmo() + "", 10.0, 150.0);
+		
 		
 		//health bar
 		canvas.getContext2d().setFillStyle("#000000");//black
@@ -355,5 +429,17 @@ public class GameView extends Composite{
 		canvas.getContext2d().setFillStyle("#FF0000");//red
 		canvas.getContext2d().fillRect(10.0, 135.0, 250.0*(this.model.getPlayer().getHealth()/100), HEIGHT);
 		
-	}
+		//obstacle
+		canvas.getContext2d().setFillStyle("#663300");
+		for(int i = 0; i < this.model.obsSize(); i++){
+			canvas.getContext2d().fillRect(this.model.getObs(i).getX(), this.model.getObs(i).getY(), this.model.getObs(i).getWidth(), this.model.getObs(i).getHeight());
+		}
+
 }
+
+
+
+
+
+}
+

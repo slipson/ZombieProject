@@ -259,6 +259,72 @@ public class Zombie{
 			
 		}
 
+		
+		
+		
+/*		public void move(){		//TODO: needs to check if collide with walls
+			if(this.direction==0){
+				//up
+				this.setY(this.getY()-this.Speed);
+			}
+			else if(this.direction==1){
+				//up right
+				this.setY(this.getY()-this.Speed);
+				this.setX(this.getX()+this.Speed);
+
+			}
+			else if(this.direction==2){
+				//right
+				this.setX(this.getX()+this.Speed);
+			}
+			else if(this.direction==3){
+				//right down
+				this.setX(this.getX()+this.Speed);
+				this.setY(this.getY()+this.Speed);
+			}
+			else if(this.direction==4){
+				//down
+				this.setY(this.getY()+this.Speed);
+			}
+			else if(this.direction==5){
+				//down left
+				this.setY(this.getY()+this.Speed);
+				this.setX(this.getX()-this.Speed);
+			}
+			else if(this.direction==6){
+				//left
+				this.setX(this.getX()-this.Speed);
+			}
+			else{
+				//left up
+				this.setX(this.getX()-this.Speed);
+				this.setY(this.getY()-this.Speed);
+			}
+			
+		}	*/
+
+		
+
+
+		/**
+		 * determines if zombie has collided with something
+		 * @param m the map coordinates
+		 * @return true if zombie CAN move, false if zombie CANNOT move
+		 */
+//		public boolean canMove(Map m /*, Obstacle obs*/){
+//			//check if zombie is in boundaries first, if zombie is within boundaries then it CAN move around, 
+//			if(this.x < m.getLeft() || this.x + zombie_width > m.getRight() || this.y < m.getTop() || this.y + zombie_height > m.getBottom()){
+//				return false;
+//			}else{
+//				return true;
+//				//NOTE: may need to change taking obstacles into account
+//				/*if(this.x > obs.getX() && this.x < obs.getX() + obs.getWidth() && this.y > obs.getY() && this.y < obs.getY() + obs.getHeight()){
+//				return false;
+//				}else{
+//				return true;
+//				}*/
+//			}
+//		}
 
 		/**
 		 * checks all zombies on map if they are colliding with the zombie calling this method
@@ -293,7 +359,7 @@ public class Zombie{
 		 * @param image_width width of the zombie's image
 		 */
 		public void setZombieImageWidth(int image_width){
-			zombie_width = image_width;
+			this.zombie_width = image_width;
 		}
 		
 		/**
@@ -301,7 +367,21 @@ public class Zombie{
 		 * @param image_height height of the zombie's image
 		 */
 		public void setZombieImageHeight(int image_height){
-			zombie_height = image_height;
+			this.zombie_height = image_height;
+		}
+		/**
+		 * getter for zombie's image width
+		 * @return zombie's image width
+		 */
+		public int getZombieImageWidth(){
+			return zombie_width;
+		}
+		/**
+		 * getter for zombie's image height
+		 * @return zombie's image width
+		 */
+		public int getZombieImageHeight(){
+			return zombie_height;
 		}
 
 }
